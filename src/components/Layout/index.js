@@ -1,10 +1,16 @@
 import React from 'react';
-
-// import { Container } from './styles';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from '../../styles/global';
+import Header from '../Header';
+import theme from '../config';
 
 const Layout = ({ children }) => (
   <div>
-    {children}
+    <GlobalStyles />
+    <Header />
+    <ThemeProvider theme={theme}>
+      {children}
+    </ThemeProvider>
   </div>
 );
 

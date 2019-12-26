@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Container, Row, Col } from 'react-awesome-styled-grid'
 
 import Layout from '../components/Layout';
+import Introduction from '../components/About/Introduction';
+import Resume from '../components/About/Resume';
 import SEO from '../components/seo';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-);
+const IndexPage = () => {
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Container>
+        <Row>
+          <Col xs={12}>
+            <Introduction />
+          </Col>
+          <Col xs={12}>
+            <Resume />
+          </Col>
+        </Row>
+      </Container>
+    </Layout>
+  );
+}
 
 export default IndexPage;
 
