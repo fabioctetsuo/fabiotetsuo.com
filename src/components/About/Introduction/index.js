@@ -1,8 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+
 import * as Typography from '../../Typography';
-import Section from '../../Section';
 import * as S from './styles';
+import ContainerWithBackground from './ContainerWithBackground';
 
 const Introduction = () => {
   const { site: { siteMetadata } } = useStaticQuery(graphql`
@@ -20,15 +21,21 @@ const Introduction = () => {
   `);
 
   return (
-    <Section>
-      <S.Profile />
-      <S.Presentation>
-        <S.TextWrapper>
-          <Typography.Heading size={2}>Olá, me chamo Fabio!</Typography.Heading>
-        </S.TextWrapper>
-        <Typography.Heading size={3}>{siteMetadata.description}</Typography.Heading>
-      </S.Presentation>
-    </Section>
+    <S.Container>
+      <ContainerWithBackground>
+        <S.IntroductionWrapper>
+          <S.Introduction>
+            <S.Profile />
+            <S.Presentation>
+              <S.TextWrapper>
+                <Typography.Heading size={2}>Olá, me chamo Fabio!</Typography.Heading>
+              </S.TextWrapper>
+              <Typography.Heading size={3}>{siteMetadata.description}</Typography.Heading>
+            </S.Presentation>
+          </S.Introduction>
+        </S.IntroductionWrapper>
+      </ContainerWithBackground>
+    </S.Container>
   )
 };
 
