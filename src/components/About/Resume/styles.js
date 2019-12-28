@@ -28,3 +28,7 @@ export const Devices = styled(DevicesImage)`
     display: none;
   `}
 `;
+
+export const TextWrapper = styled.div`
+  margin-top: 16px;
+`;

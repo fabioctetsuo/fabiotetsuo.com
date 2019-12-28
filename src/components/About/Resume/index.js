@@ -24,12 +24,14 @@ const Resume = () => {
             <Typography.Heading size={3} color="#FFFFFF">
               Falando um pouco sobre mim...
             </Typography.Heading>
-            <Typography.Body color="#FFFFFF">
-              Sou apaixonando pelo universo front-end, colaborei com pessoas talentosas
-              na criação de novos produtos digitais. Sou super calmo e sempre busco
-              resolver os problemas da melhor maneira possível.
-              PS: Amo gastronomia também...
-            </Typography.Body>
+            <S.TextWrapper>
+              <Typography.Body color="#FFFFFF">
+                Sou apaixonando pelo universo front-end, colaborei com pessoas talentosas
+                na criação de novos produtos digitais. Sou super calmo e sempre busco
+                resolver os problemas da melhor maneira possível.
+                PS: Amo gastronomia também...
+              </Typography.Body>
+            </S.TextWrapper>
           </S.AboutMeContainer>
         </Col>
         <Col xs={4} sm={4} md={4} lg={6} xl={6}>
