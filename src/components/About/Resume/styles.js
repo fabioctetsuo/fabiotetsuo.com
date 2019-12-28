@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import DevicesImage from '../../../images/devices.svg';
+import CodeTagImage from '../../../images/code-tag.svg';
 
 export const AboutMeContainer = styled.div`
   display: flex;
@@ -25,8 +26,24 @@ export const Devices = styled(DevicesImage)`
   height: auto;
 `;
 
+export const CodeTag = styled(CodeTagImage)`
+  width: 40px;
+  height: auto;
+
+  ${media.lessThan('medium')`
+    display: none;
+  `}
+`;
+
 export const TextWrapper = styled.div`
   margin-top: 16px;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const AboutWrapper = styled.div`

@@ -39,9 +39,12 @@ const Resume = () => {
         </Col>
         <Col xs={4} sm={4} md={4} lg={6} xl={6}>
           <S.SkillsContainer>
-            <Typography.Heading size={3}>
-              Habilidades
-            </Typography.Heading>
+            <S.TitleWrapper>
+              <Typography.Heading size={3}>
+                Habilidades
+              </Typography.Heading>
+              <S.CodeTag />
+            </S.TitleWrapper>
             <SyntaxHighlighter language="javascript" style={coy}>
               {codeString}
             </SyntaxHighlighter>
