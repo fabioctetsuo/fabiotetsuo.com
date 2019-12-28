@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import DevicesImage from '../../../images/workstation.svg';
+import DevicesImage from '../../../images/devices.svg';
 
 export const AboutMeContainer = styled.div`
   display: flex;
@@ -21,14 +21,20 @@ export const SkillsContainer = styled.div`
 
 export const Devices = styled(DevicesImage)`
   max-width: 350px;
-  text-align: right;
+  width: 100%;
   height: auto;
-
-  ${media.lessThan('large')`
-    display: none;
-  `}
 `;
 
 export const TextWrapper = styled.div`
   margin-top: 16px;
+`;
+
+export const AboutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  ${media.lessThan('medium')`
+    align-items: center;
+  `}
 `;
