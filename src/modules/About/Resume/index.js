@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col } from 'react-awesome-styled-grid';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import * as Typography from '../../../components/Typography';
