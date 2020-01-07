@@ -27,7 +27,7 @@ const Resume = () => {
               Sou apaixonando pelo universo front-end, colaborei com pessoas talentosas
               na criação de novos produtos digitais. Sou super calmo e sempre busco
               resolver os problemas da melhor maneira possível.
-              PS: Amo gastronomia também...
+              PS: Amo gastronomia também!
             </Typography.Body>
           </S.TextWrapper>
         </S.AboutMeContainer>
