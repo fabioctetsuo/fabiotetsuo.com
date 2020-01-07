@@ -3,6 +3,16 @@ import media from 'styled-media-query';
 import DevicesImage from '../../../images/devices.svg';
 import CodeTagImage from '../../../images/code-tag.svg';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  ${media.lessThan('medium')`
+    flex-direction: column;
+  `}
+`;
+
 export const AboutMeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,6 +28,14 @@ export const SkillsContainer = styled.div`
   border-radius: 16px;
   padding: 24px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 0 0 8px;
+
+  ${media.lessThan('medium')`
+    margin: 8px 0 0 0;
+  `}
 `;
 
 export const Devices = styled(DevicesImage)`
@@ -50,8 +68,11 @@ export const AboutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1;
+  margin: 0 8px 0 0;
 
   ${media.lessThan('medium')`
     align-items: center;
+    margin: 0 0 0 8px;
   `}
 `;

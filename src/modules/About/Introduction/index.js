@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import * as Typography from '../../Typography';
+import * as Typography from '../../../components/Typography';
 import * as S from './styles';
 import ContainerWithBackground from './ContainerWithBackground';
 
