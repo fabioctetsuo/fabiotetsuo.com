@@ -36,7 +36,7 @@ const Resume = () => {
       <S.SkillsContainer>
         <S.TitleWrapper>
           <Typography.Heading size={3}>
-            Habilidades
+            Habilidades =)
           </Typography.Heading>
           <S.CodeTag />
         </S.TitleWrapper>
