@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/093309bb-3432-451d-9689-0fa32bc915ff/deploy-status)](https://app.netlify.com/sites/fabiotetsuo/deploys)
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
