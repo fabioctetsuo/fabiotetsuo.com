@@ -15,9 +15,19 @@ export const Container = styled.section`
   box-shadow: 0px 0px 12px 1px rgba(214,214,214,0.18);
 `;
 
-export const Title = styled.h3`
-  font-size: 20px;
-  margin: 0 0 24px;
+export const TitleWrapper = styled.h3`
+  margin: 0 0 8px;
+`;
+
+export const TagWrapper = styled.div`
+  margin: 16px 0;
+`;
+
+export const Tag = styled.div`
+  width: fit-content;
+  padding: 0 16px;
+  border: 1px solid #6A5ACD;
+  border-radius: 12px;
 `;
 
 export const Description = styled.h4`
@@ -47,4 +57,10 @@ export const InfoContainer = styled.div`
 export const ImageWrapper = styled.div`
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: auto;
+  display: flex;
+  align-self: flex-end;
 `;

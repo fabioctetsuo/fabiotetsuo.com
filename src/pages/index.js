@@ -41,7 +41,7 @@ export const query = graphql`
           }
           frontmatter {
             title
-            date(fromNow: true, locale: "en")
+            date(locale: "en", formatString: "MMMM Do YYYY")
             description
             category
             featuredImage {

@@ -1,5 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
+import * as Typography from '../../Typography';
+import Button from '../../Button';
 import * as S from './styled';
 
 const PostItem = ({ item }) => (
@@ -17,10 +19,23 @@ const PostItem = ({ item }) => (
       />
     </S.ImageWrapper>
     <S.InfoContainer>
-      <S.Category>{item.category}</S.Category>
-      <S.Title>{item.title}</S.Title>
-      <S.Description>{item.description}</S.Description>
-      <S.DateTime>{item.date}</S.DateTime>
+      <Typography.Caption size={2}>
+        {item.date}
+      </Typography.Caption>
+      <S.TitleWrapper>
+        <Typography.Heading size={4}>
+          {item.title}
+        </Typography.Heading>
+      </S.TitleWrapper>
+      <Typography.Body size={1}>{item.description}</Typography.Body>
+      <S.TagWrapper>
+        <S.Tag>
+          <Typography.Caption size={2}>{item.category}</Typography.Caption>
+        </S.Tag>
+      </S.TagWrapper>
+      <S.ButtonWrapper>
+        <Button.Text>See more details</Button.Text>
+      </S.ButtonWrapper>
     </S.InfoContainer>
   </S.Container>
 );
