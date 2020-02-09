@@ -1,6 +1,4 @@
-const DESKTOP_WIDTH = 67.875; //  1086px
-
-const awesomegrid = {
+export const customAwesomegrid = {
   mediaQuery: 'only screen',
   columns: {
     xs: 4,
@@ -19,16 +17,16 @@ const awesomegrid = {
   paddingWidth: {
     xs: 1,
     sm: 1,
-    md: 1.5,
-    lg: 1.5,
-    xl: 1.5,
+    md: 15,
+    lg: 25,
+    xl: 25,
   },
   container: {
-    xs: 'full',
-    sm: 'full',
-    md: DESKTOP_WIDTH,
-    lg: DESKTOP_WIDTH,
-    xl: DESKTOP_WIDTH,
+    xs: 'full', // 'full' = max-width: 100%
+    sm: 'full', // 'full' = max-width: 100%
+    md: 'full', // 'full' = max-width: 100%
+    lg: 90, // max-width: 1440px
+    xl: 90, // max-width: 1440px
   },
   breakpoints: {
     xs: 1,
@@ -39,8 +37,6 @@ const awesomegrid = {
   },
 }
 
-const theme = {
-  awesomegrid,
-};
+const theme = {};
 
 export default theme;
