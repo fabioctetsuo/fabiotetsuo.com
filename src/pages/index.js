@@ -9,13 +9,18 @@ import { Link, graphql } from 'gatsby';
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
   return (
-    <Layout>
+    <Layout sidebar>
       <SEO title="Home" />
       <Container>
         <Row>
           {posts.map(({ node }) => (
-            <Col xs={4} sm={4} md={2} lg={3}>
-              <Link to={node.fields.slug}>
+            <Col xs={4} sm={4} md={4} lg={4}>
+              <Link
+                style={{
+                  textDecoration: 'none'
+                }}
+                to={node.fields.slug}
+              >
                 <Post item={node.frontmatter} />
               </Link>
             </Col>

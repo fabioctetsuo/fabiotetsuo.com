@@ -30,7 +30,7 @@ const Row = styled.div`
 
 const AboutPage = () => {
   return (
-    <Layout>
+    <Layout sidebar={false}>
       <SEO title="Home" />
       <Container>
         <Row>
