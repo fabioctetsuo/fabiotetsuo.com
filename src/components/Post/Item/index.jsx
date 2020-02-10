@@ -4,7 +4,7 @@ import * as Typography from '../../Typography';
 import Button from '../../Button';
 import * as S from './styled';
 
-const PostItem = ({ item }) => (
+const PostItem = ({ item, timeToRead }) => (
   <S.Container>
     <S.ImageWrapper>
       <Img
@@ -20,7 +20,7 @@ const PostItem = ({ item }) => (
     </S.ImageWrapper>
     <S.InfoContainer>
       <Typography.Caption size={2}>
-        {item.date}
+        {item.date} • {timeToRead} min read
       </Typography.Caption>
       <S.TitleWrapper>
         <Typography.Heading size={4}>
