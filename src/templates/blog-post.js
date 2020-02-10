@@ -5,6 +5,8 @@ import Img from 'gatsby-image';
 import { ThemeProvider } from 'styled-components';
 
 import { customAwesomegrid } from '../components/config';
+import * as Typography from '../components/Typography';
+import Button from '../components/Button';
 import Layout from '../components/Layout';
 import * as S from '../modules/BlogPost/styled';
 
@@ -15,12 +17,18 @@ export default ({ data }) => {
     <ThemeProvider theme={{ awesomegrid: customAwesomegrid }}>
       <Layout sidebar>
         <Container>
-          <Link to="/">
-            <S.BackButton>
-              Back to homepage
-            </S.BackButton>
-          </Link>
-          <S.Title>{post.frontmatter.title}</S.Title>
+          <S.ButtonWrapper>
+            <Link to="/">
+              <Button.Text>
+                Back to homepage
+              </Button.Text>
+            </Link>
+          </S.ButtonWrapper>
+          <S.TitleWrapper>
+            <Typography.Heading size={3}>
+              {post.frontmatter.title}
+            </Typography.Heading>
+          </S.TitleWrapper>
           <S.FeaturedImageWrapper>
             <Img fluid={featuredImgFluid} />
           </S.FeaturedImageWrapper>

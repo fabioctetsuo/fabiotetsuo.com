@@ -19,5 +19,7 @@ export const SidebarWrapper = styled.aside`
     height: auto;
     padding: 8px;
     width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--borders);
   `}
 `;

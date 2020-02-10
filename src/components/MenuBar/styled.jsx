@@ -16,6 +16,7 @@ export const Container = styled.div`
     bottom: 0;
     background: #FFF;
     display: flex;
+    border-top: 1px solid var(--borders);
   `}
 `;
 

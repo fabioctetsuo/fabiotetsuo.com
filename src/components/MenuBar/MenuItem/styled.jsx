@@ -7,7 +7,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 8px;
-
+  outline: none;
+  
   &:last-child {
     margin: 0 0 0 8px;
   }
