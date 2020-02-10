@@ -1,16 +1,15 @@
 import React from 'react';
-
-// import Profile from '../Profile';
-// import SocialLinks from '../SocialLinks';
-// import MenuLinks from '../MenuLinks';
+import Profile from '../Profile';
+import SocialLinks from '../SocialLinks';
 
 import * as S from './styled';
 
 const Sidebar = () => (
   <S.SidebarWrapper>
-    {/* <Profile />
+    <Profile />
+    
     <SocialLinks />
-    <MenuLinks /> */}
+    {/* <MenuLinks /> */}
   </S.SidebarWrapper>
 );
 
