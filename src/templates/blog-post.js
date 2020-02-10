@@ -13,7 +13,7 @@ export default ({ data }) => {
   const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid;
   return (
     <ThemeProvider theme={{ awesomegrid: customAwesomegrid }}>
-      <Layout>
+      <Layout sidebar>
         <Container>
           <Link to="/">
             <S.BackButton>

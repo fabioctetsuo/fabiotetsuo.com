@@ -16,12 +16,10 @@ const IndexPage = ({ data }) => {
           {posts.map(({ node }) => (
             <Col xs={4} sm={4} md={4} lg={4}>
               <Link
-                style={{
-                  textDecoration: 'none'
-                }}
+                style={{ textDecoration: 'none' }}
                 to={node.fields.slug}
               >
-                <Post item={node.frontmatter} />
+                <Post item={node.frontmatter} timeToRead={node.timeToRead} />
               </Link>
             </Col>
           ))}
@@ -39,6 +37,7 @@ export const query = graphql`
           fields {
             slug
           }
+          timeToRead
           frontmatter {
             title
             date(locale: "en", formatString: "MMMM Do YYYY")

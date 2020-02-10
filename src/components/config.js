@@ -17,9 +17,9 @@ export const customAwesomegrid = {
   paddingWidth: {
     xs: 1,
     sm: 1,
-    md: 15,
-    lg: 25,
-    xl: 25,
+    md: 10,
+    lg: 15,
+    xl: 20,
   },
   container: {
     xs: 'full', // 'full' = max-width: 100%
