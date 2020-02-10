@@ -7,7 +7,7 @@ import MenuBar from '../MenuBar';
 import theme from '../config';
 import * as S from './styled';
 
-const Layout = ({ sidebar, children }) => console.log(sidebar) || (
+const Layout = ({ sidebar, children }) => (
   <div>
     <GlobalStyles />
     <ThemeProvider theme={theme}>
