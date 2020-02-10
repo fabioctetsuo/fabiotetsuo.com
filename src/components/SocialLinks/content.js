@@ -13,6 +13,10 @@ const links = [
     label: 'Twitter',
     url: `https://twitter.com/${handle}`,
   },
+  {
+    label: 'LinkedIn',
+    url: `https://www.linkedin.com/in/fabio-tetsuo-chuman-7b0061134`,
+  },
 ];
 
 export default links;
