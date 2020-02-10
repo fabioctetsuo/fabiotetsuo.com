@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import GithubImg from '../../images/social/github.svg';
 import InstagramImg from '../../images/social/instagram.svg';
 import TwitterImg from '../../images/social/twitter.svg';
@@ -10,6 +11,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+
+  ${media.lessThan("large")`
+    display: none;
+  `}
 `;
 
 export const Github = styled(GithubImg)`

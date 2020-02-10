@@ -15,9 +15,26 @@ export const ProfilePicture = styled(ProfileImage)`
   height: 110px;
   margin: 0 0 16px;
 
-  ${media.lessThan('medium')`
-    width: 140px;
-    height: 140px;
+  ${media.lessThan('large')`
+    margin: 0 8px 0 0;
+    width: 30px;
+    height: 35px;
+  `}
+`;
+
+export const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  ${media.lessThan('large')`
+    flex-direction: row;
+    align-items: center;
+  `}
+`;
+
+export const PositionWrapper = styled.div`
+  ${media.lessThan('large')`
+    display: none;
   `}
 `;
 
@@ -27,4 +44,8 @@ export const ResumeWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   text-align: start;
+
+  ${media.lessThan('large')`
+    display: none;
+  `}
 `;

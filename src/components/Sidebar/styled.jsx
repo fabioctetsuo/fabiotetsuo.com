@@ -12,10 +12,12 @@ export const SidebarWrapper = styled.aside`
   padding: 2rem;
   text-align: center;
   width: 20rem;
+  z-index: 1;
+
   ${media.lessThan("large")`
     align-items: flex-start;
     height: auto;
-    padding: 1rem 2rem;
+    padding: 8px;
     width: 100%;
   `}
 `;
