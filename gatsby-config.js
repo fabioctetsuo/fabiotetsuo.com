@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Fabio Tetsuo`,
-    description: `Eu desenho e desenvolvo aplicações visando a melhor qualidade e isso é o que eu amo fazer.`,
-    authorDescription: `Sou apaixonando pelo universo front-end, colaborei com pessoas talentosas na criação de novos produtos digitais. Sou super calmo e sempre busco resolver os problemas da melhor maneira possível. PS: Amo gastronomia também...`,
+    description: `I design and develop web applications targeting the best quality and that's what I love to do.`,
+    authorDescription: `I’m a Gympass member, I like to write about front-end and some other cool stuff!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
   },
