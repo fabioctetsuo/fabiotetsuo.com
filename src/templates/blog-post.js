@@ -8,6 +8,7 @@ import { customAwesomegrid } from '../components/config';
 import * as Typography from '../components/Typography';
 import Button from '../components/Button';
 import Layout from '../components/Layout';
+import SEO from '../components/seo';
 import * as S from '../modules/BlogPost/styled';
 
 export default ({ data }) => {
@@ -16,6 +17,10 @@ export default ({ data }) => {
   return (
     <ThemeProvider theme={{ awesomegrid: customAwesomegrid }}>
       <Layout sidebar>
+        <SEO
+          title={post.frontmatter.title}
+          description={post.frontmatter.description}
+        />
         <Container>
           <S.ButtonWrapper>
             <Link to="/">
@@ -52,6 +57,7 @@ export const query = graphql`
       frontmatter {
         date(locale: "en", fromNow: true)
         title
+        description
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 1914) {
