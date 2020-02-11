@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
-import ProfileImage from '../../images/profile.svg';
 
 export const Container = styled.div`
   width: 100%;
@@ -10,15 +9,15 @@ export const Container = styled.div`
   align-items: flex-start;
 `;
 
-export const ProfilePicture = styled(ProfileImage)`
+export const ProfilePicture = styled.div`
   width: 100px;
-  height: 110px;
+  height: 100px;
   margin: 0 0 16px;
 
   ${media.lessThan('large')`
     margin: 0 8px 0 0;
     width: 30px;
-    height: 35px;
+    height: 30px;
   `}
 `;
 

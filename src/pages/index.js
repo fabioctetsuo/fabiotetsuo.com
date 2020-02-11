@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
       <Container>
         <Row>
           {posts.map(({ node }) => (
-            <Col xs={4} sm={4} md={4} lg={4}>              
+            <Col xs={4} sm={4} md={4} lg={4} key={node.id}>              
               <Post
                 slug={node.fields.slug}
                 item={node.frontmatter}
@@ -33,6 +33,7 @@ export const query = graphql`
     allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC})  {
       edges {
         node {
+          id
           fields {
             slug
           }
@@ -44,7 +45,7 @@ export const query = graphql`
             category
             featuredImage {
               childImageSharp {
-                fluid {
+                fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }

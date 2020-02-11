@@ -28,7 +28,7 @@ const Introduction = () => {
             <S.Profile />
             <S.Presentation>
               <S.TextWrapper>
-                <Typography.Heading size={2}>Olá, me chamo Fabio!</Typography.Heading>
+                <Typography.Heading size={2}>Hi, my name is Fabio!</Typography.Heading>
               </S.TextWrapper>
               <Typography.Heading size={3}>{siteMetadata.description}</Typography.Heading>
             </S.Presentation>

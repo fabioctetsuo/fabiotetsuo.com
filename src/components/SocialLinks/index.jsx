@@ -8,6 +8,7 @@ const SocialLinks = () => (
       const Icon = S.Icons[link.label];
       return (
         <a
+          key={link.label}
           aria-label={link.label}
           href={link.url}
           title={link.label}

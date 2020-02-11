@@ -14,7 +14,7 @@ export const Container = styled.section`
   box-shadow: 0px 0px 12px 1px rgba(214,214,214,0.18);
 `;
 
-export const TitleWrapper = styled.h3`
+export const TitleWrapper = styled.div`
   margin: 0 0 8px;
 `;
 

@@ -9,7 +9,6 @@ import SEO from '../components/seo';
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   padding: 0 20%;
   background-color: ${({ color }) => color || 'none'};
 
@@ -30,7 +29,7 @@ const Row = styled.div`
 
 const AboutPage = () => {
   return (
-    <Layout sidebar={false}>
+    <Layout sidebar>
       <SEO title="Home" />
       <Container>
         <Row>

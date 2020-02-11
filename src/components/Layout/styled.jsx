@@ -9,7 +9,7 @@ export const LayoutWrapper = styled.div`
 export const LayoutMain = styled.main`
   background: #F3F3F3;
   min-height: 100vh;
-  padding: 0 3.75rem 0 20rem;
+  padding: 0 0 0 20rem;
   transition: background, color 0.5s;
   width: 100%;
   body#grid & {
