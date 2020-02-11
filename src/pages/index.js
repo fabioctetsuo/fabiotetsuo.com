@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-awesome-styled-grid';
 import Layout from '../components/Layout';
 import Post from '../components/Post/Item';
 import SEO from '../components/seo';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -45,7 +45,7 @@ export const query = graphql`
             featuredImage {
               childImageSharp {
                 fluid {
-                  src
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
