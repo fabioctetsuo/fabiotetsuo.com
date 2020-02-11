@@ -1,5 +1,5 @@
 ---
-date: 2020-01-26 06:46:23
+date: 2020-01-29 06:46:23
 title: Gatsby - First challenge completed
 description: So, this is the first challenge of the 100 days of gatsby, and I'm really excited to tell you what I learned, the difficulties and the next steps.
 category: gatsby

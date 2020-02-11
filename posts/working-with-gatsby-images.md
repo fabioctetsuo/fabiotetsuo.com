@@ -1,5 +1,5 @@
 ---
-date: 2020-01-26 06:46:23
+date: 2020-02-11 00:52:23
 title: Working with Gatsby Images
 description: Say goodbye to the difficulties to work with images in your web applications.
 category: gatsby
