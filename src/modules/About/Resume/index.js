@@ -1,6 +1,6 @@
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { githubGist } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import * as Typography from '../../../components/Typography';
 import * as S from './styles';
 
@@ -39,7 +39,10 @@ const Resume = () => {
           </Typography.Heading>
           <S.CodeTag />
         </S.TitleWrapper>
-        <SyntaxHighlighter language="javascript" style={coy}>
+        <SyntaxHighlighter
+          language="javascript"
+          style={githubGist}
+        >
           {codeString}
         </SyntaxHighlighter>
       </S.SkillsContainer>

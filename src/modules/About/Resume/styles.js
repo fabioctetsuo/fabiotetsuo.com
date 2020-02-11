@@ -16,10 +16,7 @@ export const Container = styled.div`
 export const AboutMeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
-  ${media.lessThan('medium')`
-    margin-bottom: 32px;
-  `}
+  margin-bottom: 16px;
 `;
 
 export const SkillsContainer = styled.div`
@@ -32,6 +29,7 @@ export const SkillsContainer = styled.div`
   flex-direction: column;
   flex: 1;
   margin: 0 0 0 8px;
+  height: fit-content;
 
   ${media.lessThan('medium')`
     margin: 8px 0 0 0;
@@ -42,6 +40,10 @@ export const Devices = styled(DevicesImage)`
   max-width: 350px;
   width: 100%;
   height: auto;
+
+  ${media.lessThan('medium')`
+    display: none;
+  `}
 `;
 
 export const CodeTag = styled(CodeTagImage)`
