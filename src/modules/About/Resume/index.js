@@ -20,14 +20,13 @@ const Resume = () => {
       <S.AboutWrapper>
         <S.AboutMeContainer>
           <Typography.Heading size={3} color="#FFFFFF">
-            Falando um pouco sobre mim...
+            A little about myself...
           </Typography.Heading>
           <S.TextWrapper>
             <Typography.Body color="#FFFFFF">
-              Sou apaixonando pelo universo front-end, colaborei com pessoas talentosas
-              na criação de novos produtos digitais. Sou super calmo e sempre busco
-              resolver os problemas da melhor maneira possível.
-              PS: Amo gastronomia também...
+              I'm in love with the front-end universe, I collaborated with awesome and talented people
+              in the creation of new digital products! I'm really calm and I'm always targeting the 
+              best solutions for my problems. P.S: I love gastronomy either!
             </Typography.Body>
           </S.TextWrapper>
         </S.AboutMeContainer>
@@ -36,7 +35,7 @@ const Resume = () => {
       <S.SkillsContainer>
         <S.TitleWrapper>
           <Typography.Heading size={3}>
-            Habilidades
+            Skills
           </Typography.Heading>
           <S.CodeTag />
         </S.TitleWrapper>
