@@ -14,13 +14,12 @@ const IndexPage = ({ data }) => {
       <Container>
         <Row>
           {posts.map(({ node }) => (
-            <Col xs={4} sm={4} md={4} lg={4}>
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={node.fields.slug}
-              >
-                <Post item={node.frontmatter} timeToRead={node.timeToRead} />
-              </Link>
+            <Col xs={4} sm={4} md={4} lg={4}>              
+              <Post
+                slug={node.fields.slug}
+                item={node.frontmatter}
+                timeToRead={node.timeToRead}
+              />
             </Col>
           ))}
         </Row>

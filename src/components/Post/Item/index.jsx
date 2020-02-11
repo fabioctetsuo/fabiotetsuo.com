@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import * as Typography from '../../Typography';
 import Button from '../../Button';
 import * as S from './styled';
 
-const PostItem = ({ item, timeToRead }) => (
+const PostItem = ({ item, slug, timeToRead }) => (
   <S.Container>
     <S.ImageWrapper>
       <Img
@@ -33,10 +34,12 @@ const PostItem = ({ item, timeToRead }) => (
           <Typography.Caption size={2}>{item.category}</Typography.Caption>
         </S.Tag>
       </S.TagWrapper>
-      <S.ButtonWrapper>
-        <Button.Text>See more details</Button.Text>
-      </S.ButtonWrapper>
     </S.InfoContainer>
+    <S.ButtonWrapper>
+      <Link to={slug}>
+        <Button.Text>See more details</Button.Text>
+      </Link>
+    </S.ButtonWrapper>
   </S.Container>
 );
 

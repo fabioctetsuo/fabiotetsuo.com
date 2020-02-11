@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   width: 100%;
-  min-height: 200px;
   border-radius: 16px;
   background: #ffffff;
   margin: 32px 0;
@@ -49,9 +48,10 @@ export const InfoContainer = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 24px 0 24px;
   align-self: stretch;
   flex-wrap: wrap;
+  flex: 1 0 auto;
 `;
 
 export const ImageWrapper = styled.div`
@@ -63,4 +63,6 @@ export const ButtonWrapper = styled.div`
   width: auto;
   display: flex;
   align-self: flex-end;
+  bottom: 0;
+  padding: 0 24px 24px 24px;
 `;
