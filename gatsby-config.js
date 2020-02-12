@@ -2,9 +2,10 @@ module.exports = {
   siteMetadata: {
     title: `Fabio Tetsuo`,
     description: `I design and develop web applications targeting the best quality and that's what I love to do.`,
-    authorDescription: `I’m a Gympass member, I like to write about front-end and some other cool stuff!`,
+    authorDescription: `I’m a Gympass member and I love to write about front-end and some other cool stuff!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
+    siteUrl: `https://www.fabiotetsuo.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

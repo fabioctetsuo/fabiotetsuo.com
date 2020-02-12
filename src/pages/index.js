@@ -8,9 +8,13 @@ import { graphql } from 'gatsby';
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
+  const { description } = data.site.siteMetadata;
   return (
     <Layout sidebar>
-      <SEO title="Home" />
+      <SEO
+        title="Homepage"
+        description={description}
+      />
       <Container>
         <Row>
           {posts.map(({ node }) => (
@@ -30,6 +34,11 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        description
+      }
+    }
     allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC})  {
       edges {
         node {

@@ -20,6 +20,7 @@ export default ({ data }) => {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description}
+          image={featuredImgFluid.src}
         />
         <Container>
           <S.ButtonWrapper>

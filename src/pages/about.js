@@ -27,10 +27,14 @@ const Row = styled.div`
   padding: ${({ padding }) => padding || '0'};
 `;
 
-const AboutPage = () => {
+const AboutPage = ({ data }) => {
+  const { description } = data.site.siteMetadata;
   return (
     <Layout sidebar>
-      <SEO title="Home" />
+      <SEO
+        title="About"
+        description={description}
+      />
       <Container>
         <Row>
           <Introduction />
@@ -43,7 +47,17 @@ const AboutPage = () => {
       </Container>
     </Layout>
   );
-}
+};
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        description
+      }
+    }
+  }  
+`;
 
 export default AboutPage;
 
