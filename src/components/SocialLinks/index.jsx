@@ -15,7 +15,9 @@ const SocialLinks = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon />
+          <S.IconWrapper>
+            <Icon />
+          </S.IconWrapper>
         </a>
       )
     })}

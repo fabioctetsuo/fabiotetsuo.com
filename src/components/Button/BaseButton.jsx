@@ -41,6 +41,7 @@ const StyledButton = styled.button`
     letter-spacing: ${letterSpacing};
     line-height: ${lineHeight};
     font-family: ${fontFamily};
+    transition: .3s;
 
     &:hover {
       background-color: ${backgroundColor.hover};

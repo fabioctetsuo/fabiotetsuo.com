@@ -5,7 +5,11 @@ import * as S from './styled';
 
 const MenuItem = ({ to, label }) => (
   <S.Container>
-    <S.MenuLink to={to}>
+    <S.MenuLink
+      to={to}
+      aria-label={label}
+      title={label}
+    >
       <Typography.Body size={1}>
         {label}
       </Typography.Body>

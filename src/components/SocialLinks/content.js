@@ -15,7 +15,7 @@ const links = [
   },
   {
     label: 'LinkedIn',
-    url: `https://www.linkedin.com/in/fabio-tetsuo-chuman-7b0061134`,
+    url: `https://www.linkedin.com/in/fabio-tetsuo-chuman-7b0061134/?locale=en_US`,
   },
 ];
 
