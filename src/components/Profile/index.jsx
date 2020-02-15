@@ -15,10 +15,10 @@ const Profile = () => {
           authorDescription
         }
       }
-      file(relativePath: {eq: "fabiotetsuo.jpg"}) {
+      file(relativePath: {eq: "fabiotetsuo.webp"}) {
         childImageSharp {
-          fluid (grayscale: true, maxWidth: 155) {
-            ...GatsbyImageSharpFluid
+          fluid (grayscale: true, maxWidth: 150) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
