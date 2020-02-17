@@ -75,10 +75,6 @@ module.exports = {
           {
             family: `Open Sans`,
           },
-          {
-            family: `Source Sans Pro`,
-            variants: [`300`, `400`, `700`]
-          },
         ],
       },
     },
