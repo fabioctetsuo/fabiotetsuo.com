@@ -6,6 +6,7 @@
   "author": "Fabio Tetsuo <fabioctetsuo@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
+    "formik": "^2.1.4",
     "gatsby": "^2.18.4",
     "gatsby-background-image": "^0.9.12",
     "gatsby-cli": "^2.8.29",
