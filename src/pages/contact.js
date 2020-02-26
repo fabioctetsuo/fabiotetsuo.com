@@ -39,7 +39,8 @@ const ContactPage = ({ data }) => {
           <Col xs={4} sm={4} lg={6}>
             <form
               style={{ width: '100%' }}
-              netlify
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
               name="contact"
               method="POST"
               
@@ -47,6 +48,7 @@ const ContactPage = ({ data }) => {
               <Heading size={3}>
                 Contact me!
               </Heading>
+              <input type="hidden" name="form-name" value="contact" />
               <TextField
                 label="What's your full name? *"
                 id="name"
