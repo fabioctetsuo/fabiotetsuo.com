@@ -33,7 +33,7 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout sidebar>
-      <SEO title="Home" />
+      <SEO title="Contact me!" />
       <Container>
         <Row style={{ marginTop: '16px' }}>
           <Col xs={4} sm={4} lg={6}>
@@ -43,7 +43,7 @@ const ContactPage = ({ data }) => {
               data-netlify-honeypot="bot-field"
               name="contact"
               method="POST"
-              
+              action="/contact/success"
             >
               <Heading size={3}>
                 Contact me!
@@ -57,6 +57,7 @@ const ContactPage = ({ data }) => {
                 ref={register}
                 hasError={errors.name}
                 helperText={helperMessage.name}
+                required
               />
               <TextField
                 label="E-mail *"
@@ -66,6 +67,7 @@ const ContactPage = ({ data }) => {
                 ref={register}
                 hasError={errors.email}
                 helperText={helperMessage.email}
+                required
               />
               <TextField
                 label="Your website"
@@ -84,6 +86,7 @@ const ContactPage = ({ data }) => {
                 ref={register}
                 hasError={errors.message}
                 helperText={helperMessage.message}
+                required
               />
               <Button type="submit">
                 Submit
