@@ -8,7 +8,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const CustomInput = styled.input`
+export const CustomInput = styled.textarea`
   width: 100%;
   height: auto;
   padding: 20px 16px 2px 16px;

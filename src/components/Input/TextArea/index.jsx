@@ -2,7 +2,7 @@ import React from 'react';
 import { Caption } from '../../Typography';
 import * as S from './styled';
 
-const TextField = React.forwardRef((props, ref) => (
+const TextArea = React.forwardRef((props, ref) => (
   <S.Container>
     <S.CustomInput
       hasError={props.hasError}
@@ -28,8 +28,8 @@ const TextField = React.forwardRef((props, ref) => (
   </S.Container>
 ));
 
-TextField.defaultProps = {
+TextArea.defaultProps = {
   onClose: () => {},
 };
 
-export default TextField;
+export default TextArea;
