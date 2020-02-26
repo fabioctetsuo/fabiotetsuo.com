@@ -25,12 +25,11 @@ const getHelperMessage = ({
 });
 
 const ContactPage = ({ data }) => {
-  const { register, handleSubmit, errors } = useForm({
+  const { register, errors } = useForm({
     validationSchema: contactSchema,
   });
   const contactScenario = data.file.childImageSharp.fluid;
   const helperMessage = getHelperMessage(errors);
-  const onSubmit = data => { console.log({ data, errors }) };
 
   return (
     <Layout sidebar>
@@ -39,7 +38,6 @@ const ContactPage = ({ data }) => {
         <Row style={{ marginTop: '16px' }}>
           <Col xs={4} sm={4} lg={6}>
             <form
-              onSubmit={handleSubmit(onSubmit)}
               style={{ width: '100%' }}
               netlify
               name="contact"
