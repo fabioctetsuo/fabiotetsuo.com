@@ -8,6 +8,7 @@ export const Paragraph = styled.p`
 export const Caption = styled.p`
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
+  color: ${({ hasError }) => !hasError ? '#555556' : '#d77474'};
 
   ${({ size }) => {
     if (size === 1) {
@@ -25,7 +26,6 @@ export const Caption = styled.p`
       `;
     }
   }}
-  
 `;
 
 export const Body = styled.p`
