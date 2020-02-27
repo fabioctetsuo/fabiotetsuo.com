@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-awesome-styled-grid';
-import { useForm } from 'react-hook-form';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -11,26 +10,8 @@ import TextArea from '../components/Input/TextArea';
 import { Heading } from '../components/Typography';
 import Button from '../components/Button';
 
-import contactSchema from '../utils/validations/contact-form';
-import { capitalize } from '../utils/capitalize';
-
-const getHelperMessage = ({
-  name = {},
-  email = {},
-  message = {}
-}) => ({
-  name: capitalize(name.message) || 'Would you mind to tell your name?',
-  email: capitalize(email.message) || 'What is your best e-mail so I can contact you?',
-  message: capitalize(message.message) || 'Tell me more about your project, your goals and how can I help you.',
-});
-
 const ContactPage = ({ data }) => {
-  const { register, errors } = useForm({
-    validationSchema: contactSchema,
-  });
   const contactScenario = data.file.childImageSharp.fluid;
-  const helperMessage = getHelperMessage(errors);
-
   return (
     <Layout sidebar>
       <SEO title="Contact me!" />
@@ -54,9 +35,7 @@ const ContactPage = ({ data }) => {
                 id="name"
                 type="text"
                 name="name"
-                ref={register}
-                hasError={errors.name}
-                helperText={helperMessage.name}
+                helperText="Would you mind to tell your name?"
                 required
               />
               <TextField
@@ -64,9 +43,7 @@ const ContactPage = ({ data }) => {
                 id="email"
                 type="email"
                 name="email"
-                ref={register}
-                hasError={errors.email}
-                helperText={helperMessage.email}
+                helperText="What is your best e-mail so I can contact you?"
                 required
               />
               <TextField
@@ -74,8 +51,6 @@ const ContactPage = ({ data }) => {
                 id="website"
                 type="text"
                 name="website"
-                ref={register}
-                hasError={errors.website}
                 helperText="Do you have a website?"
               />
               <TextArea
@@ -83,9 +58,7 @@ const ContactPage = ({ data }) => {
                 id="message"
                 name="message"
                 rows="8"
-                ref={register}
-                hasError={errors.message}
-                helperText={helperMessage.message}
+                helperText="Tell me more about your project, your goals and how can I help you."
                 required
               />
               <Button type="submit">
