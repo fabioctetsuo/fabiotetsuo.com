@@ -34,6 +34,12 @@ export default ({ data }) => {
             <Typography.Heading size={3}>
               {post.frontmatter.title}
             </Typography.Heading>
+            <Typography.Caption size={1}>
+              {post.timeToRead} min read
+            </Typography.Caption>
+            <Typography.Body size={1}>
+              {post.frontmatter.description}
+            </Typography.Body>
           </S.TitleWrapper>
           <S.FeaturedImageWrapper>
             <Img fluid={featuredImgFluid} />
@@ -55,6 +61,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      timeToRead
       frontmatter {
         date(locale: "en", fromNow: true)
         title
