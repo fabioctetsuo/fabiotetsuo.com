@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 import { graphql } from 'gatsby';
 
 const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMdx.edges;
   const { description } = data.site.siteMetadata;
   return (
     <Layout sidebar>
@@ -39,7 +39,7 @@ export const query = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC})  {
+    allMdx(filter: {fileAbsolutePath: {regex: "/posts/"}}, sort: {fields: frontmatter___date, order: DESC})  {
       edges {
         node {
           id
