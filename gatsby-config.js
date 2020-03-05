@@ -27,6 +27,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `uploads`,
         path: `${__dirname}/posts/images`,
       },
@@ -34,6 +41,23 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+        defaultLayouts: {
+          default: require.resolve("./src/templates/Post.jsx"),
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
