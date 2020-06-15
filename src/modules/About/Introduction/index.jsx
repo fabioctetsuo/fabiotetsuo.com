@@ -4,12 +4,12 @@ import Img from 'gatsby-image';
 
 import * as Typography from '../../../components/Typography';
 import * as S from './styles';
-import ContainerWithBackground from './ContainerWithBackground';
 
 const Introduction = () => {
   const {
     site: { siteMetadata },
-    file: profileImage,
+    profileImage,
+    scenarioBackground,
   } = useStaticQuery(graphql`
     query ProfileData {
       site {
@@ -21,7 +21,7 @@ const Introduction = () => {
           title
         }
       }
-      file(relativePath: {eq: "profile-draw.webp"}) {
+      profileImage: file(relativePath: {eq: "profile-draw.webp"}) {
         childImageSharp {
           fluid(quality: 100, maxWidth: 160) {
             ...GatsbyImageSharpFluid_withWebp
@@ -30,38 +30,42 @@ const Introduction = () => {
           }
         }
       }
+      scenarioBackground: file(relativePath: { eq: "background.webp" }) {
+        childImageSharp {
+          fluid(quality: 80, maxWidth: 1086) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
     }   
   `);
 
   return (
-    <ContainerWithBackground>
-      <S.ContainerWrapper>
-        <S.Introduction>
-          <S.Profile>
-            <Img
-              fluid={profileImage.childImageSharp.fluid}
-              alt="Profile Drawn"
-              objectFit="cover"
-              style={{
-                maxWidth: '160px',
-                margin: '0 auto', // Used to center the image
-              }}
-            />
-
-          </S.Profile>
-          <S.IntroductionText>
-            <S.TextWrapper>
-              <Typography.Heading size={2}>
-                Hi, my name is Fabio!
-              </Typography.Heading>
-            </S.TextWrapper>
-            <Typography.Heading size={3}>
-              {siteMetadata.description}
-            </Typography.Heading>
-          </S.IntroductionText>
-        </S.Introduction>
-      </S.ContainerWrapper>
-    </ContainerWithBackground>
+    <S.Introduction>
+      <S.Profile>
+        <Img
+          fluid={profileImage.childImageSharp.fluid}
+          alt="Profile Drawn"
+          objectFit="cover"
+          style={{ maxWidth: '160px', margin: '0 auto' }}
+        />
+      </S.Profile>
+      <S.IntroductionText>
+        <S.TextWrapper>
+          <Typography.Heading size={2}>
+            Hi, my name is Fabio!
+          </Typography.Heading>
+        </S.TextWrapper>
+        <Typography.Heading size={4}>
+          {siteMetadata.description}
+        </Typography.Heading>
+      </S.IntroductionText>
+      <S.BackgroundImage
+        fluid={scenarioBackground.childImageSharp.fluid}
+        alt="Scenario background"
+        objectFit="cover"
+      />
+    </S.Introduction>
   )
 };
 

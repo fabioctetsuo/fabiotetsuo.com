@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import DevicesImage from '../../../images/devices.svg';
-import CodeTagImage from '../../../images/code-tag.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -39,15 +38,6 @@ export const SkillsContainer = styled.div`
 export const Devices = styled(DevicesImage)`
   max-width: 350px;
   width: 100%;
-  height: auto;
-
-  ${media.lessThan('medium')`
-    display: none;
-  `}
-`;
-
-export const CodeTag = styled(CodeTagImage)`
-  width: 40px;
   height: auto;
 
   ${media.lessThan('medium')`

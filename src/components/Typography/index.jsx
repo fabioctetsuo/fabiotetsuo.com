@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
 
 export const Paragraph = styled.p`
   font-size: 1.2rem;
@@ -111,16 +110,4 @@ export const Heading = styled.h1`
       `
     }
   }}
-
-  ${media.lessThan('large')`
-    line-height: 32px;
-    font-size: ${({ size }) => {
-      if (size === 1) return `36px`;
-      else if (size === 2) return '25px';
-      else if (size === 3) return '18px';
-      else if (size === 4) return '14px';
-      else if (size === 5) return '14px';
-      else if (size === 6) return '8px';
-    }}
-  `}
 `;
