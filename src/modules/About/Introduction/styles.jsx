@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import Img from 'gatsby-image';
+import HomeBackground from '../../../images/home-background.svg';
 
 export const Introduction = styled.div`
   margin-top: 64px;
@@ -32,14 +32,6 @@ export const TextWrapper = styled.div`
   margin: 0 0 8px;
 `;
 
-export const BackgroundImage = styled(Img)`
-  ${media.lessThan('medium')`
-    align-self: center;
-    width: 100%;
-  `}
-
-  ${media.between('medium', 'large')`
-    align-self: center;
-    width: 70%;
-  `}
+export const BackgroundImage = styled(HomeBackground)`
+  height: auto !important;
 `;

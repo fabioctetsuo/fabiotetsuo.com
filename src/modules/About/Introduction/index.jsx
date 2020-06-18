@@ -9,7 +9,6 @@ const Introduction = () => {
   const {
     site: { siteMetadata },
     profileImage,
-    scenarioBackground,
   } = useStaticQuery(graphql`
     query ProfileData {
       site {
@@ -27,13 +26,6 @@ const Introduction = () => {
             ...GatsbyImageSharpFluid_withWebp
             presentationWidth
             presentationHeight
-          }
-        }
-      }
-      scenarioBackground: file(relativePath: { eq: "background.webp" }) {
-        childImageSharp {
-          fluid(quality: 80, maxWidth: 1086) {
-            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -61,9 +53,9 @@ const Introduction = () => {
         </Typography.Heading>
       </S.IntroductionText>
       <S.BackgroundImage
-        fluid={scenarioBackground.childImageSharp.fluid}
-        alt="Scenario background"
-        objectFit="cover"
+        width="100%"
+        viewBox="0 0 937 464"
+        preserveAspectRatio="xMidYMid meet"
       />
     </S.Introduction>
   )
