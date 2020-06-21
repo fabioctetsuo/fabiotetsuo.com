@@ -6,6 +6,7 @@ import ShapeDivider from '../components/ShapeDivider';
 import Layout from '../components/Layout';
 import Introduction from '../modules/About/Introduction';
 import Resume from '../modules/About/Resume';
+import Companies from '../modules/About/Companies';
 import SEO from '../components/seo';
 import { primary } from '../styles/colors';
 
@@ -43,6 +44,11 @@ const AboutPage = ({ data }) => {
       <Container color={primary.color500}>
         <Row padding="48px 0">
           <Resume />
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Companies />
         </Row>
       </Container>
     </Layout>
