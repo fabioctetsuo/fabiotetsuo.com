@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import HomeBackground from '../../../images/home-background.svg';
+import ProfileImage from '../../../images/profile.svg';
 
 export const Introduction = styled.div`
   margin-top: 64px;
@@ -30,6 +31,10 @@ export const IntroductionText = styled.div`
 
 export const TextWrapper = styled.div`
   margin: 0 0 8px;
+`;
+
+export const ProfileDraw = styled(ProfileImage)`
+  height: auto !important;
 `;
 
 export const BackgroundImage = styled(HomeBackground)`

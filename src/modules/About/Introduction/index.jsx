@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 import * as Typography from '../../../components/Typography';
 import * as S from './styles';
@@ -8,7 +7,6 @@ import * as S from './styles';
 const Introduction = () => {
   const {
     site: { siteMetadata },
-    profileImage,
   } = useStaticQuery(graphql`
     query ProfileData {
       site {
@@ -20,26 +18,16 @@ const Introduction = () => {
           title
         }
       }
-      profileImage: file(relativePath: {eq: "profile-draw.webp"}) {
-        childImageSharp {
-          fluid(quality: 100, maxWidth: 160) {
-            ...GatsbyImageSharpFluid_withWebp
-            presentationWidth
-            presentationHeight
-          }
-        }
-      }
     }   
   `);
 
   return (
     <S.Introduction>
       <S.Profile>
-        <Img
-          fluid={profileImage.childImageSharp.fluid}
-          alt="Profile Drawn"
-          objectFit="cover"
-          style={{ maxWidth: '160px', margin: '0 auto' }}
+        <S.ProfileDraw
+          width="160px"
+          viewBox="0 0 220 244"
+          preserveAspectRatio="xMidYMid meet"
         />
       </S.Profile>
       <S.IntroductionText>
