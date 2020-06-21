@@ -29,20 +29,6 @@ export const Tag = styled.div`
   border-radius: 12px;
 `;
 
-export const Description = styled.h4`
-  font-size: 16px;
-`;
-
-export const Category = styled.p`
-  font-size: 12px;
-  margin: 0 0 16px;
-`;
-
-export const DateTime = styled.p`
-  font-size: 12px;
-  margin: 24px 0 0;
-`;
-
 export const InfoContainer = styled.div`
   width: 100%;
   height: auto;
