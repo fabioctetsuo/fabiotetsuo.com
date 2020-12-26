@@ -73,12 +73,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
-          rule: {
-            include: /images/
-          }
-      }
+        rule: {
+          include: /images/,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -93,13 +93,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-          },
-        ],
+        fonts: [`open sans`, `roboto\:100,200,300,400,400i,700`],
+        display: "swap",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

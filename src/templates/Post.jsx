@@ -1,29 +1,26 @@
-import React from 'react';
-import { Container } from 'react-awesome-styled-grid';
-import { ThemeProvider } from 'styled-components';
-import { MDXProvider } from '@mdx-js/react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Img from 'gatsby-image';
+import React from "react"
+import Container from "@material-ui/core/Container"
+import Typography from "@material-ui/core/Typography"
+import { MDXProvider } from "@mdx-js/react"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import Img from "gatsby-image"
 
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import { customAwesomegrid } from '../components/config';
-
-import * as Typography from '../components/Typography';
-import * as S from '../modules/BlogPost/styled';
+import Layout from "../components/Layout"
+import SEO from "../components/seo"
+import * as S from "../modules/BlogPost/styled"
 
 const globalComponents = {
-  h1: props => <Typography.Heading size={1} {...props} />,
-  h2: props => <Typography.Heading size={2} {...props} />,
-  h3: props => <Typography.Heading size={3} {...props} />,
-  h4: props => <Typography.Heading size={4} {...props} />,
-  h5: props => <Typography.Heading size={5} {...props} />,
-  h6: props => <Typography.Heading size={6} {...props} />,
-  p: props => <Typography.Body size={1} {...props} />,
-};
+  h1: props => <Typography variant="h1" {...props} />,
+  h2: props => <Typography variant="h2" {...props} />,
+  h3: props => <Typography variant="h3" {...props} />,
+  h4: props => <Typography variant="h4" {...props} />,
+  h5: props => <Typography variant="h5" {...props} />,
+  h6: props => <Typography variant="h6" {...props} />,
+  p: props => <Typography variant="body" {...props} />,
+}
 
 const PostTemplate = ({ data: { mdx } }) => {
-  const featuredImgFluid = mdx.frontmatter.featuredImage.childImageSharp.fluid;
+  const featuredImgFluid = mdx.frontmatter.featuredImage.childImageSharp.fluid
   return (
     <Layout>
       <SEO
@@ -31,30 +28,21 @@ const PostTemplate = ({ data: { mdx } }) => {
         description={mdx.frontmatter.description}
         image={featuredImgFluid.src}
       />
-      <ThemeProvider theme={{ awesomegrid: customAwesomegrid }}>
-        <Container>
-          <S.TitleWrapper>
-            <Typography.Heading size={3}>
-              {mdx.frontmatter.title}
-            </Typography.Heading>
-            <Typography.Caption size={1}>
-              {mdx.timeToRead} min read
-            </Typography.Caption>
-            <Typography.Body size={1}>
-              {mdx.frontmatter.description}
-            </Typography.Body>
-          </S.TitleWrapper>
-          <S.FeaturedImageWrapper>
-            <Img fluid={featuredImgFluid} />
-          </S.FeaturedImageWrapper>
-          <MDXProvider components={globalComponents}>
-            <MDXRenderer>{mdx.body}</MDXRenderer>
-          </MDXProvider>
-        </Container>
-      </ThemeProvider>
+      <Container maxWidth="md">
+        <S.TitleWrapper>
+          <Typography variant="h4">{mdx.frontmatter.title}</Typography>
+          <Typography variant="caption">{mdx.timeToRead} min read</Typography>
+        </S.TitleWrapper>
+        <S.FeaturedImageWrapper>
+          <Img fluid={featuredImgFluid} />
+        </S.FeaturedImageWrapper>
+        <MDXProvider components={globalComponents}>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </MDXProvider>
+      </Container>
     </Layout>
-  );
-};
+  )
+}
 
 export const pageQuery = graphql`
   query PostTemplateQuery($id: String) {
@@ -76,6 +64,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
-export default PostTemplate;
+export default PostTemplate

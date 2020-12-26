@@ -1,46 +1,49 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image';
-import * as Typography from '../../Typography';
-import Button from '../../Button';
-import * as S from './styled';
+import * as React from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+import Button from "@material-ui/core/Button"
+import Card from "@material-ui/core/Card"
+import CardActionArea from "@material-ui/core/CardActionArea"
+import CardActions from "@material-ui/core/CardActions"
+import CardContent from "@material-ui/core/CardContent"
+import Typography from "@material-ui/core/Typography"
 
 const PostItem = ({ item, slug, timeToRead }) => (
-  <S.Container>
-    <S.ImageWrapper>
+  <Card
+    style={{
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}
+  >
+    <CardActionArea>
       <Img
         fluid={item.featuredImage.childImageSharp.fluid}
         alt="Featured image"
-        style={{
-          height: '200px',
-          borderTopLeftRadius: '16px',
-          borderTopRightRadius: '16px',
-        }}
+        style={{ height: "200px" }}
         objectFit="cover"
       />
-    </S.ImageWrapper>
-    <S.InfoContainer>
-      <Typography.Caption size={2}>
-        {item.date} • {timeToRead} min read
-      </Typography.Caption>
-      <S.TitleWrapper>
-        <Typography.Heading size={4}>
+      <CardContent>
+        <Typography gutterBottom variant="caption" component="span">
+          {item.date} • {timeToRead} min read
+        </Typography>
+        <Typography gutterBottom variant="h5" component="h2">
           {item.title}
-        </Typography.Heading>
-      </S.TitleWrapper>
-      <Typography.Body size={1}>{item.description}</Typography.Body>
-      <S.TagWrapper>
-        <S.Tag>
-          <Typography.Caption size={2}>{item.category}</Typography.Caption>
-        </S.Tag>
-      </S.TagWrapper>
-    </S.InfoContainer>
-    <S.ButtonWrapper>
-      <Link to={slug}>
-        <Button.Text>See more details</Button.Text>
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {item.description}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+    <CardActions>
+      <Link to={slug} style={{ textDecoration: "none" }}>
+        <Button size="small" color="primary">
+          Veja mais detalhes
+        </Button>
       </Link>
-    </S.ButtonWrapper>
-  </S.Container>
-);
+    </CardActions>
+  </Card>
+)
 
-export default PostItem;
+export default PostItem

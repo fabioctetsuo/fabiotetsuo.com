@@ -5,6 +5,8 @@
   "version": "1.0.0",
   "author": "Fabio Tetsuo <fabioctetsuo@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "babel-plugin-styled-components": "^1.10.6",
@@ -12,6 +14,7 @@
     "gatsby-background-image": "^0.9.12",
     "gatsby-cli": "^2.10.0",
     "gatsby-image": "^2.2.34",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.30",
     "gatsby-plugin-mdx": "^1.0.74",
     "gatsby-plugin-offline": "^3.0.24",
@@ -32,6 +35,7 @@
     "react-awesome-styled-grid": "^3.0.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^4.4.1",
     "styled-media-query": "^2.1.2",
     "yup": "^0.28.1"
