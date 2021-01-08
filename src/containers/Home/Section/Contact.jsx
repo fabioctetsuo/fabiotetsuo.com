@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
-import OnlineDiscussionIllustration from "../../../images/contact-me.svg"
+import HomeIllustration from "../../../images/home-illustration.svg"
 
 function Contact() {
   return (
@@ -27,7 +27,7 @@ function Contact() {
               Gostaria de conhecer mais o meu trabalho, trocar experiências ou
               até mesmo construir algo juntos? Então entre em contato através
               desse formulário que nossa equipe lhe responderá (no caso, a
-              equipe sou só eu xD)
+              equipe sou eu e minha gatinha Phoebe)
             </Typography>
             <TextField
               id="name"
@@ -63,8 +63,17 @@ function Contact() {
             </Button>
           </form>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <OnlineDiscussionIllustration style={{ width: "100%" }} />
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <HomeIllustration style={{ width: "100%" }} />
         </Grid>
       </Grid>
     </Container>

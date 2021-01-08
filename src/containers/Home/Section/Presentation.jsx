@@ -8,7 +8,7 @@ import FormControl from "@material-ui/core/FormControl"
 import FormLabel from "@material-ui/core/FormLabel"
 import Container from "@material-ui/core/Container"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
-import HomeIllustration from "../../../images/home-illustration.svg"
+import Me from "../../../components/Me"
 import SocialNetwork from "../../../components/SocialNetwork"
 
 const CustomFormControlLabel = styled(FormControlLabel)`
@@ -102,7 +102,7 @@ function Presetation() {
             justifyContent: "center",
           }}
         >
-          <HomeIllustration />
+          <Me />
         </Grid>
       </Grid>
     </Container>
