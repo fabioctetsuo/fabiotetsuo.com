@@ -23,7 +23,7 @@ const ABOUT_ME_DICTONARY = {
   BIG: "BIG",
 }
 
-const ABOUT_ME_TEXT = {
+export const ABOUT_ME_TEXT = {
   LITTLE:
     "Sou desenvolvedor, gosto de escrever, cozinheiro nas horas vagas e amante de gatos!",
   MEDIUM:

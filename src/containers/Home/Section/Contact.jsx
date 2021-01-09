@@ -30,6 +30,7 @@ function Contact() {
               equipe sou eu e minha gatinha Phoebe)
             </Typography>
             <TextField
+              name="name"
               id="name"
               label="Qual é o seu nome?"
               helperText="Gostaria de saber com quem eu vou falar <3"
@@ -39,6 +40,7 @@ function Contact() {
               style={{ marginTop: "40px" }}
             />
             <TextField
+              name="email"
               id="email"
               label="E-mail"
               helperText="Qual o melhor e-mail para entrar em contato?"
@@ -48,6 +50,7 @@ function Contact() {
               style={{ marginTop: "24px" }}
             />
             <TextField
+              name="description"
               id="description"
               label="Descrição"
               helperText="Digite aqui o que te levou a me contatar :)"
