@@ -1,0 +1,219 @@
+---
+date: 2020-01-29 06:46:23
+title: Primeiros passos com Gatsby
+description: Nesse post, vou compartilhar com vocês o que eu aprendi no primeiro desafio dos 100 dias de Gatsby.
+category: gatsby
+background: "#7d669e"
+featuredImage: ./images/gatsby-first-steps.jpg
+sections:
+  [
+    { id: "buscando-dados-com-gatsby", title: "Buscando dados com Gatsby" },
+    { id: "transformadores", title: "Transformadores" },
+    { id: "listando-posts-com-graphql", title: "Listando posts com GraphQL" },
+    {
+      id: "criando-página-programaticamente-para-cada-postagem",
+      title: "Criando página programaticamente para cada postagem",
+    },
+  ]
+---
+
+Nesses últimos tempos tenho pesquisado sobre ferramentas para desenvolver um projeto para um cliente e foi quando eu ouvi falar do Gatsby pela primeira vez, e me perguntei o que era isso e para que servia.
+Fiquei bem impressionado com o que o Gatsby falava e resolvi colocar em prática para entender um pouco mais sobre esse framework open-source.
+Então decidi realizar o desafio dos 100 dias de gatsby e a cada dia que passa estou aprendendo um detalhe novo, que facilita muito a vida de quem precisa desenvolver um site estático com uma boa perfomance.
+No primeiro desafio a ideia era criar um blog para contar um pouco mais sobre as experiências desenvolvendo a aplicação usando somente a documentação e posso afirmar que no site deles tem tudo que você precisa para sair com um excelente resultado.
+
+<br />
+<br />
+
+##### Buscando dados com Gatsby
+
+<br />
+
+Entender o ciclo de como as coisas funcionam com Gatsby é fundamental e esse é o primeiro ponto que quero falar.
+Com Gatsby você consegue pegar dados de qualquer lugar, pode ser de uma API, CMS, Markdown, são várias as opções de data fetching e tudo isso em tempo de build.
+Mas como ele faz isso? A primeira coisa que você precisa é de um [source plugin](https://www.gatsbyjs.com/docs/tutorial/part-five/), nesse exemplo, vamos pegar os posts do nosso filesystem, usando o [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/).
+
+Agora o que precisamos fazer é adicionar esse plugin na nossa configuração do `gatsby-config.js`
+
+```javascript
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts/`,
+      },
+    },
+  ],
+}
+```
+
+<br />
+<br />
+
+##### Transformadores
+
+<br />
+
+Algumas vezes os dados que estamos buscando não são retornados da forma como esperamos, por exemplo, no momento não temos acesso ao conteúdo de dentro do markdown, temos o nome do arquivo, quanto ele pesa, ou seja, dados do arquivo no disco, mas e se quisermos pegar os dados de dentro do markdown?
+É nesse exato momento que entram os plugins transformadores! Eles são responsáveis por pegar um determinado conteúdo e torná-lo algo mais "usável". Para esse cenário, utilizaremos o [gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)
+
+```javascript
+{
+  resolve: `gatsby-transformer-remark`,
+  options: {
+    plugins: [
+      `gatsby-remark-prismjs`,
+    ],
+  },
+},
+```
+
+<br />
+<br />
+
+##### Listando posts com GraphQL
+
+<br />
+
+Agora com as configurações prontas, nós já conseguimos mostrar as informações dos posts em tela e para isso podemos utilizar o GraphQL.
+Ele será o responsável por trazer os dados que foram buscados para o nosso componente, basta informarmos o que queremos e ele tentará trazer os dados.
+
+```jsx
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import PostItem from "../components/PostItem"
+import SEO from "../components/seo"
+
+const IndexPage = ({ data }) => {
+  const posts = data.allMarkdownRemark.edges
+  return (
+    <Layout>
+      <SEO title="Home" />
+      {posts.map(({ node }) => (
+        <PostItem item={node.frontmatter} />
+      ))}
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            date(fromNow: true, locale: "en")
+            description
+          }
+        }
+      }
+    }
+  }
+`
+
+export default IndexPage
+```
+
+<br />
+<br />
+
+##### Criando página programaticamente para cada postagem
+
+<br />
+
+Nós já temos uma página que lista todas as nossas postagens, porém apresentamos apenas informações do frontmatter. Se quiseremos mostrar todo o conteúdo do post nós precisaremos partir para outra abordagem.
+
+Agora precisamos criar para cada um dos posts (ou seja, cada um dos arquivos mdx) uma nova página e isso pode ser realizado usando o [gatsby-node](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/)
+Para isso, algumas coisas são necessárias. Primeiro, precisamos criar um identificador para cada arquivo markdown usando a API do [onCreateNode](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#onCreateNode) para inserir um novo campo de indentificação em cada um dos nós.
+
+```javascript
+const { createFilePath } = require("gatsby-source-filesystem")
+const path = require(`path`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = createFilePath({ node, getNode })
+    createNodeField({
+      node,
+      name: "slug",
+      value: slug,
+    })
+  }
+}
+```
+
+Após isso, o próximo passo é criar a página em si. O Gatsby possui uma API chamada [createPages](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages), onde através do GraphQL podemos pegar o slug inserido previamente em cada um dos nós e criar uma página nova com o método `createPage`
+
+```javascript
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const { data } = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve("./src/templates/blog-post.js"),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
+```
+
+E após isso, basta criamos o template que recebe o post em si.
+
+```jsx
+import React from "react"
+import styled from "styled-components"
+import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
+import Layout from "../components/Layout"
+
+export default ({ data }) => {
+  const post = data.markdownRemark
+  return (
+    <Layout>
+      <h1>{post.frontmatter.title}</h1>
+      <div
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        style={{
+          fontSize: "18px",
+          lineHeight: "1.8",
+        }}
+      />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        date(locale: "en", fromNow: true)
+        title
+      }
+    }
+  }
+`
+```
+
+Basicamente é isso! Esse é o processo para criar um blog de uma forma be simples usando a API do Gatsby. Com esse simples passo a passo, passamos por vários conceitos do framework, desde a forma como pegamos os dados, como transformamos ele em algo que precisamos e como mostrar esse dado no React.

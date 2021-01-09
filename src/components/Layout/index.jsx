@@ -1,25 +1,26 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from "react"
+import { ThemeProvider } from "styled-components"
+import {
+  ThemeProvider as MUIThemeProvider,
+  StylesProvider,
+} from "@material-ui/core/styles"
 
-import Sidebar from '../Sidebar';
-import MenuBar from '../MenuBar';
-import theme from '../config';
-import * as S from './styled';
-import GlobalStyles from '../../styles/global';
+import Appbar from "../Appbar"
+import theme from "../config"
+import GlobalStyles from "../../styles/global"
 
 const Layout = ({ children }) => (
   <>
     <GlobalStyles />
-    <ThemeProvider theme={theme}>
-      <S.LayoutWrapper>
-        <Sidebar />
-        <S.LayoutMain>
+    <StylesProvider>
+      <MUIThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <Appbar />
           {children}
-        </S.LayoutMain>
-        <MenuBar />
-      </S.LayoutWrapper>
-    </ThemeProvider>
+        </ThemeProvider>
+      </MUIThemeProvider>
+    </StylesProvider>
   </>
-);
+)
 
-export default Layout;
+export default Layout

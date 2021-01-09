@@ -1,36 +1,19 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-awesome-styled-grid';
-
-import Layout from '../components/Layout';
-import Post from '../components/Post/Item';
-import SEO from '../components/seo';
-import { graphql } from 'gatsby';
+import * as React from "react"
+import { graphql } from "gatsby"
+import Home from "../containers/Home"
+import Layout from "../components/Layout"
+import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => {
-  const posts = data.allMdx.edges;
-  const { description } = data.site.siteMetadata;
+  const posts = data.allMdx.edges
+  const { description } = data.site.siteMetadata
   return (
-    <Layout sidebar>
-      <SEO
-        title="Homepage"
-        description={description}
-      />
-      <Container>
-        <Row>
-          {posts.map(({ node }) => (
-            <Col xs={4} sm={4} md={4} lg={4} key={node.id}>              
-              <Post
-                slug={node.fields.slug}
-                item={node.frontmatter}
-                timeToRead={node.timeToRead}
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+    <Layout>
+      <SEO title="Página inicial" description={description} />
+      <Home posts={posts} />
     </Layout>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query {
@@ -39,7 +22,10 @@ export const query = graphql`
         description
       }
     }
-    allMdx(filter: {fileAbsolutePath: {regex: "/posts/"}}, sort: {fields: frontmatter___date, order: DESC})  {
+    allMdx(
+      filter: { fileAbsolutePath: { regex: "/posts/" } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       edges {
         node {
           id
@@ -49,7 +35,7 @@ export const query = graphql`
           timeToRead
           frontmatter {
             title
-            date(locale: "en", formatString: "MMMM Do YYYY")
+            date(locale: "pt-BR", formatString: "LL")
             description
             category
             featuredImage {
@@ -63,7 +49,7 @@ export const query = graphql`
         }
       }
     }
-  }  
-`;
+  }
+`
 
-export default IndexPage;
+export default IndexPage

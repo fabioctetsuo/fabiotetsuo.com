@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Fabio Tetsuo`,
-    description: `I design and develop web applications targeting the best quality and that's what I love to do.`,
-    authorDescription: `I’m a Gympass member and I love to write about front-end and some other cool stuff!`,
+    description: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
+    authorDescription: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
     siteUrl: `https://www.fabiotetsuo.com`,
@@ -10,6 +10,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -73,12 +82,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
-          rule: {
-            include: /images/
-          }
-      }
+        rule: {
+          include: /images/,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -93,13 +102,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-          },
-        ],
+        fonts: [`open sans`, `roboto\:100,200,300,400,400i,700`],
+        display: "swap",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
