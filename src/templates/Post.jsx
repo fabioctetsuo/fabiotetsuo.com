@@ -17,7 +17,7 @@ import ShareArticle from "../components/Post/Share"
 import AuthorDetails from "../components/Post/AuthorDetails"
 import * as S from "../modules/BlogPost/styled"
 
-const formatTitleId = title => title.replaceAll(" ", "-").toLowerCase()
+const formatTitleId = title => title.replace(/ /g, "-").toLowerCase()
 
 const globalComponents = {
   h1: props => <Typography variant="h1" {...props} />,

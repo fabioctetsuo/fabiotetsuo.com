@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
   const { description } = data.site.siteMetadata
   return (
     <Layout>
-      <SEO title="Homepage" description={description} />
+      <SEO title="Página inicial" description={description} />
       <Home posts={posts} />
     </Layout>
   )

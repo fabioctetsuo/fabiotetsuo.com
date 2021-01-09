@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Fabio Tetsuo`,
-    description: `I design and develop web applications targeting the best quality and that's what I love to do.`,
-    authorDescription: `I’m a Gympass member and I love to write about front-end and some other cool stuff!`,
+    description: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
+    authorDescription: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
     siteUrl: `https://www.fabiotetsuo.com`,
