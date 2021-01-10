@@ -14,3 +14,9 @@ export const Rect = styled.div`
   background: ${theme.palette.primary.main};
   margin-right: 32px;
 `
+
+export const Anchor = styled.a`
+  color: var(--fontColor);
+  font-size: 20px;
+  text-decoration: none;
+`

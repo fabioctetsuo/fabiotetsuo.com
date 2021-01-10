@@ -11,7 +11,11 @@ function Contact() {
     <Container>
       <Grid container spacing={3} style={{ margin: "72px 0" }}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h4" style={{ fontWeight: 300 }}>
+          <Typography
+            variant="h4"
+            style={{ fontWeight: 300 }}
+            color="textPrimary"
+          >
             Contato
           </Typography>
           <form
@@ -23,7 +27,7 @@ function Contact() {
             action="/contact/success"
           >
             <input type="hidden" name="form-name" value="contact" />
-            <Typography style={{ marginTop: "24px" }}>
+            <Typography style={{ marginTop: "24px" }} color="textPrimary">
               Gostaria de conhecer mais o meu trabalho, trocar experiências ou
               até mesmo construir algo juntos? Então entre em contato através
               desse formulário que nossa equipe lhe responderá (no caso, a

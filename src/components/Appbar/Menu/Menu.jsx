@@ -68,7 +68,9 @@ function Menu({ transitionState }) {
                   to={route}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <Typography variant="h3">{label}</Typography>
+                  <Typography variant="h3" color="textPrimary">
+                    {label}
+                  </Typography>
                 </Link>
               </Styled.MenuItem>
             )}

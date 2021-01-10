@@ -41,7 +41,7 @@ const Item = ({ item, slug, timeToRead }) => (
     </CardActionArea>
     <CardActions>
       <Link to={slug} style={{ textDecoration: "none" }}>
-        <Button size="small" color="primary">
+        <Button size="small" color="default">
           Veja mais detalhes
         </Button>
       </Link>

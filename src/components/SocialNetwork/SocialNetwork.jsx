@@ -12,7 +12,7 @@ function SocialNetwork() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton aria-label="Github" color="primary">
+        <IconButton aria-label="Github" color="default">
           <GitHubIcon />
         </IconButton>
       </a>
@@ -21,7 +21,7 @@ function SocialNetwork() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton aria-label="LinkedIn" color="primary">
+        <IconButton aria-label="LinkedIn" color="default">
           <LinkedInIcon />
         </IconButton>
       </a>
@@ -30,7 +30,7 @@ function SocialNetwork() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton aria-label="Twitter" color="primary">
+        <IconButton aria-label="Twitter" color="default">
           <TwitterIcon />
         </IconButton>
       </a>

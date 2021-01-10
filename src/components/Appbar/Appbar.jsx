@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import IconButton from "@material-ui/core/IconButton"
 import Close from "@material-ui/icons/Close"
 import { Transition } from "react-transition-group"
+import Switch from "../Switch"
 
 import * as Styled from "./styled"
 import Menu from "./Menu"
@@ -28,18 +29,27 @@ const transitionStyles = {
   exited: { opacity: 0 },
 }
 
-function Appbar() {
+function Appbar({ theme, setTheme }) {
   const [open, setOpen] = React.useState(false)
 
   return (
     <>
       <Styled.Topbar>
-        <Link to="/">
-          <Styled.Logo />
-        </Link>
-        <Styled.ButtonWrapper onClick={() => setOpen(true)}>
-          <Styled.Button>MENU</Styled.Button>
-        </Styled.ButtonWrapper>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/">
+            <Styled.Logo />
+          </Link>
+          <Styled.ButtonWrapper onClick={() => setOpen(true)}>
+            <Styled.Button>MENU</Styled.Button>
+          </Styled.ButtonWrapper>
+        </div>
+        <Switch checked={theme === "dark"} onClick={setTheme} />
       </Styled.Topbar>
       <Transition in={open} timeout={duration}>
         {state => (

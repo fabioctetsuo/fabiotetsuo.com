@@ -12,25 +12,24 @@ function Share({ link, postTitle }) {
   return (
     <Styled.ShareArticle>
       <Styled.Rect />
-      <Typography variant="caption" style={{ marginRight: "40px" }}>
+      <Typography
+        variant="caption"
+        color="textPrimary"
+        style={{ marginRight: "40px" }}
+      >
         Compartilhar esse artigo
       </Typography>
-      <a
+      <Styled.Anchor
         target="_blank"
         rel="noopener noreferrer"
+        data-size="large"
         href={`https://twitter.com/intent/tweet?${formatTweetParams(
           link,
           postTitle
         )}`}
-        data-size="large"
-        style={{
-          color: "#000",
-          fontSize: "20px",
-          textDecoration: "none",
-        }}
       >
         Twitter
-      </a>
+      </Styled.Anchor>
     </Styled.ShareArticle>
   )
 }
