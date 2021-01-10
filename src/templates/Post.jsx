@@ -7,10 +7,8 @@ import Grid from "@material-ui/core/Grid"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
-// import { ABOUT_ME_TEXT } from "../containers/Home/Section/Presentation"
 
 import Layout from "../components/Layout"
-import theme from "../components/config"
 import SEO from "../components/seo"
 import SectionTable from "../components/Post/SectionTable"
 import ShareArticle from "../components/Post/Share"
@@ -20,33 +18,28 @@ import * as S from "../modules/BlogPost/styled"
 const formatTitleId = title => title.replace(/ /g, "-").toLowerCase()
 
 const globalComponents = {
-  h1: props => <Typography variant="h1" {...props} />,
-  h2: props => <Typography variant="h2" {...props} />,
-  h3: props => <Typography variant="h3" {...props} />,
-  h4: props => <Typography variant="h4" {...props} />,
+  h1: props => <Typography variant="h1" {...props} color="textPrimary" />,
+  h2: props => <Typography variant="h2" {...props} color="textPrimary" />,
+  h3: props => <Typography variant="h3" {...props} color="textPrimary" />,
+  h4: props => <Typography variant="h4" {...props} color="textPrimary" />,
   h5: props => (
-    <Typography variant="h5" {...props} id={formatTitleId(props.children)} />
+    <Typography
+      {...props}
+      variant="h5"
+      id={formatTitleId(props.children)}
+      color="textPrimary"
+    />
   ),
-  h6: props => <Typography variant="h6" {...props} />,
+  h6: props => <Typography variant="h6" {...props} color="textPrimary" />,
   p: props => (
     <Typography
       variant="body1"
       {...props}
       style={{ fontSize: "20px", lineHeight: "2.5rem", fontWeight: 200 }}
+      color="textPrimary"
     />
   ),
-  a: props => (
-    <a
-      {...props}
-      style={{
-        fontWeight: "bold",
-        color: "#000",
-        fontSize: "20px",
-        textDecorationColor: theme.palette.primary.main,
-        textDecorationThickness: "0.3rem",
-      }}
-    />
-  ),
+  a: props => <S.Anchor {...props} />,
   li: props => (
     <li {...props}>
       <Typography
@@ -69,12 +62,18 @@ const PostTemplate = ({ data: { mdx, file }, location }) => {
       />
       <Container maxWidth="md">
         <S.TitleWrapper>
-          <Typography variant="h4">{mdx.frontmatter.title}</Typography>
+          <Typography variant="h4" color="textPrimary">
+            {mdx.frontmatter.title}
+          </Typography>
         </S.TitleWrapper>
         <S.FeaturedImageWrapper>
           <Img fluid={featuredImgFluid} />
         </S.FeaturedImageWrapper>
-        <Typography variant="subtitle1" style={{ fontStyle: "italic" }}>
+        <Typography
+          variant="subtitle1"
+          color="textPrimary"
+          style={{ fontStyle: "italic" }}
+        >
           {mdx.frontmatter.description}
         </Typography>
         <Grid container style={{ margin: "48px 0" }}>

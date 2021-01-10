@@ -6,17 +6,19 @@ export const Topbar = styled.header`
   padding: 32px 40px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `
 
 export const Logo = styled(LogoImage)`
   height: auto !important;
+  stroke: var(--fontColor);
 `
 
 export const ButtonWrapper = styled.div`
   margin: 0 16px;
   padding: 0 8px;
-  border-left: 1px solid black;
+  border-left: 1px solid var(--fontColor);
 `
 
 export const Button = styled.button`
@@ -31,13 +33,14 @@ export const Button = styled.button`
   letter-spacing: 0.2em;
   text-align: left;
   outline: none;
+  color: var(--fontColor);
 `
 
 export const MenuBar = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: #f2f2f2;
+  background-color: var(--mainBackground);
   z-index: 2;
   padding: 40px;
 `

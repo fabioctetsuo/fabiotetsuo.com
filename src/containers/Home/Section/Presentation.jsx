@@ -17,6 +17,10 @@ const CustomFormControlLabel = styled(FormControlLabel)`
   }
 `
 
+const CustomRadioGroup = styled(RadioGroup)`
+  color: var(--fontColor);
+`
+
 const ABOUT_ME_DICTONARY = {
   LITTLE: "LITTLE",
   MEDIUM: "MEDIUM",
@@ -42,19 +46,31 @@ function Presetation() {
       <Grid container spacing={3} style={{ marginTop: "72px" }}>
         <Grid item xs={12} md={6}>
           <div>
-            <Typography variant="h3" style={{ fontWeight: 300 }}>
+            <Typography
+              variant="h3"
+              color="textPrimary"
+              style={{ fontWeight: 300 }}
+            >
               E aí, meu nome é
             </Typography>
-            <Typography variant="h3" style={{ fontWeight: "bold" }}>
+            <Typography
+              color="textPrimary"
+              variant="h3"
+              style={{ fontWeight: "bold" }}
+            >
               Tetsuo
             </Typography>
           </div>
           <div style={{ marginTop: "32px" }}>
             <FormControl>
-              <FormLabel component="legend" style={{ margin: "0 0 8px 0" }}>
+              <FormLabel
+                component="legend"
+                style={{ margin: "0 0 8px 0" }}
+                color="primary"
+              >
                 Quanto você quer saber sobre mim?
               </FormLabel>
-              <RadioGroup
+              <CustomRadioGroup
                 row
                 aria-label="position"
                 name="position"
@@ -64,27 +80,27 @@ function Presetation() {
               >
                 <CustomFormControlLabel
                   value={ABOUT_ME_DICTONARY.LITTLE}
-                  control={<Radio color="primary" />}
+                  control={<Radio color="default" />}
                   label="Um pouco"
                   labelPlacement="bottom"
                 />
                 <CustomFormControlLabel
                   value={ABOUT_ME_DICTONARY.MEDIUM}
-                  control={<Radio color="primary" />}
+                  control={<Radio color="default" />}
                   label="Bastante"
                   labelPlacement="bottom"
                 />
                 <CustomFormControlLabel
                   value={ABOUT_ME_DICTONARY.BIG}
-                  control={<Radio color="primary" />}
+                  control={<Radio color="default" />}
                   label="Muito mesmo"
                   labelPlacement="bottom"
                 />
-              </RadioGroup>
+              </CustomRadioGroup>
             </FormControl>
           </div>
           <div style={{ marginTop: "32px" }}>
-            <Typography variant="body1">
+            <Typography variant="body1" color="textPrimary">
               {ABOUT_ME_TEXT[aboutMeOption]}
             </Typography>
           </div>

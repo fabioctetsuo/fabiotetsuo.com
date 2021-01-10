@@ -1,8 +1,8 @@
 import * as React from "react"
 import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
 import ListSubheader from "@material-ui/core/ListSubheader"
 import ListItemText from "@material-ui/core/ListItemText"
+import * as Styled from "./styled"
 
 function SectionTable({ sections }) {
   return (
@@ -12,14 +12,9 @@ function SectionTable({ sections }) {
       subheader={<ListSubheader>Seções</ListSubheader>}
     >
       {sections.map(({ id, title }) => (
-        <ListItem
-          key={id}
-          component="a"
-          href={`#${id}`}
-          style={{ color: "#000" }}
-        >
+        <Styled.CustomListItem key={id} component="a" href={`#${id}`}>
           <ListItemText primary={title} />
-        </ListItem>
+        </Styled.CustomListItem>
       ))}
     </List>
   )

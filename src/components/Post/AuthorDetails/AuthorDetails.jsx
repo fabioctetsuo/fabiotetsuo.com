@@ -17,6 +17,7 @@ function AuthorDetails({ profilePhoto }) {
       />
       <Typography
         variant="body1"
+        color="textPrimary"
         style={{
           fontSize: "20px",
           lineHeight: "2rem",

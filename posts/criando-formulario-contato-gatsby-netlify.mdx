@@ -95,8 +95,8 @@ export default ContactPage
 
 <br />
 
-Agora a melhor parte, como mandamos a requisição do lado do client e recebemos essa informação no Netlify?
-É realmente um processo simples e que ajuda muito, pelo fato de ser rápido. Tudo que precisamos fazer é adicionar alguns atributos específicos no formulário:
+Agora precisamos mandar a requisição do lado do client e receber essa informação no Netlify, mas como fazer isso?
+É realmente um processo simples e que ajuda muito pelo fato de ser rápido. Tudo que precisamos fazer é adicionar alguns atributos específicos no formulário:
 
 ```jsx
 <form
@@ -120,9 +120,9 @@ Agora a melhor parte, como mandamos a requisição do lado do client e recebemos
   /* the rest of the form... */
 ```
 
-Aqui é onde a mágica acontece. Temos dois atributos novos chamados `data-netlify` e `data-netlify-honeypot` no formulário. O primeiro é responsável apenas para permitir que o Netlify comece a receber requisições desse formulário e o último é uma proteção contra spam, basicamente ele insere um campo de texto escondido que apenas bots conseguem preencher, quando esse campo esse campo for preenchido, o netlify irá recusar a requisição.
+Aqui é onde a mágica acontece. Temos dois atributos novos chamados `data-netlify` e `data-netlify-honeypot` no formulário. O primeiro é responsável apenas por permitir que o Netlify comece a receber requisições desse formulário e o último é uma proteção contra spam, basicamente ele insere um campo de texto escondido que apenas bots conseguem preencher e quando esse campo esse campo for preenchido, o netlify irá recusar a requisição.
 Outro ponto é que precisamos adicionar um novo input escondido, chamado `form-name` com o valor do nome do nosso formulário, isso é obrigatório para enviar dados do seu formulário para o netlify.
-E por último, mas não menos importante, adicionamos o nome para cada um dos inputs, assim o payload será enviado conforme esses nomes.
+E por último mas não menos importante, precisamos adicionar o `name` para cada um dos inputs, assim o payload será enviado conforme esses nomes.
 
 Com isso, temos um formulário integrado com o netlify e se enviarmos a requisição, veremos a mensagem padrão do netlify, informando que os dados foram enviados com sucesso.
 
@@ -136,7 +136,7 @@ Com isso, temos um formulário integrado com o netlify e se enviarmos a requisi�
 <br />
 
 Tudo funcionou muito bem, mas e se quiseremos mostrar uma mensagem customizada com a nossa cara?
-Isso também é bem simples, basta nós adicionarmos um novo atributo ao formulário chamado `action`.
+Isso também é bem simples, basta adicionarmos um novo atributo ao formulário chamado `action`.
 
 ```jsx
 <form
