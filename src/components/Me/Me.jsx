@@ -23,7 +23,7 @@ function Me() {
       .from(
         ".me",
         {
-          duration: 1,
+          duration: 1.5,
           yPercent: 110,
           ease: "elastic.out(0.5, 0.4)",
         },

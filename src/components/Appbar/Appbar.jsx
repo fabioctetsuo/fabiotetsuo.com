@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton"
 import Close from "@material-ui/icons/Close"
 import { Transition } from "react-transition-group"
 import Switch from "../Switch"
+import Logo from "../Logo/Logo"
 
 import * as Styled from "./styled"
 import Menu from "./Menu"
@@ -43,7 +44,7 @@ function Appbar({ theme, setTheme }) {
           }}
         >
           <Link to="/">
-            <Styled.Logo />
+            <Logo />
           </Link>
           <Styled.ButtonWrapper onClick={() => setOpen(true)}>
             <Styled.Button>MENU</Styled.Button>
@@ -58,7 +59,7 @@ function Appbar({ theme, setTheme }) {
             style={{ ...defaultStyle, ...transitionStyles[state] }}
           >
             <IconButton
-              aria-label="Github"
+              aria-label="Fechar"
               color="primary"
               onClick={() => setOpen(false)}
             >

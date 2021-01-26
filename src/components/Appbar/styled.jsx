@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import LogoImage from "../../images/fabiotetsuo-logo.svg"
 
 export const Topbar = styled.header`
   width: 100%;
@@ -8,11 +7,6 @@ export const Topbar = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
-
-export const Logo = styled(LogoImage)`
-  height: auto !important;
-  stroke: var(--fontColor);
 `
 
 export const ButtonWrapper = styled.div`
@@ -34,6 +28,10 @@ export const Button = styled.button`
   text-align: left;
   outline: none;
   color: var(--fontColor);
+
+  &:hover {
+    letter-spacing: 0.4em;
+  }
 `
 
 export const MenuBar = styled.div`

@@ -8,10 +8,16 @@ import SocialNetwork from "../../SocialNetwork"
 const menuItems = [
   { label: "Início", route: "/", id: "home", transitionDuration: 1000 },
   {
+    label: "Blog",
+    route: "/blog",
+    id: "blog",
+    transitionDuration: 1250,
+  },
+  {
     label: "Contato",
     route: "/contact",
     id: "contact",
-    transitionDuration: 1250,
+    transitionDuration: 1500,
   },
 ]
 

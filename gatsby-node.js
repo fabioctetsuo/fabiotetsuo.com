@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
     query {
-      allMdx {
+      allMdx(filter: { fileAbsolutePath: { regex: "/posts/" } }) {
         edges {
           node {
             id
@@ -31,6 +31,22 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
+  const posts = data.allMdx.edges
+  const postsPerPage = 9
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/templates/BlogList.jsx"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
   data.allMdx.edges.forEach(({ node }) => {
     console.log({ node: node.id })

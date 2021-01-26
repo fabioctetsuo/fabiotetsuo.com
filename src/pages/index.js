@@ -25,6 +25,7 @@ export const query = graphql`
     allMdx(
       filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: frontmatter___date, order: DESC }
+      limit: 3
     ) {
       edges {
         node {
