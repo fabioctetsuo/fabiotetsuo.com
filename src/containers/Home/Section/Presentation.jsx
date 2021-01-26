@@ -8,6 +8,7 @@ import FormControl from "@material-ui/core/FormControl"
 import FormLabel from "@material-ui/core/FormLabel"
 import Container from "@material-ui/core/Container"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
+import { Tween, SplitChars } from "react-gsap"
 import Me from "../../../components/Me"
 import SocialNetwork from "../../../components/SocialNetwork"
 
@@ -58,7 +59,13 @@ function Presetation() {
               variant="h3"
               style={{ fontWeight: "bold" }}
             >
-              Tetsuo
+              <Tween from={{ x: "200px" }} stagger={0.1}>
+                <SplitChars
+                  wrapper={<div style={{ display: "inline-block" }} />}
+                >
+                  Tetsuo
+                </SplitChars>
+              </Tween>
             </Typography>
           </div>
           <div style={{ marginTop: "32px" }}>

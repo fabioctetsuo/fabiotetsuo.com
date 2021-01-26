@@ -2,7 +2,11 @@ import * as React from "react"
 import styled from "styled-components"
 import Container from "@material-ui/core/Container"
 import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
+import { Tween, PlayState } from "react-gsap"
+import { navigate } from "gatsby"
+import useOnScreen from "../../../hooks/useOnScreen"
 import Post from "../../../components/Post/Item"
 
 const ContainerWrapper = styled.div`
@@ -12,10 +16,18 @@ const ContainerWrapper = styled.div`
 `
 
 function Posts({ posts }) {
+  const svgRef = React.useRef(null)
+  const onScreen = useOnScreen(svgRef)
+  const [playAnimation, setPlayAnimation] = React.useState(PlayState.stop)
+
+  React.useEffect(() => {
+    if (onScreen) setPlayAnimation(PlayState.play)
+  }, [onScreen])
+
   return (
     <ContainerWrapper>
-      <Container>
-        <Grid container spacing={3}>
+      <Container ref={svgRef}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography
               variant="h4"
@@ -33,22 +45,32 @@ function Posts({ posts }) {
               códigos ou coisas aleatórias que acho legal compartilhar.
             </Typography>
           </Grid>
-          {posts.map(({ node }) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              key={node.id}
-              style={{ paddingBottom: "56px" }}
+          <Tween from={{ x: "200%" }} stagger={0.5} playState={playAnimation}>
+            {posts.map(({ node }) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                key={node.id}
+                style={{ paddingBottom: 16 }}
+              >
+                <Post
+                  slug={node.fields.slug}
+                  item={node.frontmatter}
+                  timeToRead={node.timeToRead}
+                />
+              </Grid>
+            ))}
+          </Tween>
+          <Grid container item xs={12} justify="flex-end" alignItems="flex-end">
+            <Button
+              style={{ marginBottom: "56px" }}
+              onClick={() => navigate("/blog")}
             >
-              <Post
-                slug={node.fields.slug}
-                item={node.frontmatter}
-                timeToRead={node.timeToRead}
-              />
-            </Grid>
-          ))}
+              Ver todos os posts
+            </Button>
+          </Grid>
         </Grid>
       </Container>
     </ContainerWrapper>

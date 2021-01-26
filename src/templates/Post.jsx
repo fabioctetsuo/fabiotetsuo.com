@@ -2,11 +2,13 @@ import React from "react"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import Hidden from "@material-ui/core/Hidden"
+import Button from "@material-ui/core/Button"
 
 import Grid from "@material-ui/core/Grid"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
+import { navigate } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
@@ -44,6 +46,7 @@ const globalComponents = {
     <li {...props}>
       <Typography
         variant="subtitle1"
+        color="textPrimary"
         {...props}
         style={{ lineHeight: "2.5rem", fontWeight: 200 }}
       />
@@ -61,6 +64,9 @@ const PostTemplate = ({ data: { mdx, file }, location }) => {
         image={featuredImgFluid.src}
       />
       <Container maxWidth="md">
+        <Button variant="text" onClick={() => navigate("/blog")}>
+          Voltar
+        </Button>
         <S.TitleWrapper>
           <Typography variant="h4" color="textPrimary">
             {mdx.frontmatter.title}
