@@ -18,16 +18,16 @@ function Logo() {
     >
       <g strokeWidth="4">
         <Timeline duration={4}>
-          <Tween from={{ opacity: 0 }} stagger={0.4}>
+          <Tween from={{ opacity: 0 }} stagger={0.4} duration={2} position={0}>
             <path d="M2 0V150" />
             <path d="M0 148H150" />
             <path d="M148 150V0" />
             <path d="M150 2H0" />
           </Tween>
-          <Tween from={{ opacity: 0, x: -50 }} duration={0.5}>
+          <Tween from={{ opacity: 0, x: -50 }} duration={0.5} position={0}>
             <path d="M24 58.5H70M24 98V24H70" />
           </Tween>
-          <Tween from={{ opacity: 0, x: 50 }} duration={0.5}>
+          <Tween from={{ opacity: 0, x: 50 }} duration={0.5} position={0}>
             <path d="M78 61H102M126 61H102M102 61V126" />
           </Tween>
         </Timeline>

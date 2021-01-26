@@ -41,7 +41,7 @@ const globalComponents = {
       color="textPrimary"
     />
   ),
-  a: props => <S.Anchor {...props} />,
+  a: props => <S.Anchor {...props} target="_blank" />,
   li: props => (
     <li {...props}>
       <Typography
@@ -52,6 +52,7 @@ const globalComponents = {
       />
     </li>
   ),
+  code: props => <code {...props} style={{ fontFamily: "Open Sans" }} />,
 }
 
 const PostTemplate = ({ data: { mdx, file }, location }) => {
