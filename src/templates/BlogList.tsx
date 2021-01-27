@@ -5,10 +5,25 @@ import Container from "../components/Container"
 import Layout from "../components/Layout"
 import Post from "../components/Post/Item"
 import { Grid, Button } from "@material-ui/core"
+import { PostProps } from "../types/Post"
 
 const customStyles = { display: "flex", justifyContent: "flex-end" }
 
-function BlogList({ data, pageContext }) {
+type StaticQueryProps = {
+  data: {
+    allMdx: {
+      edges: PostProps[]
+    }
+  }
+  pageContext: {
+    currentPage: number
+    limit: number
+    numPages: number
+    skip: number
+  }
+}
+
+function BlogList({ data, pageContext }: StaticQueryProps) {
   const posts = data.allMdx.edges
   const { numPages, currentPage } = pageContext
   const isFirstPage = currentPage === 1

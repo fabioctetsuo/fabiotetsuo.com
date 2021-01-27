@@ -1,11 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-
+import { FluidObject } from "gatsby-image"
 import Layout from "../../components/Layout"
 import SEO from "../../components/seo"
 import ContactSuccess from "../../containers/Contact"
 
-const SuccessPage = ({ data }) => {
+type SuccessPageProps = {
+  data: {
+    file: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
+}
+
+const SuccessPage = ({ data }: SuccessPageProps) => {
   const successContent = data.file.childImageSharp.fluid
   return (
     <Layout>

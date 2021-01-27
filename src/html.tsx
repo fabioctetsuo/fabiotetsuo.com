@@ -1,7 +1,7 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { PreRenderHTMLArgs } from "gatsby"
 
-export default function HTML(props) {
+export default function HTML(props: PreRenderHTMLArgs) {
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -65,19 +65,10 @@ export default function HTML(props) {
         <div
           key={`body`}
           id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
+          dangerouslySetInnerHTML={{ __html: props.body as string }}
         />
         {props.postBodyComponents}
       </body>
     </html>
   )
-}
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
 }

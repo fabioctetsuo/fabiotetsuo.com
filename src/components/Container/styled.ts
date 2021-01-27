@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const hexToRGB = (hex = "#FFFFFF", alpha) => {
+const hexToRGB = (hex = "#FFFFFF", alpha: number) => {
   var r = parseInt(hex.slice(1, 3), 16),
     g = parseInt(hex.slice(3, 5), 16),
     b = parseInt(hex.slice(5, 7), 16)
@@ -12,7 +12,16 @@ const hexToRGB = (hex = "#FFFFFF", alpha) => {
   }
 }
 
-export const Container = styled.div`
+type StyledContainerProps = {
+  background?: string
+  withImageOpacity: boolean
+  color: string
+  backgroundSize: string
+  backgroundFixed: boolean
+  withPadding: boolean
+}
+
+export const Container = styled.div<StyledContainerProps>`
   width: 100%;
   height: auto;
   background-image: ${({ background }) => `url(${background})`};

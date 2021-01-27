@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, navigate } from "gatsby"
-import Img from "gatsby-image"
+import Img, { GatsbyImageProps } from "gatsby-image"
 import Button from "@material-ui/core/Button"
 import Card from "@material-ui/core/Card"
 import CardActionArea from "@material-ui/core/CardActionArea"
@@ -8,7 +8,20 @@ import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 
-const Item = ({ item, slug, timeToRead }) => (
+type ItemProps = {
+  item: {
+    featuredImage: {
+      childImageSharp: GatsbyImageProps
+    }
+    date: string
+    title: string
+    description: string
+  }
+  slug: string
+  timeToRead: number
+}
+
+const Item = ({ item, slug, timeToRead }: ItemProps) => (
   <Card
     onClick={() => {
       navigate(slug)
@@ -25,7 +38,6 @@ const Item = ({ item, slug, timeToRead }) => (
         fluid={item.featuredImage.childImageSharp.fluid}
         alt="Featured image"
         style={{ height: "200px" }}
-        objectFit="cover"
       />
       <CardContent>
         <Typography gutterBottom variant="caption" component="span">

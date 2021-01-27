@@ -1,8 +1,17 @@
 import * as React from "react"
-import { withStyles } from "@material-ui/core"
-import Switch from "@material-ui/core/Switch"
+import { withStyles, SwitchClassKey } from "@material-ui/core"
+import { Theme } from "@material-ui/core/styles"
+import Switch, { SwitchProps } from "@material-ui/core/Switch"
 
-const IOSSwitch = withStyles(theme => ({
+interface Styles extends Partial<Record<SwitchClassKey, string>> {
+  focusVisible?: string
+}
+
+interface Props extends SwitchProps {
+  classes: Styles
+}
+
+const IOSSwitch = withStyles((theme: Theme) => ({
   root: {
     width: 42,
     height: 26,
@@ -39,7 +48,7 @@ const IOSSwitch = withStyles(theme => ({
   },
   checked: {},
   focusVisible: {},
-}))(({ classes, ...props }) => {
+}))(({ classes, ...props }: Props) => {
   return (
     <Switch
       focusVisibleClassName={classes.focusVisible}

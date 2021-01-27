@@ -34,7 +34,11 @@ export const Button = styled.button`
   }
 `
 
-export const MenuBar = styled.div`
+type MenuBarProps = {
+  open: boolean
+}
+
+export const MenuBar = styled.div<MenuBarProps>`
   width: 100%;
   height: 100%;
   position: fixed;

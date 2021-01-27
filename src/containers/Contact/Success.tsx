@@ -1,12 +1,16 @@
 import * as React from "react"
-import Img from "gatsby-image"
+import Img, { FluidObject } from "gatsby-image"
 import { Link } from "gatsby"
 import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
 import Button from "@material-ui/core/Button"
 import { Typography } from "@material-ui/core"
 
-function Success({ successContent }) {
+type SuccessProps = {
+  successContent: FluidObject
+}
+
+function Success({ successContent }: SuccessProps) {
   return (
     <Container maxWidth="md">
       <Grid container>
@@ -14,7 +18,6 @@ function Success({ successContent }) {
           <Img
             fluid={successContent}
             alt="E-mail enviado com sucesso, meu chapa!"
-            objectFit="cover"
             style={{
               width: "100%",
               display: "table",

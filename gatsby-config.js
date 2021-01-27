@@ -64,7 +64,7 @@ module.exports = {
           },
         ],
         defaultLayouts: {
-          default: require.resolve("./src/templates/Post.jsx"),
+          default: require.resolve("./src/templates/Post.tsx"),
         },
       },
     },

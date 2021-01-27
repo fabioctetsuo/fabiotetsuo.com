@@ -1,6 +1,6 @@
 import * as React from "react"
 
-function useOnScreen(ref, rootMargin = "0px") {
+function useOnScreen(ref: any, rootMargin = "0px") {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = React.useState(false)
 

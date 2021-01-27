@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import { Tween, PlayState } from "react-gsap"
 import { navigate } from "gatsby"
+import { PostProps } from "../../../types/Post"
 import useOnScreen from "../../../hooks/useOnScreen"
 import Post from "../../../components/Post/Item"
 
@@ -15,7 +16,7 @@ const ContainerWrapper = styled.div`
   margin-top: 72px;
 `
 
-function Posts({ posts }) {
+function Posts({ posts }: { posts: PostProps[] }) {
   const svgRef = React.useRef(null)
   const onScreen = useOnScreen(svgRef)
   const [playAnimation, setPlayAnimation] = React.useState(PlayState.stop)

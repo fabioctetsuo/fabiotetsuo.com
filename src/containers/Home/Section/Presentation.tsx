@@ -35,10 +35,10 @@ export const ABOUT_ME_TEXT = {
     "Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!",
   BIG:
     "Eu trabalho na Raia Drogasil como desenvolvedor frontend e escrevo sobre tecnologia e alguns outros assuntos diversos para passar meu conhecimento adiante. Uma das minhas vontades é dar aula em algum momento. Gosto de passar meu tempo cozinhando, principalmente culinária italiana, cuido da minha gatinha chamada Phoebe (sim, homenagem a Friends) e gosto de aprender novas coisas todos os dias!",
-}
+} as any
 
 function Presetation() {
-  const [aboutMeOption, setAboutMeOption] = React.useState(
+  const [aboutMeOption, setAboutMeOption] = React.useState<string>(
     ABOUT_ME_DICTONARY.MEDIUM
   )
 

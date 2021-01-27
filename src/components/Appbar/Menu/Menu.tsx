@@ -1,4 +1,5 @@
 import * as React from "react"
+import { TransitionStatus } from "react-transition-group/Transition"
 import { Transition } from "react-transition-group"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "gatsby"
@@ -21,7 +22,7 @@ const menuItems = [
   },
 ]
 
-const getDefaultStyle = duration => ({
+const getDefaultStyle = (duration: number) => ({
   position: "absolute",
   transition: `all ${duration}ms ease-in-out`,
   left: "40%",
@@ -33,9 +34,9 @@ const transitionStyles = {
   entered: { left: "40px", opacity: 1 },
   exiting: { opacity: 0 },
   exited: { opacity: 0 },
-}
+} as any
 
-function Menu({ transitionState }) {
+function Menu({ transitionState }: { transitionState: TransitionStatus }) {
   const inProp = transitionState === "entered"
 
   return (

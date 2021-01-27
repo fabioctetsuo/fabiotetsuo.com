@@ -5,7 +5,13 @@ import Posts from "./Section/Posts"
 import Contact from "./Section/Contact"
 import Footer from "./Section/Footer"
 
-function Home({ posts }) {
+import { PostProps } from "../../types/Post"
+
+type HomeProps = {
+  posts: PostProps[]
+}
+
+function Home({ posts }: HomeProps) {
   return (
     <>
       <Presentation />

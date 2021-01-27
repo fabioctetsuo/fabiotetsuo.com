@@ -2,13 +2,18 @@ import * as React from "react"
 import Typography from "@material-ui/core/Typography"
 import * as Styled from "./styled"
 
-const formatTweetParams = (url, title) => {
+const formatTweetParams = (url: string, title: string) => {
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
   return `url=${encodedUrl}&text=${encodedTitle}&via=fabioctetsuo`
 }
 
-function Share({ link, postTitle }) {
+type ShareProps = {
+  link: string
+  postTitle: string
+}
+
+function Share({ link, postTitle }: ShareProps) {
   return (
     <Styled.ShareArticle>
       <Styled.Rect />

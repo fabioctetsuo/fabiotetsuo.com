@@ -3,8 +3,22 @@ import { graphql } from "gatsby"
 import Home from "../containers/Home"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import { PostProps } from "../types/Post"
 
-const IndexPage = ({ data }) => {
+type IndexPageProps = {
+  data: {
+    site: {
+      siteMetadata: {
+        description: string
+      }
+    }
+    allMdx: {
+      edges: PostProps[]
+    }
+  }
+}
+
+const IndexPage = ({ data }: IndexPageProps) => {
   const posts = data.allMdx.edges
   const { description } = data.site.siteMetadata
   return (

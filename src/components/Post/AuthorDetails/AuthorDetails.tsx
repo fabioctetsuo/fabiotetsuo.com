@@ -1,10 +1,14 @@
 import * as React from "react"
-import Img from "gatsby-image"
+import Img, { FixedObject } from "gatsby-image"
 import Typography from "@material-ui/core/Typography"
 import { ABOUT_ME_TEXT } from "../../../containers/Home/Section/Presentation"
 import * as Styled from "./styled"
 
-function AuthorDetails({ profilePhoto }) {
+type AuthorDetailsProps = {
+  profilePhoto: FixedObject | FixedObject[] | undefined
+}
+
+function AuthorDetails({ profilePhoto }: AuthorDetailsProps) {
   return (
     <Styled.Container>
       <Img

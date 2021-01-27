@@ -133,17 +133,17 @@ function Me() {
         0.15
       )
 
-    let xPosition
-    let yPosition
+    let xPosition: any
+    let yPosition: any
 
-    let height
-    let width
+    let height: any
+    let width: any
 
-    function percentage(partialValue, totalValue) {
+    function percentage(partialValue: number, totalValue: number) {
       return (100 * partialValue) / totalValue
     }
 
-    function updateScreenCoords(event) {
+    function updateScreenCoords(event: any) {
       xPosition = event.clientX
       yPosition = event.clientY
     }

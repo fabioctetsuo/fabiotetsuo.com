@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { Theme } from "@material-ui/core"
 import IconButton from "@material-ui/core/IconButton"
 import Close from "@material-ui/icons/Close"
 import { Transition } from "react-transition-group"
@@ -28,10 +29,15 @@ const transitionStyles = {
   },
   exiting: { opacity: 0 },
   exited: { opacity: 0 },
+} as any
+
+type AppbarProps = {
+  theme: "dark" | "light" | null
+  setTheme: () => void
 }
 
-function Appbar({ theme, setTheme }) {
-  const [open, setOpen] = React.useState(false)
+function Appbar({ theme, setTheme }: AppbarProps) {
+  const [open, setOpen] = React.useState<boolean>(false)
 
   return (
     <>

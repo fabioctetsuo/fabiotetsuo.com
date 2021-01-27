@@ -8,10 +8,23 @@ import {
 import { ArrowBack } from "@material-ui/icons"
 import * as Styled from "./styled"
 
-const Content = ({
+type ContainerProps = {
+  title: string
+  titleSize: "sm" | "md" | "lg"
+  backButton?: boolean
+  color?: string
+  background?: string
+  withPadding?: boolean
+  backgroundSize?: string
+  backgroundFixed?: boolean
+  withImageOpacity?: boolean
+  withContainer?: boolean
+  size?: "sm" | "md" | "lg"
+}
+
+const Content: React.FC<ContainerProps> = ({
   title,
   titleSize = "sm",
-  fontColor = "#000000",
   children,
   backButton = false,
 }) => (
@@ -45,7 +58,7 @@ const Content = ({
   </>
 )
 
-const Container = props => {
+const Container: React.FC<ContainerProps> = props => {
   const {
     color = "#FFFFFF",
     background,
