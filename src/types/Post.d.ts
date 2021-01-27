@@ -1,6 +1,4 @@
-import { GatsbyImageProps } from "gatsby-image"
-
-export type PostProps = {
+type PostProps = {
   node: {
     id: string
     fields: {
@@ -18,3 +16,5 @@ export type PostProps = {
     }
   }
 }
+
+export type { PostProps };
