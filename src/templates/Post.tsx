@@ -8,7 +8,7 @@ import { graphql } from "gatsby"
 import Grid from "@material-ui/core/Grid"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Img, { FluidObject, GatsbyImageProps } from "gatsby-image"
+import Img, { FluidObject, GatsbyImageFixedProps } from "gatsby-image"
 import { navigate } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -20,18 +20,22 @@ import * as S from "../modules/BlogPost/styled"
 
 const formatTitleId = (title: string) => title.replace(/ /g, "-").toLowerCase()
 
+const style = {
+  margin: "32px 0 16px 0",
+}
+
 const globalComponents = {
   h1: (props: any) => (
-    <Typography variant="h1" {...props} color="textPrimary" />
+    <Typography variant="h1" {...props} color="textPrimary" style={style} />
   ),
   h2: (props: any) => (
-    <Typography variant="h2" {...props} color="textPrimary" />
+    <Typography variant="h2" {...props} color="textPrimary" style={style} />
   ),
   h3: (props: any) => (
-    <Typography variant="h3" {...props} color="textPrimary" />
+    <Typography variant="h3" {...props} color="textPrimary" style={style} />
   ),
   h4: (props: any) => (
-    <Typography variant="h4" {...props} color="textPrimary" />
+    <Typography variant="h4" {...props} color="textPrimary" style={style} />
   ),
   h5: (props: any) => (
     <Typography
@@ -39,10 +43,11 @@ const globalComponents = {
       variant="h5"
       id={formatTitleId(props.children)}
       color="textPrimary"
+      style={style}
     />
   ),
   h6: (props: any) => (
-    <Typography variant="h6" {...props} color="textPrimary" />
+    <Typography variant="h6" {...props} color="textPrimary" style={style} />
   ),
   p: (props: any) => (
     <Typography
@@ -87,7 +92,7 @@ type PostTemplateProps = {
       body: string
     }
     file: {
-      childImageSharp: GatsbyImageProps
+      childImageSharp: GatsbyImageFixedProps
     }
   }
   location: {

@@ -1,0 +1,59 @@
+---
+date: 2021-02-01 23:11:00
+title: Usando React.useState com lazy initialization
+description: Você já passou por alguma situação onde precisava inicializar um estado com um cálculo pesado? Vamos entender uma maneira de lidar com isso.
+category: react
+background: "#7d669e"
+featuredImage: ./images/use-state-lazy-init.jpg
+sections:
+  [
+    { id: "contexto", title: "Contexto" },
+    { id: "problema", title: "Problema" },
+    { id: "solução", title: "Solução" },
+    { id: "ponto-de-atenção", title: "Ponto de atenção" },
+  ]
+---
+
+##### Contexto
+
+Já se deparou com alguma situação em que você tinha uma situação como essa?
+
+```jsx
+const MyComponent = props => {
+  const initialState = calculateSomethingExpensive(props)
+  const [count, setCount] = React.useState(initialState)
+}
+```
+
+Talvez você precisasse fazer um cálculo, ou talvez ler algo de dentro do local storage (por ser uma operação de I/O, geralmente não é algo tão rápido).
+
+```jsx
+const MyComponent = props => {
+  const initialState = window.localStorage.getItem("hello")
+  const [count, setCount] = React.useState(initialState)
+}
+```
+
+##### Problema
+
+Esse tipo de caso não é muito comum, mas pode acontecer. Lembrando que queremos setar apenas o estado inicial do componente e nesse tipo de situação, em todo o re-render ele vai tentar ler do local storage, o que poderia causar problemas de perfomance da aplicação.
+
+##### Solução
+
+Uma coisa bem legal que pode ser feita para contornar esse tipo de situação é fazer um lazy initialization com o useState.
+
+```jsx
+const MyComponent = props => {
+  const getInitialState = () => window.localStorage.getItem("hello")
+  const [count, setCount] = React.useState(getInitialState)
+}
+```
+
+Basicamente o useState pode receber o valor inicial ou uma callback que retorna o valor inicial.
+Qual a diferença entre ambos? O principal ponto de vantagem é que passar uma callback no useState vai fazer com que essa função seja chamada apenas quando for necessário inicializar o estado inicial dele. Ou seja, quando o componente re-renderizar ele não vai executar novamente a função, evitando que ele leia novamente do local storage.
+Criar uma função é algo rápido e mais barato do que calcular algo caro ou pegar algo do local storage, por isso pode valer a pena.
+
+##### Ponto de atenção
+
+Importante ressaltar que não é sempre que precisamos utilizar esse tipo de abordagem, apenas quando precisarmos inicializar o estado com algo de alto custo.
+Se você quer devolver apenas uma string, um número, um objeto ou coisa do tipo dentro do useState, pode não ser interessante fazer o lazy initialization.

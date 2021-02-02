@@ -18,17 +18,10 @@ sections:
 
 ##### Contexto
 
-<br />
-
 Recentemente eu fiz a release de um formulário de contato no meu site, que você pode checar acessando [esse link](https://www.fabiotetsuo.com/contact) e agora
 gostaria de contar como eu fiz para desenvolver essa feature, desde a criação do formulário até a integração entre Gatsby e Netlify.
 
-<br />
-<br />
-
 ##### Criando formulário base
-
-<br />
 
 Esse passo é bem simples e rápido, primeiro nós vamos criar um novo formulário de contato, sem inventar muito:
 
@@ -88,12 +81,7 @@ const ContactPage = ({ data }) => {
 export default ContactPage
 ```
 
-<br />
-<br />
-
 ##### Integrando com Netlify
-
-<br />
 
 Agora precisamos mandar a requisição do lado do client e receber essa informação no Netlify, mas como fazer isso?
 É realmente um processo simples e que ajuda muito pelo fato de ser rápido. Tudo que precisamos fazer é adicionar alguns atributos específicos no formulário:
@@ -128,12 +116,7 @@ Com isso, temos um formulário integrado com o netlify e se enviarmos a requisi�
 
 ![Default success message from netlify](./images/netlify-success-message.jpeg)
 
-<br />
-<br />
-
 ##### Adicionando um mensagem customizada
-
-<br />
 
 Tudo funcionou muito bem, mas e se quiseremos mostrar uma mensagem customizada com a nossa cara?
 Isso também é bem simples, basta adicionarmos um novo atributo ao formulário chamado `action`.
@@ -228,12 +211,6 @@ export const query = graphql`
 export default SuccessPage
 ```
 
-<br />
-
 ![Custom success message in our application!](./images/custom-success-message.png)
 
-<br />
-
 E é isso! Agora, temos um formulário integrado com o Netlify e uma mensagem bonita que fará com que a experência do usuário seja bem melhor!
-
-<br />

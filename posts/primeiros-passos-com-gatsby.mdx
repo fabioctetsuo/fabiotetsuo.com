@@ -22,12 +22,7 @@ Fiquei bem impressionado com o que o Gatsby prometia fazer e resolvi colocar em 
 Decidi realizar o desafio dos 100 dias de gatsby e a cada dia que passa eu aprendo um detalhe novo, que facilita muito a vida de quem precisa desenvolver um site estático com uma boa perfomance.
 No primeiro desafio a ideia era criar um blog para contar um pouco mais sobre as experiências desenvolvendo a aplicação usando somente a documentação e posso afirmar que no site deles tem tudo que você precisa para sair com um excelente resultado.
 
-<br />
-<br />
-
 ##### Buscando dados com Gatsby
-
-<br />
 
 Entender o ciclo de como as coisas funcionam com Gatsby é fundamental e esse é o primeiro ponto que quero falar.
 Com Gatsby você consegue pegar dados de qualquer lugar, pode ser de uma API, CMS, Markdown, são várias as opções de data fetching e tudo isso em tempo de build.
@@ -49,12 +44,7 @@ module.exports = {
 }
 ```
 
-<br />
-<br />
-
 ##### Transformadores
-
-<br />
 
 Algumas vezes os dados que estamos buscando não são retornados da forma como esperamos, por exemplo, no momento não temos acesso ao conteúdo de dentro do markdown, temos o nome do arquivo, quanto ele pesa, ou seja, dados do arquivo no disco, mas e se quisermos pegar os dados de dentro do markdown?
 É nesse exato momento que entram os plugins transformadores! Eles são responsáveis por pegar um determinado conteúdo e torná-lo algo mais "usável". Para esse cenário, utilizaremos o [gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)
@@ -70,12 +60,7 @@ Algumas vezes os dados que estamos buscando não são retornados da forma como e
 },
 ```
 
-<br />
-<br />
-
 ##### Listando posts com GraphQL
-
-<br />
 
 Agora com as configurações prontas, nós já conseguimos mostrar as informações dos posts em tela e para isso podemos utilizar o GraphQL.
 Ele será o responsável por trazer os dados que foram buscados para o nosso componente, basta informarmos o que queremos e ele tentará trazer os dados.
@@ -118,12 +103,7 @@ export const query = graphql`
 export default IndexPage
 ```
 
-<br />
-<br />
-
 ##### Criando página programaticamente para cada postagem
-
-<br />
 
 Nós já temos uma página que lista todas as nossas postagens, porém apresentamos apenas informações do frontmatter. Se quiseremos mostrar todo o conteúdo do post nós precisaremos partir para outra abordagem.
 
