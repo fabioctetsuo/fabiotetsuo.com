@@ -18,12 +18,8 @@ sections:
 
 ##### Introdução
 
-<br />
-
 Você já se encontrou em uma situação na qual entrou em algum site, começou a ler o conteúdo e uma imagem apareceu na tela do nada e te fez perder o foco do que estava lendo? Ou já presenciou alguma imagem muito grande e não otimizada que deixou o site inteiro lento?
 Por um longo tempo, isso era um grande problema, porém as coisas mudaram e apareceram soluções cada vez mais modernas que nos ajudam muito, porém com algumas dificuldades.
-
-<br />
 
 Exemplo:
 
@@ -32,12 +28,7 @@ Exemplo:
 - Manter a posição da imagem, para que o texto não se mova na tela após a imagem carregar.
 - Criar placeholders ou efeitos de blur durante o carregamento das imagens.
 
-<br />
-<br />
-
 ##### Configurando Gatsby Image
-
-<br />
 
 Então, Gatsby tornou isso mais fácil com o plugin [gatsby-image](https://www.gatsbyjs.com/plugins/gatsby-image/).
 
@@ -64,12 +55,7 @@ module.exports = {
 }
 ```
 
-<br />
-<br />
-
 ##### Consumindo imagens com o GraphQL
-
-<br />
 
 Com as configurações devidamente realizadas, vamos combinar as informações do frontmatter com gatsby-image, retornando o caminho relativo para essa imagen em nosso markdown.
 
@@ -129,16 +115,9 @@ export const query = graphql`
 export default IndexPage
 ```
 
-<br />
-<br />
-
 ##### Performance
-
-<br />
 
 Rodando o audit no site em produção, podemos ver a performance da aplicação consumindo as imagens:
 ![Performance do site com 96 de performance de score](./images/audit_performance_fabiotetsuocom.png)
-
-<br />
 
 E é isso galera! Nesse breve post, configuramos o `gatsby-image`, buscamos a imagem usando o GraphQL, trabalhando com o lazy load das imagens e melhorando a performance da aplicação com uma solução simples.

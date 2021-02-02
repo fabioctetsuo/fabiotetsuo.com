@@ -25,20 +25,13 @@ sections:
 
 ##### Contexto
 
-<br />
-
 Estava trabalhando durante esses dias em um projeto onde o site era totalmente estático e por isso resolvi usar o [Gatsby](https://www.gatsbyjs.com/). Durante o desenvolvimento, surgiu a demanda em que a pessoa gostaria de adicionar alguns artigos em seu site.
 
 Porém para uma pessoa que nunca mexeu com Markdown ou Git, não seria nada fácil ficar criando ou editando um arquivo, abrir um Pull Request e checar a preview toda vez que quisesse adicionar um novo artigo. Pensando nisso resolvi utilizar o [Netlify CMS](https://www.netlifycms.org/) que é um Content Management que funciona integrado com o workflow do Git.
 
 Ele já entrega uma interface em que a pessoa, através de um login com alguma conta do Github, consegue escrever todo o post sem depender nada de entendimento de markdown ou como funciona o pipeline do Git, tudo isso é abstraído para uma interface que controla todos esses processos.
 
-<br />
-<br />
-
 ##### Netlify CMS vs Netlify
-
-<br />
 
 Você provavelmente deve estar se perguntando ou pelo menos pensando "Então pra usar o Netlify CMS eu preciso necessariamente utilizar o Netlify?"
 
@@ -47,12 +40,7 @@ A resposta é **não**.
 Para utilizar o Netlify CMS você não tem depedência nenhuma com a plataforma do Netlify. O Netlify é apenas uma plataforma que facilita o CI/CD da sua aplicação.
 Porém nem toda aplicação que usa Netlify CMS usa a plataforma do Netlify. A única coisa necessária para fazer com que o CMS funcione é deixar o código dele em alguma plataforma de controle de versionamento de código, como o GitHub, Bitbucket, GitLab entre outros.
 
-<br />
-<br />
-
 ##### Adicionando arquivo de configuração
-
-<br />
 
 Agora que entendemos o que é necessário, vamos colocar a coisa em prática. Primeiro ponto é que precisamos criar alguns arquivos de configuração e inicialiazação do CMS.
 
@@ -140,12 +128,7 @@ collections:
 
 Para conhecer mais tipos de campos, você pode acessar o seguinte link para a [documentação](https://www.netlifycms.org/docs/widgets/), ele vai mostrar todos os possíveis campos e as validações para cada um deles.
 
-<br />
-<br />
-
 ##### Adicionando novos caminhos no Gatsby Config
-
-<br />
 
 Com a configuração do Netlify CMS pronta, precisamos adicionar esses caminhos para que o Gatsby saiba o que buscar e onde buscar.
 Vamos alterar o nosso arquivo do `gatsby-config.js`
@@ -194,25 +177,12 @@ Vamos alterar o nosso arquivo do `gatsby-config.js`
 
 Basicamente essa era a configuração que você precisava fazer no projeto, agora precisamos subir esse projeto para o GitHub ou sua ferramenta de versionamento preferida para aproveitarmos o workflow do Netlify CMS.
 
-<br />
-
 ![Código já na branch remota](./images/codigo-github.png)
-
-<br />
-<br />
 
 ##### Acessando Administração do Netlify CMS
 
-<br />
-
 Com isso podemos acessar a área de Admin do nosso projeto e criar um novo post, acesse o [http://localhost:8000/admin](http://localhost:8000/admin) ou se o seu site já estiver em produção, pode acessar ele pela url do seu site + `/admin`
-
-<br />
 
 Ponto importante que para acessar o admin em produção, você precisa acessar o mesmo `site_domain` configurado no `config.yml` do netlify-cms e dar [autorização ao Netlify pelo Github](https://marciofrancalima.com.br/blog/netlify-cms-configurando-acesso-ao-dashboard-em-modo-produ%C3%A7%C3%A3o/)
 
-<br />
-
 Agora você já deve ver o CMS pronto, se você tiver algum post naquele pasta configurada em collections ele já deve aparecer disponível para você na interface também.
-
-<br />
