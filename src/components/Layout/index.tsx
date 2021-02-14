@@ -20,11 +20,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [theme, setTheme] = React.useState<"dark" | "light" | null>(null)
   const isDarkMode = theme === "dark"
   const selectedTheme = isDarkMode ? darkTheme : lightTheme
+  const illustrationBackground = isDarkMode ? "#403b58" : "#ac9ff0"
 
   React.useEffect(() => {
     setTheme(window.__theme)
     window.__onThemeChange = () => setTheme(window.__theme)
   }, [])
+
+  React.useEffect(() => {
+    document
+      .querySelector("#home-illustration #background")
+      ?.setAttribute("fill", illustrationBackground)
+  }, [theme])
 
   return (
     <ThemeProvider theme={selectedTheme}>

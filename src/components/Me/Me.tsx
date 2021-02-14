@@ -19,6 +19,16 @@ function Me() {
     gsap.set(".ear-left", { transformOrigin: "100% 50%" })
     gsap.set(".me", { opacity: 1 })
 
+    const decorationAnimation = gsap.from(".bubble", {
+      scale: 0.1,
+      opacity: 0,
+      stagger: 0.5,
+      repeat: -1,
+      yoyo: true,
+      paused: true,
+      repeatDelay: 1,
+    })
+
     meTl
       .from(
         ".me",
@@ -226,6 +236,7 @@ function Me() {
         gsap.ticker.add(animateFace)
 
         blink.play()
+        decorationAnimation.play()
       }
     }
 
@@ -403,10 +414,10 @@ function Me() {
         </g>
       </g>
       <g id="decoration">
-        <circle className="st11" cx="52.77" cy="142.27" r="10.32" />
-        <circle className="st12" cx="66.96" cy="118.12" r="9.36" />
-        <circle className="st13" cx="82.19" cy="129.64" r="5.87" />
-        <circle className="st14" cx="413.11" cy="345" r="8.97" />
+        <circle className="st11 bubble" cx="52.77" cy="142.27" r="10.32" />
+        <circle className="st12 bubble" cx="66.96" cy="118.12" r="9.36" />
+        <circle className="st13 bubble" cx="82.19" cy="129.64" r="5.87" />
+        <circle className="st14 bubble" cx="413.11" cy="345" r="8.97" />
       </g>
     </svg>
   )
