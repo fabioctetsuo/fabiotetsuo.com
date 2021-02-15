@@ -60,16 +60,18 @@ const GlobalStyles = createGlobalStyle`
   	height: auto;
   }
   body.dark {
-    --mainBackground: #382D93;
+    --mainBackground: #22203a;
     --darkBackground: #232323;
     --darkerBackground: #121212;
     --fontColor: #ffffff;
+    --illustrationBackgorund: #403b58;
   }
   body.light {
     --mainBackground: #ffffff;
     --darkBackground: #A8FBAF;
     --darkerBackground: #AC9FF0;
     --fontColor: #000000;
+    --illustrationBackgorund: #ac9ff0;
   }
   body {
     background: var(--mainBackground);

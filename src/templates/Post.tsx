@@ -17,11 +17,18 @@ import SectionTable from "../components/Post/SectionTable"
 import ShareArticle from "../components/Post/Share"
 import AuthorDetails from "../components/Post/AuthorDetails"
 import * as S from "../modules/BlogPost/styled"
+import theme from "../components/config"
 
 const formatTitleId = (title: string) => title.replace(/ /g, "-").toLowerCase()
 
 const style = {
-  margin: "32px 0 16px 0",
+  margin: "40px 0 16px 0",
+}
+
+const blockQuoteStyle = {
+  borderLeft: `5px solid ${theme.palette.primary.main}`,
+  paddingLeft: 16,
+  margin: "24px 0",
 }
 
 const globalComponents = {
@@ -53,7 +60,7 @@ const globalComponents = {
     <Typography
       variant="body1"
       {...props}
-      style={{ fontSize: "20px", lineHeight: "2.5rem", fontWeight: 200 }}
+      style={{ fontSize: "20px", lineHeight: "2.5rem", fontWeight: 300 }}
       color="textPrimary"
     />
   ),
@@ -69,6 +76,8 @@ const globalComponents = {
     </li>
   ),
   code: (props: any) => <code {...props} style={{ fontFamily: "Open Sans" }} />,
+  blockquote: (props: any) => <blockquote {...props} style={blockQuoteStyle} />,
+  strong: (props: any) => <strong {...props} style={{ fontWeight: "bold" }} />,
 }
 
 type SectionProps = {
@@ -114,18 +123,12 @@ const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
           Voltar
         </Button>
         <S.TitleWrapper>
-          <Typography variant="h4" color="textPrimary">
-            {mdx.frontmatter.title}
-          </Typography>
+          <Typography variant="h4">{mdx.frontmatter.title}</Typography>
         </S.TitleWrapper>
         <S.FeaturedImageWrapper>
           <Img fluid={featuredImgFluid} />
         </S.FeaturedImageWrapper>
-        <Typography
-          variant="subtitle1"
-          color="textPrimary"
-          style={{ fontStyle: "italic" }}
-        >
+        <Typography variant="subtitle1" style={{ fontStyle: "italic" }}>
           {mdx.frontmatter.description}
         </Typography>
         <Grid container style={{ margin: "48px 0" }}>
@@ -140,7 +143,8 @@ const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
             </MDXProvider>
             <ShareArticle
               link={location.href}
-              postTitle={mdx.frontmatter.title}
+              title={mdx.frontmatter.title}
+              description={mdx.frontmatter.description}
             />
             <AuthorDetails profilePhoto={file.childImageSharp.fixed} />
           </Grid>

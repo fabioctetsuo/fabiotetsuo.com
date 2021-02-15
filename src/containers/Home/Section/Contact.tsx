@@ -9,7 +9,7 @@ import HomeIllustration from "../../../images/home-illustration.svg"
 function Contact() {
   return (
     <Container>
-      <Grid container spacing={3} style={{ margin: "72px 0" }}>
+      <Grid container spacing={3} style={{ marginTop: 64, marginBottom: 64 }}>
         <Grid item xs={12} md={6}>
           <Typography
             variant="h4"
