@@ -53,6 +53,7 @@ export const query = graphql`
             date(locale: "pt-BR", formatString: "LL")
             description
             category
+            color
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 800) {

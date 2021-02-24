@@ -1,64 +1,50 @@
 import * as React from "react"
-import { Link, navigate } from "gatsby"
-import Img, { GatsbyImageProps } from "gatsby-image"
-import Button from "@material-ui/core/Button"
-import Card from "@material-ui/core/Card"
-import CardActionArea from "@material-ui/core/CardActionArea"
-import CardActions from "@material-ui/core/CardActions"
+import { navigate } from "gatsby"
+import Img, { GatsbyImageFluidProps } from "gatsby-image"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
+import * as Styled from "./styled"
 
 type ItemProps = {
   item: {
     featuredImage: {
-      childImageSharp: GatsbyImageProps
+      childImageSharp: GatsbyImageFluidProps
     }
     date: string
     title: string
     description: string
+    category: string
+    color: string
   }
   slug: string
   timeToRead: number
 }
 
 const Item = ({ item, slug, timeToRead }: ItemProps) => (
-  <Card
-    onClick={() => {
-      navigate(slug)
-    }}
-    style={{
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-    }}
-  >
-    <CardActionArea>
+  <Styled.Card onClick={() => navigate(slug)}>
+    <div>
       <Img
         fluid={item.featuredImage.childImageSharp.fluid}
-        alt="Featured image"
         style={{ height: "200px" }}
       />
       <CardContent>
-        <Typography gutterBottom variant="caption" component="span">
-          {item.date} • {timeToRead} min leitura
-        </Typography>
-        <Typography gutterBottom variant="h5" component="h2">
+        <div style={{ marginBottom: 8 }}>
+          <Styled.Tag color={item.color}>{item.category}</Styled.Tag>
+        </div>
+        <Typography gutterBottom variant="subtitle2" component="h3">
           {item.title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="caption" color="textSecondary" component="p">
           {item.description}
         </Typography>
       </CardContent>
-    </CardActionArea>
-    <CardActions>
-      <Link to={slug} style={{ textDecoration: "none" }}>
-        <Button size="small" color="default">
-          Veja mais detalhes
-        </Button>
-      </Link>
-    </CardActions>
-  </Card>
+    </div>
+    <div style={{ padding: "0 16px 16px 16px" }}>
+      <Typography gutterBottom variant="caption" component="span">
+        {item.date} • {timeToRead} min leitura
+      </Typography>
+    </div>
+  </Styled.Card>
 )
 
 export default Item

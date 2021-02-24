@@ -4,10 +4,8 @@ import Container from "@material-ui/core/Container"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-import { Tween, PlayState } from "react-gsap"
 import { navigate } from "gatsby"
 import { PostProps } from "../../../types/Post"
-import useOnScreen from "../../../hooks/useOnScreen"
 import Post from "../../../components/Post/Item"
 
 const ContainerWrapper = styled.div`
@@ -17,17 +15,9 @@ const ContainerWrapper = styled.div`
 `
 
 function Posts({ posts }: { posts: PostProps[] }) {
-  const svgRef = React.useRef(null)
-  const onScreen = useOnScreen(svgRef)
-  const [playAnimation, setPlayAnimation] = React.useState(PlayState.stop)
-
-  React.useEffect(() => {
-    if (onScreen) setPlayAnimation(PlayState.play)
-  }, [onScreen])
-
   return (
     <ContainerWrapper>
-      <Container ref={svgRef}>
+      <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography
@@ -46,24 +36,22 @@ function Posts({ posts }: { posts: PostProps[] }) {
               códigos ou coisas aleatórias que acho legal compartilhar.
             </Typography>
           </Grid>
-          <Tween from={{ x: "200%" }} stagger={0.5} playState={playAnimation}>
-            {posts.map(({ node }) => (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                key={node.id}
-                style={{ paddingBottom: 16 }}
-              >
-                <Post
-                  slug={node.fields.slug}
-                  item={node.frontmatter}
-                  timeToRead={node.timeToRead}
-                />
-              </Grid>
-            ))}
-          </Tween>
+          {posts.map(({ node }) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={node.id}
+              style={{ paddingBottom: 16 }}
+            >
+              <Post
+                slug={node.fields.slug}
+                item={node.frontmatter}
+                timeToRead={node.timeToRead}
+              />
+            </Grid>
+          ))}
           <Grid container item xs={12} justify="flex-end" alignItems="flex-end">
             <Button
               style={{ marginBottom: "56px" }}

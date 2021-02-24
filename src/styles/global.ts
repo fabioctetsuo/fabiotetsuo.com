@@ -64,14 +64,15 @@ const GlobalStyles = createGlobalStyle`
     --darkBackground: #232323;
     --darkerBackground: #121212;
     --fontColor: #ffffff;
-    --illustrationBackgorund: #403b58;
+    --illustrationBackground: #403b58;
+    color: #ffffff;
   }
   body.light {
     --mainBackground: #ffffff;
-    --darkBackground: #A8FBAF;
+    --darkBackground: #f7f8fc;
     --darkerBackground: #AC9FF0;
     --fontColor: #000000;
-    --illustrationBackgorund: #ac9ff0;
+    --illustrationBackground: #59EA83;
   }
   body {
     background: var(--mainBackground);

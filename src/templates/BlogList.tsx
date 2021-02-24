@@ -103,6 +103,8 @@ export const query = graphql`
             title
             date(formatString: "LL", locale: "pt-BR")
             description
+            color
+            category
             featuredImage {
               childImageSharp {
                 fluid {

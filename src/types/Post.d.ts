@@ -10,6 +10,7 @@ type PostProps = {
       date: string
       description: string
       category: string
+      color: string
       featuredImage: {
         childImageSharp: GatsbyImageProps
       }
