@@ -60,6 +60,7 @@ const GlobalStyles = createGlobalStyle`
   	height: auto;
   }
   body.dark {
+    --cardBackground: #2a283b;
     --mainBackground: #22203a;
     --darkBackground: #232323;
     --darkerBackground: #121212;
@@ -68,6 +69,7 @@ const GlobalStyles = createGlobalStyle`
     color: #ffffff;
   }
   body.light {
+    --cardBackground: #ffffff;
     --mainBackground: #ffffff;
     --darkBackground: #f7f8fc;
     --darkerBackground: #AC9FF0;

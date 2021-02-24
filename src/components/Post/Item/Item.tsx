@@ -4,6 +4,7 @@ import Img, { GatsbyImageFluidProps } from "gatsby-image"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import * as Styled from "./styled"
+import "./styles.css"
 
 type ItemProps = {
   item: {
@@ -21,7 +22,7 @@ type ItemProps = {
 }
 
 const Item = ({ item, slug, timeToRead }: ItemProps) => (
-  <Styled.Card onClick={() => navigate(slug)}>
+  <Styled.Card onClick={() => navigate(slug)} className="card">
     <div>
       <Img
         fluid={item.featuredImage.childImageSharp.fluid}

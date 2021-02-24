@@ -5,7 +5,6 @@ export const Card = styled.article`
   height: 100%;
   border-radius: 12px;
   box-shadow: 0 0px 10px 5px rgba(125, 125, 125, 0.2);
-  background-color: #fff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
