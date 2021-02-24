@@ -45,7 +45,7 @@ function Presetation() {
   return (
     <Container>
       <Grid container spacing={3} style={{ marginTop: "72px" }}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={7} md={6}>
           <div>
             <Typography
               variant="h3"
@@ -118,6 +118,7 @@ function Presetation() {
         <Grid
           item
           xs={12}
+          sm={5}
           md={6}
           style={{
             display: "flex",

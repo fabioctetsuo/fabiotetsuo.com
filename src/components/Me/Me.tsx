@@ -208,7 +208,7 @@ const Me = () => {
     <svg
       viewBox="0 0 457 522"
       fill="none"
-      style={{ width: "50vw", maxWidth: "70%" }}
+      style={{ width: "70vw", maxWidth: "70%" }}
     >
       <path
         id="background"
