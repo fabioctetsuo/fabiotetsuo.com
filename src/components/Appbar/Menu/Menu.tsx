@@ -1,10 +1,8 @@
 import * as React from "react"
-import { TransitionStatus } from "react-transition-group/Transition"
-import { Transition } from "react-transition-group"
-import Typography from "@material-ui/core/Typography"
 import { Link } from "gatsby"
+import gsap from "gsap"
+import { BurgerIcon, CustomSvg } from "../MenuIcon/MenuIcon"
 import * as Styled from "./styled"
-import SocialNetwork from "../../SocialNetwork"
 
 const menuItems = [
   { label: "Início", route: "/", id: "home", transitionDuration: 1000 },
@@ -22,69 +20,108 @@ const menuItems = [
   },
 ]
 
-const getDefaultStyle = (duration: number) => ({
-  position: "absolute",
-  transition: `all ${duration}ms ease-in-out`,
-  left: "40%",
+type Props = {
+  toggleMenu: () => void
+}
+
+const textStyle = {
+  fontSize: 48,
+  fill: "#434343",
   opacity: 0,
-})
+}
 
-const transitionStyles = {
-  entering: { left: "40px", opacity: 1 },
-  entered: { left: "40px", opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-} as any
+function Menu({ toggleMenu }: Props) {
+  const menuTl = gsap.timeline({
+    paused: true,
+    reversed: true,
+    onReverseComplete: toggleMenu,
+  })
 
-function Menu({ transitionState }: { transitionState: TransitionStatus }) {
-  const inProp = transitionState === "entered"
+  React.useEffect(() => {
+    menuTl.to(
+      ".menu-top",
+      {
+        rotate: 45,
+        x: 10,
+      },
+      0
+    )
+
+    menuTl.to(
+      ".menu-bottom",
+      {
+        rotate: -45,
+        x: 10,
+      },
+      0
+    )
+
+    menuTl.to(
+      ".menu-middle",
+      {
+        scaleX: 0,
+        duration: 0.5,
+      },
+      0
+    )
+
+    menuTl.to(
+      ".menu-middle",
+      {
+        rotate: 90,
+        duration: 0.1,
+      },
+      1
+    )
+
+    menuTl.to(
+      ".menu-middle",
+      {
+        y: 100,
+        scaleX: 10,
+        scaleY: 2,
+        duration: 0.5,
+      },
+      1.2
+    )
+
+    menuTl.to(
+      ".menu-option",
+      {
+        opacity: 1,
+        stagger: 0.2,
+      },
+      1.2
+    )
+
+    menuTl.play()
+  }, [])
 
   return (
-    <Styled.Menu>
-      <div style={{ marginBottom: "48px" }}>
-        <Transition in={inProp} timeout={300}>
-          {state => (
-            <Styled.SocialLinks
-              style={{ ...getDefaultStyle(1000), ...transitionStyles[state] }}
-            >
-              <Styled.SocialLinksBar />
-              <SocialNetwork />
-            </Styled.SocialLinks>
-          )}
-        </Transition>
-      </div>
-      {menuItems.map(({ label, route, id, transitionDuration }) => (
-        <div
-          key={id}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            margin: "16px 0",
-            height: "56px",
+    <Styled.Container>
+      <svg viewBox="0 0 300 563" width="150px">
+        <BurgerIcon
+          toggleMenu={() => {
+            menuTl.reverse()
           }}
-        >
-          <Transition in={inProp} timeout={300}>
-            {state => (
-              <Styled.MenuItem
-                style={{
-                  ...getDefaultStyle(transitionDuration),
-                  ...transitionStyles[state],
-                }}
-              >
-                <Link
-                  to={route}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Typography variant="h3" color="textPrimary">
-                    {label}
-                  </Typography>
-                </Link>
-              </Styled.MenuItem>
-            )}
-          </Transition>
-        </div>
-      ))}
-    </Styled.Menu>
+        />
+        <Link to="/">
+          <text className="menu-option" x="40" y="170" style={textStyle}>
+            Home
+          </text>
+        </Link>
+        <Link to="/blog">
+          <text className="menu-option" x="40" y="340" style={textStyle}>
+            Blog
+          </text>
+        </Link>
+        <Link to="/contato">
+          <text className="menu-option" x="40" y="510" style={textStyle}>
+            Contato
+          </text>
+        </Link>
+      </svg>
+    </Styled.Container>
   )
 }
 
