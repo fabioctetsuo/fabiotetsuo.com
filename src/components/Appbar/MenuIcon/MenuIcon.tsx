@@ -18,6 +18,7 @@ export const BurgerIcon = ({ toggleMenu }: Props) => {
       style={{ cursor: "pointer" }}
       strokeWidth="7"
       stroke="#434343"
+      onClick={toggleMenu}
     >
       <rect
         x="0"
@@ -27,7 +28,6 @@ export const BurgerIcon = ({ toggleMenu }: Props) => {
         stroke="none"
         fill="#FFFFFF"
         fillOpacity="0"
-        onClick={toggleMenu}
       />
       <path className="menu-top" d="M3 3H58" />
       <path className="menu-bottom" d="M3 43H58" />

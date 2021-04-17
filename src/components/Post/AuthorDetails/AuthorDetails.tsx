@@ -1,7 +1,6 @@
 import * as React from "react"
 import Img, { FixedObject } from "gatsby-image"
 import Typography from "@material-ui/core/Typography"
-import { ABOUT_ME_TEXT } from "../../../containers/Home/Section/Presentation"
 import * as Styled from "./styled"
 
 type AuthorDetailsProps = {
@@ -19,18 +18,6 @@ function AuthorDetails({ profilePhoto }: AuthorDetailsProps) {
           margin: "0 32px 0 0",
         }}
       />
-      <Typography
-        variant="body1"
-        color="textPrimary"
-        style={{
-          fontSize: "20px",
-          lineHeight: "2rem",
-          fontWeight: 300,
-          width: "100%",
-        }}
-      >
-        {ABOUT_ME_TEXT.MEDIUM}
-      </Typography>
     </Styled.Container>
   )
 }
