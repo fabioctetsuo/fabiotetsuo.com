@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Topbar = styled.header`
   width: 100%;
-  padding: 32px 40px;
+  padding: 32px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,7 +20,7 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 300;
   line-height: 19px;

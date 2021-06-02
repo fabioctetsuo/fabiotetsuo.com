@@ -1,12 +1,16 @@
-import React from "react"
+import * as React from "react"
 import { ThemeProvider as StyledThemeProvider } from "styled-components"
-import { ThemeProvider, StylesProvider } from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/core/styles"
 
 import Appbar from "../Appbar"
 import { lightTheme, darkTheme } from "../config"
 import GlobalStyles from "../../styles/global"
 
 type LayoutProps = {}
+
+type ThemeContextProps = {
+  isDarkMode: boolean
+}
 
 declare global {
   interface Window {
@@ -15,6 +19,8 @@ declare global {
     __setPreferredTheme: (theme: string) => void
   }
 }
+
+export const ThemeContext = React.createContext<null | ThemeContextProps>(null)
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [theme, setTheme] = React.useState<"dark" | "light" | null>(null)
@@ -43,7 +49,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             window.__setPreferredTheme(isDarkMode ? "light" : "dark")
           }}
         />
-        {children}
+        <ThemeContext.Provider value={{ isDarkMode }}>
+          {children}
+        </ThemeContext.Provider>
       </StyledThemeProvider>
     </ThemeProvider>
   )

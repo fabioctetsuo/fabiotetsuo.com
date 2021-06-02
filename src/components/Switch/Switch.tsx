@@ -1,68 +1,132 @@
 import * as React from "react"
-import { withStyles, SwitchClassKey } from "@material-ui/core"
-import { Theme } from "@material-ui/core/styles"
-import Switch, { SwitchProps } from "@material-ui/core/Switch"
+import styled from "styled-components"
+import gsap from "gsap"
 
-interface Styles extends Partial<Record<SwitchClassKey, string>> {
-  focusVisible?: string
+type SwitchProps = {
+  checked: boolean
+  onClick: () => void
 }
 
-interface Props extends SwitchProps {
-  classes: Styles
-}
+const SwitchContainer = styled.button<SwitchProps>`
+  width: 55px;
+  border-radius: 16px;
+  outline: none;
+  border: 1px solid ${({ checked }) => (checked ? "#f1f1f1" : "#000")};
+  background: ${({ checked }) => (checked ? "#23203a" : "#7fabda")};
+  padding: 1px;
+  cursor: pointer;
+`
 
-const IOSSwitch = withStyles((theme: Theme) => ({
-  root: {
-    width: 42,
-    height: 26,
-    padding: 0,
-    margin: theme.spacing(1),
-  },
-  switchBase: {
-    padding: 1,
-    color: "#FBCC27",
-    "&$checked": {
-      transform: "translateX(16px)",
-      color: "#EEEEEE",
-      "& + $track": {
-        backgroundColor: "#515151",
-        opacity: 1,
-        border: "none",
-      },
-    },
-    "&$focusVisible $thumb": {
-      color: "#52d869",
-      border: "6px solid #fff",
-    },
-  },
-  thumb: {
-    width: 24,
-    height: 24,
-  },
-  track: {
-    borderRadius: 26 / 2,
-    color: "#FBCC27",
-    backgroundColor: "#54C3E7",
-    opacity: 1,
-    transition: theme.transitions.create(["background-color", "border"]),
-  },
-  checked: {},
-  focusVisible: {},
-}))(({ classes, ...props }: Props) => {
+const Status = styled.div<{ checked: boolean }>`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: relative;
+`
+
+const Switch = ({
+  checked,
+  onClick,
+}: {
+  checked: boolean
+  onClick: () => void
+}) => {
+  React.useEffect(() => {
+    if (checked) {
+      gsap.to(".switch-status", { xPercent: 70, rotate: 180 })
+      gsap.to(".switch-moon-shape", { fill: "#EEEEEE" })
+      gsap.to(".switch-moon-details", { opacity: 1 })
+    } else {
+      gsap.to(".switch-status", { xPercent: 0, rotate: 0 })
+      gsap.to(".switch-moon-shape", { fill: "#FBCC27" })
+      gsap.to(".switch-moon-details", { opacity: 0 })
+    }
+  }, [checked])
+
   return (
-    <Switch
-      focusVisibleClassName={classes.focusVisible}
-      disableRipple
-      classes={{
-        root: classes.root,
-        switchBase: classes.switchBase,
-        thumb: classes.thumb,
-        track: classes.track,
-        checked: classes.checked,
-      }}
-      {...props}
-    />
+    <SwitchContainer
+      onClick={onClick}
+      checked={checked}
+      aria-label="Trocar o tema"
+    >
+      <Status className="switch-status" checked={checked}>
+        <svg
+          className=".switch-moon"
+          width="30"
+          height="30"
+          viewBox="0 0 346 346"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className="switch-moon-shape"
+            cx="173"
+            cy="173"
+            r="173"
+            fill="#EEEEEE"
+          />
+          <ellipse
+            opacity="0"
+            className="switch-moon-details"
+            cx="109"
+            cy="65.5"
+            rx="23"
+            ry="23.5"
+            fill="#DDDDDD"
+          />
+          <ellipse
+            opacity="0"
+            className="switch-moon-details"
+            cx="124.5"
+            cy="291"
+            rx="14.5"
+            ry="14"
+            fill="#DDDDDD"
+          />
+          <circle
+            opacity="0"
+            className="switch-moon-details"
+            cx="223"
+            cy="220"
+            r="4"
+            fill="#DDDDDD"
+          />
+          <circle
+            opacity="0"
+            className="switch-moon-details"
+            cx="240"
+            cy="242"
+            r="8"
+            fill="#DDDDDD"
+          />
+          <circle
+            opacity="0"
+            className="switch-moon-details"
+            cx="286"
+            cy="97"
+            r="8"
+            fill="#DDDDDD"
+          />
+          <circle
+            opacity="0"
+            className="switch-moon-details"
+            cx="209"
+            cy="234"
+            r="6"
+            fill="#DDDDDD"
+          />
+          <circle
+            opacity="0"
+            className="switch-moon-details"
+            cx="54.5"
+            cy="141.5"
+            r="31.5"
+            fill="#DDDDDD"
+          />
+        </svg>
+      </Status>
+    </SwitchContainer>
   )
-})
+}
 
-export default IOSSwitch
+export default Switch

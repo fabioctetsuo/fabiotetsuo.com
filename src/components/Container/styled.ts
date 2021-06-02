@@ -24,7 +24,6 @@ type StyledContainerProps = {
 export const Container = styled.div<StyledContainerProps>`
   width: 100%;
   height: auto;
-  background-image: ${({ background }) => `url(${background})`};
   background-image: ${({ background, withImageOpacity, color }) => {
     const rgba = hexToRGB(color, 0.9)
     if (withImageOpacity) {

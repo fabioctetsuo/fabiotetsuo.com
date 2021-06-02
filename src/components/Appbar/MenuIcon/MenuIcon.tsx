@@ -9,15 +9,16 @@ export const CustomSvg = styled.svg`
 
 type Props = {
   toggleMenu: () => void
+  isDarkMode: boolean
 }
 
-export const BurgerIcon = ({ toggleMenu }: Props) => {
+export const BurgerIcon = ({ toggleMenu, isDarkMode }: Props) => {
   return (
     <g
       className="burguer-icon"
       style={{ cursor: "pointer" }}
       strokeWidth="7"
-      stroke="#434343"
+      stroke={isDarkMode ? "#fff" : "#434343"}
       onClick={toggleMenu}
     >
       <rect
@@ -36,10 +37,10 @@ export const BurgerIcon = ({ toggleMenu }: Props) => {
   )
 }
 
-const MenuIcon = ({ toggleMenu }: Props) => {
+const MenuIcon = ({ toggleMenu, isDarkMode }: Props) => {
   return (
     <CustomSvg viewBox="0 0 60 50" fill="none">
-      <BurgerIcon toggleMenu={toggleMenu} />
+      <BurgerIcon toggleMenu={toggleMenu} isDarkMode={isDarkMode} />
     </CustomSvg>
   )
 }

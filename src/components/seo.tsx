@@ -75,6 +75,10 @@ function SEO({ description, lang = "pt-BR", meta = [], title, image }: Props) {
         },
         {
           rel: "preload",
+          href: "https://fonts.googleapis.com/?display=swap",
+        },
+        {
+          rel: "preload",
           href:
             "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nothing+You+Could+Do&family=Roboto:wght@300;400;500&display=swap",
           as: "style",

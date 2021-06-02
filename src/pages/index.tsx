@@ -21,6 +21,13 @@ type IndexPageProps = {
 const IndexPage = ({ data }: IndexPageProps) => {
   const posts = data.allMdx.edges
   const { description } = data.site.siteMetadata
+
+  React.useEffect(() => {
+    import("../utils/renderAnimations").then(({ homeAnimation }) => {
+      homeAnimation()
+    })
+  }, [])
+
   return (
     <Layout>
       <SEO title="Página inicial" description={description} />
@@ -39,7 +46,7 @@ export const query = graphql`
     allMdx(
       filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 3
+      limit: 4
     ) {
       edges {
         node {
@@ -56,8 +63,8 @@ export const query = graphql`
             color
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 200) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

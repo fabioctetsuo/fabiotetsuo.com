@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { Container as MuiContainer } from "@material-ui/core"
 import gsap from "gsap"
 import { BurgerIcon, CustomSvg } from "../MenuIcon/MenuIcon"
 import * as Styled from "./styled"
@@ -43,6 +44,7 @@ function Menu({ toggleMenu }: Props) {
       {
         rotate: 45,
         x: 10,
+        duration: 0.2,
       },
       0
     )
@@ -52,6 +54,7 @@ function Menu({ toggleMenu }: Props) {
       {
         rotate: -45,
         x: 10,
+        duration: 0.2,
       },
       0
     )
@@ -60,7 +63,7 @@ function Menu({ toggleMenu }: Props) {
       ".menu-middle",
       {
         scaleX: 0,
-        duration: 0.5,
+        duration: 0.3,
       },
       0
     )
@@ -69,7 +72,7 @@ function Menu({ toggleMenu }: Props) {
       ".menu-middle",
       {
         rotate: 90,
-        duration: 0.1,
+        duration: 0.2,
       },
       1
     )
@@ -80,7 +83,7 @@ function Menu({ toggleMenu }: Props) {
         y: 100,
         scaleX: 10,
         scaleY: 2,
-        duration: 0.5,
+        duration: 0.2,
       },
       1.2
     )
@@ -90,6 +93,7 @@ function Menu({ toggleMenu }: Props) {
       {
         opacity: 1,
         stagger: 0.2,
+        duration: 0.2,
       },
       1.2
     )
@@ -99,28 +103,31 @@ function Menu({ toggleMenu }: Props) {
 
   return (
     <Styled.Container>
-      <svg viewBox="0 0 300 563" width="150px">
-        <BurgerIcon
-          toggleMenu={() => {
-            menuTl.reverse()
-          }}
-        />
-        <Link to="/">
-          <text className="menu-option" x="40" y="170" style={textStyle}>
-            Home
-          </text>
-        </Link>
-        <Link to="/blog">
-          <text className="menu-option" x="40" y="340" style={textStyle}>
-            Blog
-          </text>
-        </Link>
-        <Link to="/contato">
-          <text className="menu-option" x="40" y="510" style={textStyle}>
-            Contato
-          </text>
-        </Link>
-      </svg>
+      <MuiContainer>
+        <svg viewBox="0 0 300 563" width="150px">
+          <BurgerIcon
+            isDarkMode={false}
+            toggleMenu={() => {
+              menuTl.reverse()
+            }}
+          />
+          <Link to="/">
+            <text className="menu-option" x="40" y="170" style={textStyle}>
+              Home
+            </text>
+          </Link>
+          <Link to="/blog">
+            <text className="menu-option" x="40" y="340" style={textStyle}>
+              Blog
+            </text>
+          </Link>
+          <Link to="/contato">
+            <text className="menu-option" x="40" y="510" style={textStyle}>
+              Contato
+            </text>
+          </Link>
+        </svg>
+      </MuiContainer>
     </Styled.Container>
   )
 }

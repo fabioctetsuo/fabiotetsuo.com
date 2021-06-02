@@ -9,7 +9,7 @@ import { ArrowBack } from "@material-ui/icons"
 import * as Styled from "./styled"
 
 type ContainerProps = {
-  title: string
+  title?: string
   titleSize: "sm" | "md" | "lg"
   backButton?: boolean
   color?: string
@@ -62,7 +62,7 @@ const Container: React.FC<ContainerProps> = props => {
   const {
     color = "#FFFFFF",
     background,
-    withContainer,
+    withContainer = true,
     size = "md",
     withPadding = false,
     withImageOpacity = false,

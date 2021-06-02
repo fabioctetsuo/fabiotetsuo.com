@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Container } from "@material-ui/core"
 import { Link } from "gatsby"
 import Switch from "../Switch"
 import Logo from "../Logo/Logo"
@@ -20,21 +21,23 @@ function Appbar({ theme, setTheme }: AppbarProps) {
 
   return (
     <>
-      <Styled.Topbar>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <MenuIcon toggleMenu={toggleMenu()} />
-          <Link to="/">
-            <Logo />
-          </Link>
-        </div>
-        <Switch checked={theme === "dark"} onClick={setTheme} />
-      </Styled.Topbar>
+      <Container>
+        <Styled.Topbar>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <MenuIcon toggleMenu={toggleMenu()} isDarkMode={theme === "dark"} />
+            <Link aria-label="Homepage" to="/">
+              <Logo isDarkMode={theme === "dark"} />
+            </Link>
+          </div>
+          <Switch checked={theme === "dark"} onClick={setTheme} />
+        </Styled.Topbar>
+      </Container>
       {showMenu && <Menu toggleMenu={toggleMenu()} />}
     </>
   )
