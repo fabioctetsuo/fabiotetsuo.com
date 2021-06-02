@@ -5,12 +5,23 @@ import Switch from "../Switch"
 import Logo from "../Logo/Logo"
 
 import * as Styled from "./styled"
-import Menu from "./Menu"
 import MenuIcon from "./MenuIcon/MenuIcon"
+
+const Menu = React.lazy(() => import("./Menu"))
 
 type AppbarProps = {
   theme: "dark" | "light" | null
   setTheme: () => void
+}
+
+const MenuComponent = ({ toggleMenu }: { toggleMenu: () => void }) => {
+  return (
+    <div>
+      <React.Suspense fallback={<div />}>
+        <Menu toggleMenu={toggleMenu} />
+      </React.Suspense>
+    </div>
+  )
 }
 
 function Appbar({ theme, setTheme }: AppbarProps) {
@@ -38,7 +49,7 @@ function Appbar({ theme, setTheme }: AppbarProps) {
           <Switch checked={theme === "dark"} onClick={setTheme} />
         </Styled.Topbar>
       </Container>
-      {showMenu && <Menu toggleMenu={toggleMenu()} />}
+      {showMenu && <MenuComponent toggleMenu={toggleMenu()} />}
     </>
   )
 }
