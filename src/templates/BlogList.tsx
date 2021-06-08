@@ -3,7 +3,7 @@ import SEO from "../components/seo"
 import { graphql, navigate } from "gatsby"
 import Container from "../components/Container"
 import Layout from "../components/Layout"
-import Post from "../components/Post/Item"
+import Card from "../components/Post/Card"
 import { Grid, Button } from "@material-ui/core"
 import { PostProps } from "../types/Post"
 
@@ -44,13 +44,9 @@ function BlogList({ data, pageContext }: StaticQueryProps) {
           color="transparent"
         >
           <Grid container spacing={4}>
-            {posts.map(({ node }) => (
-              <Grid item xs={12} sm={6} md={4} key={node.id}>
-                <Post
-                  slug={node.fields.slug}
-                  item={node.frontmatter}
-                  timeToRead={node.timeToRead}
-                />
+            {posts.map(post => (
+              <Grid item xs={12} sm={6} md={4} key={post.node.id}>
+                <Card post={post} />
               </Grid>
             ))}
           </Grid>
@@ -107,8 +103,8 @@ export const query = graphql`
             category
             featuredImage {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+                fixed {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
