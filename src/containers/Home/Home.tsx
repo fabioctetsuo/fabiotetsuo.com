@@ -1,6 +1,6 @@
 import * as React from "react"
 import Image from "gatsby-image"
-import { Grid, Button, Typography } from "@material-ui/core"
+import { Grid, Button, Typography, Box, Hidden } from "@material-ui/core"
 import styled from "styled-components"
 import Container from "./components/Container"
 import Illustration from "./components/Illustration"
@@ -36,7 +36,7 @@ const Article = styled.article`
   transition: box-shadow 0.2s ease-in-out;
 
   &:hover {
-    background: #fff;
+    background: var(--cardBackground);
     box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.25);
   }
 `
@@ -66,12 +66,12 @@ const Card = ({ post }: { post: PostProps }) => {
         <Image
           className="post-image"
           fixed={post.node.frontmatter.featuredImage.childImageSharp.fixed}
-          style={{ borderRadius: "50%", width: 200, height: 200 }}
+          style={{ borderRadius: "50%", width: 150, height: 150 }}
         />
         <Typography
           variant="body1"
           className="post-title"
-          style={{ fontSize: "1.5rem", fontWeight: 400, lineHeight: "2rem" }}
+          style={{ fontSize: "1.2rem", fontWeight: 400, lineHeight: "2rem" }}
         >
           {post.node.frontmatter.title}
         </Typography>
@@ -103,7 +103,10 @@ function Home({ posts }: HomeProps) {
         <Grid container>
           <Grid item xs={12} sm={6} style={customStyle}>
             <span
-              style={{ fontFamily: "Nothing You Could Do", fontSize: "1.5rem" }}
+              style={{
+                fontFamily: "Nothing You Could Do",
+                fontSize: "1.5rem",
+              }}
             >
               Olá, meu nome é Tetsuo!
             </span>
@@ -116,7 +119,21 @@ function Home({ posts }: HomeProps) {
               fazendo lives, cozinhando e cuidando da minha gata!
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Hidden smUp={true}>
+            <Grid xs={12}>
+              <div style={{ marginTop: 64 }} />
+            </Grid>
+          </Hidden>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Illustration />
           </Grid>
         </Grid>

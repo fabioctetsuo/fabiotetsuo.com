@@ -70,7 +70,11 @@ const MyComponent = (props: Props) => {
   }, [isDarkMode])
 
   return (
-    <svg viewBox="0 0 809 522" fill="none">
+    <svg
+      viewBox="0 0 809 522"
+      fill="none"
+      style={{ width: "720px", maxWidth: "80vw" }}
+    >
       <g id="illustration">
         <g id="room-window">
           <path

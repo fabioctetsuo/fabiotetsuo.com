@@ -6,17 +6,11 @@ category: react
 background: "#7d669e"
 color: "#0070a2"
 featuredImage: ./images/use-state-lazy-init.jpg
-sections:
-  [
-    { id: "contexto", title: "Contexto" },
-    { id: "problema", title: "Problema" },
-    { id: "solução", title: "Solução" },
-    { id: "usememo-vs-lazy-initializer", title: "useMemo vs Lazy Initializer" },
-    { id: "ponto-de-atenção", title: "Ponto de atenção" },
-  ]
+featuredImageAuthor: D.S. Chapman
+featuredImageUrl: https://unsplash.com/photos/aIgZHolF4Dg
 ---
 
-##### Contexto
+## Contexto
 
 Já se deparou alguma vez em que você tinha uma situação como essa?
 
@@ -36,11 +30,11 @@ const MyComponent = props => {
 }
 ```
 
-##### Problema
+## Problema
 
 Esse tipo de caso não é muito comum mas pode acontecer. Lembrando que queremos setar apenas o estado inicial do componente e nesse tipo de situação, em todo o re-render ele vai tentar ler do local storage, o que poderia causar problemas de performance da aplicação.
 
-##### Solução
+## Solução
 
 Uma coisa bem legal que pode ser feita para contornar esse caso é fazer um lazy initialization com o useState.
 
@@ -57,7 +51,7 @@ Basicamente se passarmos uma callback no useState, o hook fará com que essa fun
 
 Criar uma função é algo rápido e mais barato do que calcular algo caro ou pegar algo do local storage, por isso pode valer a pena.
 
-##### useMemo vs Lazy Initializer
+## useMemo vs Lazy Initializer
 
 > "Performance optimizations ALWAYS come with a cost but do NOT always come with a benefit."
 >
@@ -71,8 +65,8 @@ Quando utilizamos o useMemo ou o useCallback, queremos fazer uma otimização de
 
 Pensando apenas em Javascript vamos analisar o que está acontecendo aqui:
 
-```diff-jsx
--   const initialState = window.localStorage.getItem("hello");
+```jsx
+-  const initialState = window.localStorage.getItem("hello");
 +  const initialState = React.useMemo(
 +    () => window.localStorage.getItem("hello"),
 +    [],
@@ -85,7 +79,7 @@ Ou seja, estamos executando um trabalho muito maior, precisamos alocar mais espa
 
 Vale ressaltar que durante o re-render o garbage collector conseguiria desalocar a memória anterior antes de alocar um espaço novo na solução do **lazy initialization**, diferentemente da solução do useMemo ou useCallback, onde o garbage collector não desalocaria a memória e um novo espaço ainda precisa ser alocado, ou seja isso é pior no ponto de vista de perfomance em relação a memória.
 
-##### Ponto de atenção
+## Ponto de atenção
 
 Importante ressaltar que não é sempre que precisamos utilizar esse tipo de abordagem, apenas quando precisarmos inicializar o estado com algo de alto custo.
 Se você quer devolver apenas uma string, um número, um objeto ou coisa do tipo dentro do useState, pode não ser uma abordagem tão interessante e talvez você deva avaliar se vale a pena ou não.

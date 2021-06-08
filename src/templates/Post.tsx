@@ -1,7 +1,6 @@
 import React from "react"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
-import Hidden from "@material-ui/core/Hidden"
 import Button from "@material-ui/core/Button"
 import { graphql } from "gatsby"
 
@@ -13,7 +12,6 @@ import { navigate } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import SectionTable from "../components/Post/SectionTable"
 import ShareArticle from "../components/Post/Share"
 import AuthorDetails from "../components/Post/AuthorDetails"
 import * as S from "../modules/BlogPost/styled"
@@ -23,6 +21,7 @@ const formatTitleId = (title: string) => title.replace(/ /g, "-").toLowerCase()
 
 const style = {
   margin: "40px 0 16px 0",
+  fontWeight: 500,
 }
 
 const blockQuoteStyle = {
@@ -32,57 +31,46 @@ const blockQuoteStyle = {
 }
 
 const globalComponents = {
-  h1: (props: any) => (
-    <Typography variant="h1" {...props} color="textPrimary" style={style} />
-  ),
   h2: (props: any) => (
-    <Typography variant="h2" {...props} color="textPrimary" style={style} />
+    <Typography
+      variant="h2"
+      {...props}
+      style={{ ...style, fontSize: "1.5rem" }}
+    />
   ),
   h3: (props: any) => (
-    <Typography variant="h3" {...props} color="textPrimary" style={style} />
+    <Typography
+      variant="h3"
+      {...props}
+      style={{ ...style, fontSize: "1.4rem" }}
+    />
   ),
   h4: (props: any) => (
-    <Typography variant="h4" {...props} color="textPrimary" style={style} />
+    <Typography
+      variant="h4"
+      {...props}
+      style={{ ...style, fontSize: "1.3rem" }}
+    />
   ),
   h5: (props: any) => (
     <Typography
       {...props}
       variant="h5"
-      id={formatTitleId(props.children)}
-      color="textPrimary"
-      style={style}
+      style={{ ...style, fontSize: "1.2rem" }}
     />
   ),
   h6: (props: any) => (
-    <Typography variant="h6" {...props} color="textPrimary" style={style} />
-  ),
-  p: (props: any) => (
     <Typography
-      variant="body1"
+      variant="h6"
       {...props}
-      style={{ fontSize: "20px", lineHeight: "2.5rem", fontWeight: 300 }}
-      color="textPrimary"
+      style={{ ...style, fontSize: "1.1rem" }}
     />
   ),
+  p: (props: any) => <Typography variant="body1" {...props} />,
   a: (props: any) => <S.Anchor {...props} target="_blank" />,
-  li: (props: any) => (
-    <li {...props}>
-      <Typography
-        variant="subtitle1"
-        color="textPrimary"
-        {...props}
-        style={{ lineHeight: "2.5rem", fontWeight: 200 }}
-      />
-    </li>
-  ),
-  code: (props: any) => <code {...props} style={{ fontFamily: "Open Sans" }} />,
+  code: (props: any) => <code {...props} style={{ fontSize: 14 }} />,
   blockquote: (props: any) => <blockquote {...props} style={blockQuoteStyle} />,
   strong: (props: any) => <strong {...props} style={{ fontWeight: "bold" }} />,
-}
-
-type SectionProps = {
-  id: string
-  title: string
 }
 
 type PostTemplateProps = {
@@ -94,9 +82,12 @@ type PostTemplateProps = {
             fluid: FluidObject
           }
         }
+        featuredImageAuthor: string
+        featuredImageUrl: string
         title: string
+        author: string
+        reviewer: string
         description: string
-        sections: SectionProps[]
       }
       body: string
     }
@@ -111,6 +102,7 @@ type PostTemplateProps = {
 
 const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
   const featuredImgFluid = mdx.frontmatter.featuredImage.childImageSharp.fluid
+
   return (
     <Layout>
       <SEO
@@ -118,26 +110,31 @@ const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
         description={mdx.frontmatter.description}
         image={featuredImgFluid.src}
       />
-      <Container maxWidth="md">
-        <Button variant="text" onClick={() => navigate("/blog")}>
-          Voltar
-        </Button>
+      <Container maxWidth="sm">
         <S.TitleWrapper>
-          <Typography variant="h4">{mdx.frontmatter.title}</Typography>
+          <Typography variant="h1" style={{ fontWeight: "bold" }}>
+            {mdx.frontmatter.title}
+          </Typography>
+          <AuthorDetails
+            profilePhoto={file.childImageSharp.fixed}
+            author={mdx.frontmatter.author}
+            reviewer={mdx.frontmatter.reviewer}
+          />
         </S.TitleWrapper>
         <S.FeaturedImageWrapper>
           <Img fluid={featuredImgFluid} />
+          <Typography variant="caption" style={{ textAlign: "center" }}>
+            Foto por:{" "}
+            <a href={mdx.frontmatter.featuredImageUrl}>
+              {mdx.frontmatter.featuredImageAuthor}
+            </a>
+          </Typography>
         </S.FeaturedImageWrapper>
         <Typography variant="subtitle1" style={{ fontStyle: "italic" }}>
           {mdx.frontmatter.description}
         </Typography>
         <Grid container style={{ margin: "48px 0" }}>
-          <Hidden xsDown>
-            <Grid item xs={3}>
-              <SectionTable sections={mdx.frontmatter.sections} />
-            </Grid>
-          </Hidden>
-          <Grid item xs={12} sm={9}>
+          <Grid item xs={12}>
             <MDXProvider components={globalComponents}>
               <MDXRenderer>{mdx.body}</MDXRenderer>
             </MDXProvider>
@@ -146,7 +143,6 @@ const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
               title={mdx.frontmatter.title}
               description={mdx.frontmatter.description}
             />
-            <AuthorDetails profilePhoto={file.childImageSharp.fixed} />
           </Grid>
         </Grid>
       </Container>
@@ -171,10 +167,6 @@ export const pageQuery = graphql`
         date(locale: "en", fromNow: true)
         title
         description
-        sections {
-          id
-          title
-        }
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 1914) {
@@ -182,6 +174,10 @@ export const pageQuery = graphql`
             }
           }
         }
+        featuredImageAuthor
+        featuredImageUrl
+        author
+        reviewer
       }
     }
   }

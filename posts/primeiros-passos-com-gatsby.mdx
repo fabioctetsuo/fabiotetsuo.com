@@ -5,31 +5,25 @@ description: Nesse post, vou compartilhar com vocês o que eu aprendi no primeir
 category: gatsby
 background: "#7d669e"
 color: "#673ab7"
-featuredImage: ./images/gatsby-first-steps.jpg
-sections:
-  [
-    { id: "buscando-dados-com-gatsby", title: "Buscando dados com Gatsby" },
-    { id: "transformadores", title: "Transformadores" },
-    { id: "listando-posts-com-graphql", title: "Listando posts com GraphQL" },
-    {
-      id: "criando-página-programaticamente-para-cada-postagem",
-      title: "Criando página programaticamente para cada postagem",
-    },
-  ]
+featuredImage: ./images/first-steps.jpg
+featuredImageAuthor: Daniel Park
+featuredImageUrl: https://unsplash.com/photos/N91GMm_6TBM
+author: Fabio Tetsuo
+reviewer: Fernanda Lima dos Santos
 ---
 
-Nesses últimos tempos tenho pesquisado sobre ferramentas para desenvolver um projeto para um cliente e foi quando eu ouvi falar do Gatsby pela primeira vez, e me perguntei o que era isso e para que servia.
-Fiquei bem impressionado com o que o Gatsby prometia fazer e resolvi colocar em prática para entender um pouco mais sobre esse framework open-source.
-Decidi realizar o desafio dos 100 dias de gatsby e a cada dia que passa eu aprendo um detalhe novo, que facilita muito a vida de quem precisa desenvolver um site estático com uma boa perfomance.
-No primeiro desafio a ideia era criar um blog para contar um pouco mais sobre as experiências desenvolvendo a aplicação usando somente a documentação e posso afirmar que no site deles tem tudo que você precisa para sair com um excelente resultado.
+Nesses últimos tempos tenho pesquisado sobre ferramentas para desenvolver um projeto para um cliente e quando eu ouvi falar do Gatsby pela primeira vez, me perguntei o que era isso e para que servia.
+Fiquei bem impressionado com o que a ferramenta prometia fazer e resolvi colocar em prática para entender um pouco mais sobre esse framework open-source.
+Decidi realizar o desafio dos 100 dias de Gatsby, e a cada dia que passa, eu aprendo um detalhe novo que facilita muito a vida de quem precisa desenvolver um site estático com uma boa performance.
+No primeiro desafio, a ideia era criar um blog para contar um pouco mais sobre as experiências desenvolvendo a aplicação usando somente a documentação, e posso afirmar que no site deles tem tudo o que você precisa para obter um excelente resultado.
 
-##### Buscando dados com Gatsby
+## Buscando dados com Gatsby
 
 Entender o ciclo de como as coisas funcionam com Gatsby é fundamental e esse é o primeiro ponto que quero falar.
-Com Gatsby você consegue pegar dados de qualquer lugar, pode ser de uma API, CMS, Markdown, são várias as opções de data fetching e tudo isso em tempo de build.
-Mas como ele faz isso? A primeira coisa que você precisa é de um [source plugin](https://www.gatsbyjs.com/docs/tutorial/part-five/), nesse exemplo vamos pegar os posts do nosso filesystem, usando o [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/).
+Com Gatsby, você consegue pegar dados de qualquer lugar, pode ser de uma API, CMS ou Markdown, são várias as opções de data fetching e tudo isso em tempo de build.
+Mas, como ele faz isso? A primeira coisa que você precisa é de um [source plugin](https://www.gatsbyjs.com/docs/tutorial/part-five/), nesse exemplo vamos pegar os posts do nosso filesystem, usando o [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/).
 
-Agora o que precisamos fazer é adicionar esse plugin na nossa configuração do `gatsby-config.js`
+Agora, o que precisamos fazer é adicionar esse plugin na nossa configuração do `gatsby-config.js`.
 
 ```javascript
 module.exports = {
@@ -45,10 +39,10 @@ module.exports = {
 }
 ```
 
-##### Transformadores
+## Transformadores
 
-Algumas vezes os dados que estamos buscando não são retornados da forma como esperamos, por exemplo, no momento não temos acesso ao conteúdo de dentro do markdown, temos o nome do arquivo, quanto ele pesa, ou seja, dados do arquivo no disco, mas e se quisermos pegar os dados de dentro do markdown?
-É nesse exato momento que entram os plugins transformadores! Eles são responsáveis por pegar um determinado conteúdo e torná-lo algo mais "usável". Para esse cenário, utilizaremos o [gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)
+Algumas vezes os dados que estamos buscando não são retornados da forma como esperamos, por exemplo, no momento não temos acesso ao conteúdo interno do markdown, apenas aos dados do arquivo no disco. E se quisermos pegar os dados de dentro do markdown?
+É nesse exato momento que entram os plugins transformadores! Eles são responsáveis por pegar um determinado conteúdo e torná-lo algo mais "usável". Para esse cenário, utilizaremos o [gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/).
 
 ```javascript
 {
@@ -61,9 +55,9 @@ Algumas vezes os dados que estamos buscando não são retornados da forma como e
 },
 ```
 
-##### Listando posts com GraphQL
+## Listando posts com GraphQL
 
-Agora com as configurações prontas, nós já conseguimos mostrar as informações dos posts em tela e para isso podemos utilizar o GraphQL.
+Agora, com as configurações prontas, nós já conseguimos mostrar as informações dos posts em tela e, para isso, podemos utilizar o GraphQL.
 Ele será o responsável por trazer os dados que foram buscados para o nosso componente, basta informarmos o que queremos e ele tentará trazer os dados.
 
 ```jsx
@@ -104,11 +98,11 @@ export const query = graphql`
 export default IndexPage
 ```
 
-##### Criando página programaticamente para cada postagem
+## Criando página programaticamente para cada postagem
 
-Nós já temos uma página que lista todas as nossas postagens, porém apresentamos apenas informações do frontmatter. Se quiseremos mostrar todo o conteúdo do post nós precisaremos partir para outra abordagem.
+Nós já temos uma página que lista todas as nossas postagens, porém apresentamos apenas informações do frontmatter. Se quiseremos mostrar todo o conteúdo do post, nós precisaremos partir para outra abordagem.
 
-Agora precisamos criar para cada um dos posts (ou seja, cada um dos arquivos mdx) uma nova página e isso pode ser realizado usando o [gatsby-node](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/)
+Agora, precisamos criar para cada um dos posts (ou seja, cada um dos arquivos mdx) uma nova página e isso pode ser realizado usando o [gatsby-node](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/).
 Para isso, algumas coisas são necessárias. Primeiro, precisamos criar um identificador para cada arquivo markdown usando a API do [onCreateNode](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#onCreateNode) para inserir um novo campo de indentificação em cada um dos nós.
 
 ```javascript
@@ -128,7 +122,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 }
 ```
 
-Após isso, o próximo passo é criar a página em si. O Gatsby possui uma API chamada [createPages](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages), onde através do GraphQL podemos pegar o slug inserido previamente em cada um dos nós e criar uma página nova com o método `createPage`
+Após isso, o próximo passo é criar a página em si. O Gatsby possui uma API chamada [createPages](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages), no qual através do GraphQL podemos pegar o slug inserido previamente em cada um dos nós e criar uma página nova com o método `createPage`.
 
 ```javascript
 exports.createPages = async ({ graphql, actions }) => {
@@ -197,4 +191,4 @@ export const query = graphql`
 `
 ```
 
-Basicamente é isso! Esse é o processo para criar um blog de uma forma be simples usando a API do Gatsby. Com esse simples passo a passo, passamos por vários conceitos do framework, desde a forma como pegamos os dados, como transformamos ele em algo que precisamos e como mostrar esse dado no React.
+Basicamente é isso! Esse é o processo para criar um blog de uma forma bem simples usando a API do Gatsby. Com esse simples passo a passo, passamos por vários conceitos do framework, desde a forma como pegamos os dados, como transformamos eles em algo que precisamos e como mostrar esses dados no React.

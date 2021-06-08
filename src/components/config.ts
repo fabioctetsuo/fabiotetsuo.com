@@ -1,34 +1,12 @@
-import { createMuiTheme } from "@material-ui/core/styles"
+import { createMuiTheme, Theme } from "@material-ui/core/styles"
 
-const typography = {
-  fontSize: 16,
-  h1: {
-    fontSize: "2.25rem",
-    lineHeight: "2.5rem",
-  },
-  h2: {
-    fontSize: "2rem",
-  },
-  h3: {
-    fontSize: "1.75em",
-  },
-  h4: {
-    fontSize: "1.5rem",
-  },
-  h5: {
-    fontSize: "1.25rem",
-  },
-  h6: {
-    fontSize: "1.15rem",
-  },
-  body1: {
-    fontSize: "1rem",
-    fontWeight: 300,
-  },
+const DEFAULT_FONT_SIZE = 18
+
+function pxToRem(value: number, base?: number) {
+  return `${value / (base || DEFAULT_FONT_SIZE)}rem`
 }
 
 export const lightTheme = createMuiTheme({
-  typography,
   palette: {
     type: "light",
     primary: {
@@ -55,7 +33,6 @@ export const lightTheme = createMuiTheme({
 })
 
 export const darkTheme = createMuiTheme({
-  typography,
   palette: {
     type: "dark",
     primary: {
@@ -80,5 +57,71 @@ export const darkTheme = createMuiTheme({
     },
   },
 })
+
+const getCustomTypography = (theme: Theme) => ({
+  h1: {
+    fontSize: pxToRem(32),
+    lineHeight: pxToRem(32),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(40),
+      lineHeight: pxToRem(40),
+    },
+  },
+  h2: {
+    fontSize: pxToRem(28),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(36),
+      lineHeight: pxToRem(36),
+    },
+  },
+  h3: {
+    fontSize: pxToRem(24),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(32),
+    },
+  },
+  h4: {
+    fontSize: pxToRem(20),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(28),
+    },
+  },
+  h5: {
+    fontSize: pxToRem(18),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(24),
+    },
+  },
+  h6: {
+    fontSize: pxToRem(16),
+
+    [theme.breakpoints.up("md")]: {
+      fontSize: pxToRem(20),
+    },
+  },
+  body1: {
+    fontSize: pxToRem(DEFAULT_FONT_SIZE),
+    fontWeight: 300,
+    lineHeight: pxToRem(24),
+  },
+  caption: {
+    fontSize: pxToRem(14),
+    fontWeight: 400,
+  },
+})
+
+lightTheme.typography = {
+  ...lightTheme.typography,
+  ...getCustomTypography(lightTheme),
+}
+darkTheme.typography = {
+  ...darkTheme.typography,
+  ...getCustomTypography(darkTheme),
+}
 
 export default lightTheme
