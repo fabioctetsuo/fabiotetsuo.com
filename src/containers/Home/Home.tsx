@@ -1,11 +1,13 @@
 import * as React from "react"
-import { Grid, Typography, Hidden } from "@material-ui/core"
+import { navigate } from "gatsby"
+import { Grid, Typography, Hidden, TextField, Button } from "@material-ui/core"
 import styled from "styled-components"
 import Container from "./components/Container"
 import Illustration from "./components/Illustration"
 import { PostProps } from "../../types/Post"
 import { ThemeContext } from "../../components/Layout"
 import Card from "../../components/Post/Card"
+import ContactIllustration from "../../images/home-illustration.svg"
 
 type HomeProps = {
   posts: PostProps[]
@@ -30,6 +32,7 @@ function Home({ posts }: HomeProps) {
   return (
     <>
       <Container
+        width="md"
         backgroundColor={isDarkMode ? "#161925" : "#637CE1"}
         backgroundSize="45%"
       >
@@ -74,11 +77,12 @@ function Home({ posts }: HomeProps) {
       <Container
         backgroundColor={isDarkMode ? "#161925" : "#F7F8FC"}
         title="Coisas que eu compartilhei"
-        action={() => console.log(`say hi`)}
+        action={() => navigate("/blog")}
         actionText="Ver todos os posts"
+        width="md"
       >
         <Grid container>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Typography>
               Acredito que compartilhar conhecimento seja uma das coisas mais
               importantes, por isso tento sempre escrever alguns posts sobre
@@ -88,10 +92,84 @@ function Home({ posts }: HomeProps) {
         </Grid>
         <Grid container style={{ marginTop: "1.5rem" }} spacing={1}>
           {posts.map(post => (
-            <Grid item xs={12} sm={6} md={3} key={post.node.id}>
+            <Grid item xs={12} md={4} key={post.node.id}>
               <Card post={post} />
             </Grid>
           ))}
+        </Grid>
+      </Container>
+      <Container title="Contato" width="md">
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <form
+              style={{ width: "100%" }}
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              name="contact"
+              method="POST"
+              action="/contact/success"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <Typography variant="body1">
+                Gostaria de conhecer mais o meu trabalho, trocar experiências ou
+                até mesmo construir algo juntos? Então entre em contato através
+                desse formulário que nossa equipe lhe responderá (no caso, a
+                equipe sou eu e minha gatinha Phoebe)
+              </Typography>
+              <TextField
+                name="name"
+                id="name"
+                label="Qual é o seu nome?"
+                helperText="Gostaria de saber com quem eu vou falar <3"
+                variant="outlined"
+                fullWidth
+                required
+                style={{ marginTop: "2rem" }}
+              />
+              <TextField
+                name="email"
+                id="email"
+                label="E-mail"
+                helperText="Qual o melhor e-mail para entrar em contato?"
+                variant="outlined"
+                fullWidth
+                required
+                style={{ marginTop: "24px" }}
+              />
+              <TextField
+                name="description"
+                id="description"
+                label="Descrição"
+                helperText="Digite aqui o que te levou a me contatar :)"
+                variant="outlined"
+                fullWidth
+                rows={6}
+                multiline
+                required
+                style={{ marginTop: "24px", marginBottom: "24px" }}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                style={{ borderRadius: 20 }}
+              >
+                Enviar
+              </Button>
+            </form>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ContactIllustration style={{ width: "720px", maxWidth: "80vw" }} />
+          </Grid>
         </Grid>
       </Container>
     </>

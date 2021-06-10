@@ -1,6 +1,7 @@
 import * as React from "react"
 import { ThemeProvider as StyledThemeProvider } from "styled-components"
 import { ThemeProvider } from "@material-ui/core/styles"
+import Footer from "../Footer"
 
 import Appbar from "../Appbar"
 import { lightTheme, darkTheme } from "../config"
@@ -52,6 +53,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <ThemeContext.Provider value={{ isDarkMode }}>
           {children}
         </ThemeContext.Provider>
+        <Footer />
       </StyledThemeProvider>
     </ThemeProvider>
   )

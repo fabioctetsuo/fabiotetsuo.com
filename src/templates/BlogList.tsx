@@ -36,7 +36,7 @@ function BlogList({ data, pageContext }: StaticQueryProps) {
       <SEO title="Artigos" />
       <main>
         <Container
-          size="lg"
+          size="md"
           titleSize="md"
           title="Artigos"
           withContainer
