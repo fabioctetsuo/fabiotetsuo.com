@@ -5,8 +5,7 @@ module.exports = {
     authorDescription: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
-    siteUrl: `http://localhost:9000`,
-    // siteUrl: `https://www.fabiotetsuo.com`,
+    siteUrl: `https://www.fabiotetsuo.com`,
   },
   plugins: [
     {
