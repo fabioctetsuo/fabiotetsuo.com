@@ -104,7 +104,7 @@ const PostTemplate = ({ data: { mdx, file }, location }: PostTemplateProps) => {
   const featuredImgFluid = mdx.frontmatter.featuredImage.childImageSharp.fluid
 
   return (
-    <Layout>
+    <Layout footerWidth="sm">
       <SEO
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}

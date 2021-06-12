@@ -6,8 +6,11 @@ import Footer from "../Footer"
 import Appbar from "../Appbar"
 import { lightTheme, darkTheme } from "../config"
 import GlobalStyles from "../../styles/global"
+import { ContainerProps } from "@material-ui/core"
 
-type LayoutProps = {}
+type LayoutProps = {
+  footerWidth: ContainerProps["maxWidth"]
+}
 
 type ThemeContextProps = {
   isDarkMode: boolean
@@ -23,7 +26,7 @@ declare global {
 
 export const ThemeContext = React.createContext<null | ThemeContextProps>(null)
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, footerWidth }) => {
   const [theme, setTheme] = React.useState<"dark" | "light" | null>(null)
   const isDarkMode = theme === "dark"
   const selectedTheme = isDarkMode ? darkTheme : lightTheme
@@ -53,7 +56,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <ThemeContext.Provider value={{ isDarkMode }}>
           {children}
         </ThemeContext.Provider>
-        <Footer />
+        <Footer width={footerWidth} />
       </StyledThemeProvider>
     </ThemeProvider>
   )

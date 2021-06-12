@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Typography, TextField, Grid } from "@material-ui/core"
+import { Typography, TextField, Grid, ContainerProps } from "@material-ui/core"
 import Container from "../../containers/Home/components/Container"
 import Button from "../Button"
 import SocialNetwork from "../SocialNetwork"
@@ -47,19 +47,16 @@ const Newsletter = () => {
   )
 }
 
-const Footer = () => {
+const Footer = ({ width = "md" }: { width: ContainerProps["maxWidth"] }) => {
   return (
-    <Container backgroundColor="#434343" width="md">
+    <Container backgroundColor="#434343" width={width}>
       <footer>
         <Grid container alignContent="center">
           <Grid
             item
             xs={12}
             sm={6}
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-            }}
+            style={{ display: "flex", justifyContent: "flex-start" }}
           >
             <div style={{ minHeight: 346, position: "relative" }}>
               <Newsletter />

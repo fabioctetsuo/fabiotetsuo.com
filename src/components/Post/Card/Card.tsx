@@ -62,7 +62,7 @@ const Card = ({ post }: { post: PostProps }) => {
         fullWidth
         variant="contained"
         color="primary"
-        href={post.node.fields.slug}
+        href={`/blog${post.node.fields.slug}`}
         style={{ borderRadius: "1.5rem" }}
       >
         Ler mais

@@ -5,7 +5,8 @@ module.exports = {
     authorDescription: `Eu trabalho na Raia Drogasil e escrevo sobre tecnologia e alguns outros assuntos diversos. Gosto de passar meu tempo cozinhando, cuidando da minha gatinha e aprendendo novas coisas!`,
     author: `@fabioctetsuo`,
     position: `Front-end Engineer`,
-    siteUrl: `https://www.fabiotetsuo.com`,
+    siteUrl: `http://localhost:9000`,
+    // siteUrl: `https://www.fabiotetsuo.com`,
   },
   plugins: [
     {
@@ -93,6 +94,73 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
+    // {
+    //   resolve: "gatsby-plugin-mailchimp",
+    //   options: {
+    //     endpoint: process.env.MAILCHIMP_ENDPOINT,
+    //     timeout: 5000,
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-feed-mdx`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.description,
+                  date: edge.node.frontmatter.date,
+                  url:
+                    site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
+                  guid:
+                    site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/feed.xml",
+            title: "Feed - Fabio Tetsuo",
+            // optional configuration to insert feed reference in pages:
+            // if `string` is used, it will be used to create RegExp and then test if pathname of
+            // current page satisfied this regular expression;
+            // if not provided or `undefined`, all pages will have feed reference inserted
+            match: "^/blog/",
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

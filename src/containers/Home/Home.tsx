@@ -1,6 +1,6 @@
 import * as React from "react"
 import { navigate } from "gatsby"
-import { Grid, Typography, Hidden, TextField, Button } from "@material-ui/core"
+import { Grid, Typography, Hidden } from "@material-ui/core"
 import styled from "styled-components"
 import Container from "./components/Container"
 import Illustration from "./components/Illustration"
@@ -8,6 +8,7 @@ import { PostProps } from "../../types/Post"
 import { ThemeContext } from "../../components/Layout"
 import Card from "../../components/Post/Card"
 import ContactIllustration from "../../images/home-illustration.svg"
+import ContactForm from "./components/Contact/Contact"
 
 type HomeProps = {
   posts: PostProps[]
@@ -56,7 +57,7 @@ function Home({ posts }: HomeProps) {
             </Typography>
           </Grid>
           <Hidden smUp={true}>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <div style={{ marginTop: 64 }} />
             </Grid>
           </Hidden>
@@ -99,78 +100,7 @@ function Home({ posts }: HomeProps) {
         </Grid>
       </Container>
       <Container title="Contato" width="md">
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <form
-              style={{ width: "100%" }}
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              name="contact"
-              method="POST"
-              action="/contact/success"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <Typography variant="body1">
-                Gostaria de conhecer mais o meu trabalho, trocar experiências ou
-                até mesmo construir algo juntos? Então entre em contato através
-                desse formulário que nossa equipe lhe responderá (no caso, a
-                equipe sou eu e minha gatinha Phoebe)
-              </Typography>
-              <TextField
-                name="name"
-                id="name"
-                label="Qual é o seu nome?"
-                helperText="Gostaria de saber com quem eu vou falar <3"
-                variant="outlined"
-                fullWidth
-                required
-                style={{ marginTop: "2rem" }}
-              />
-              <TextField
-                name="email"
-                id="email"
-                label="E-mail"
-                helperText="Qual o melhor e-mail para entrar em contato?"
-                variant="outlined"
-                fullWidth
-                required
-                style={{ marginTop: "24px" }}
-              />
-              <TextField
-                name="description"
-                id="description"
-                label="Descrição"
-                helperText="Digite aqui o que te levou a me contatar :)"
-                variant="outlined"
-                fullWidth
-                rows={6}
-                multiline
-                required
-                style={{ marginTop: "24px", marginBottom: "24px" }}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{ borderRadius: 20 }}
-              >
-                Enviar
-              </Button>
-            </form>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ContactIllustration style={{ width: "720px", maxWidth: "80vw" }} />
-          </Grid>
-        </Grid>
+        <ContactForm />
       </Container>
     </>
   )
