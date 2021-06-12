@@ -7,33 +7,31 @@ import TwitterIcon from "@material-ui/icons/Twitter"
 function SocialNetwork() {
   return (
     <>
-      <a
+      <IconButton
+        aria-label="Github"
+        color="secondary"
         href="https://www.github.com/fabioctetsuo"
         target="_blank"
-        rel="noopener noreferrer"
       >
-        <IconButton aria-label="Github" color="default">
-          <GitHubIcon />
-        </IconButton>
-      </a>
-      <a
+        <GitHubIcon />
+      </IconButton>
+      <IconButton
+        aria-label="LinkedIn"
+        color="secondary"
         href="https://www.linkedin.com/in/fabio-tetsuo-chuman-7b0061134"
         target="_blank"
-        rel="noopener noreferrer"
       >
-        <IconButton aria-label="LinkedIn" color="default">
-          <LinkedInIcon />
-        </IconButton>
-      </a>
-      <a
+        <LinkedInIcon />
+      </IconButton>
+
+      <IconButton
+        aria-label="Twitter"
+        color="secondary"
         href="https://twitter.com/fabioctetsuo"
         target="_blank"
-        rel="noopener noreferrer"
       >
-        <IconButton aria-label="Twitter" color="default">
-          <TwitterIcon />
-        </IconButton>
-      </a>
+        <TwitterIcon />
+      </IconButton>
     </>
   )
 }

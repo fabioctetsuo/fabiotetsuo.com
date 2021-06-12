@@ -1,80 +1,55 @@
 import * as React from "react"
+import { Container } from "@material-ui/core"
 import { Link } from "gatsby"
-import { Theme } from "@material-ui/core"
-import IconButton from "@material-ui/core/IconButton"
-import Close from "@material-ui/icons/Close"
-import { Transition } from "react-transition-group"
 import Switch from "../Switch"
 import Logo from "../Logo/Logo"
 
 import * as Styled from "./styled"
-import Menu from "./Menu"
+import MenuIcon from "./MenuIcon/MenuIcon"
 
-const duration = 300
-
-const defaultStyle = {
-  top: "-100%",
-  transition: "all 0.5s ease",
-  willChange: "bottom",
-}
-
-const transitionStyles = {
-  entering: {
-    top: "0",
-    transform: "translateY(0)",
-  },
-  entered: {
-    top: "0",
-    transform: "translateY(0)",
-  },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-} as any
+const Menu = React.lazy(() => import("./Menu"))
 
 type AppbarProps = {
   theme: "dark" | "light" | null
   setTheme: () => void
 }
 
+const MenuComponent = ({ toggleMenu }: { toggleMenu: () => void }) => {
+  return (
+    <div>
+      <React.Suspense fallback={<div />}>
+        <Menu toggleMenu={toggleMenu} />
+      </React.Suspense>
+    </div>
+  )
+}
+
 function Appbar({ theme, setTheme }: AppbarProps) {
-  const [open, setOpen] = React.useState<boolean>(false)
+  const [showMenu, setShowMenu] = React.useState(false)
+  const toggleMenu = () => () => {
+    setShowMenu(!showMenu)
+  }
 
   return (
     <>
-      <Styled.Topbar>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Link to="/">
-            <Logo />
-          </Link>
-          <Styled.ButtonWrapper onClick={() => setOpen(true)}>
-            <Styled.Button>MENU</Styled.Button>
-          </Styled.ButtonWrapper>
-        </div>
-        <Switch checked={theme === "dark"} onClick={setTheme} />
-      </Styled.Topbar>
-      <Transition in={open} timeout={duration}>
-        {state => (
-          <Styled.MenuBar
-            open={open}
-            style={{ ...defaultStyle, ...transitionStyles[state] }}
+      <Container>
+        <Styled.Topbar>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
           >
-            <IconButton
-              aria-label="Fechar"
-              color="primary"
-              onClick={() => setOpen(false)}
-            >
-              <Close />
-            </IconButton>
-            <Menu transitionState={state} />
-          </Styled.MenuBar>
-        )}
-      </Transition>
+            <MenuIcon toggleMenu={toggleMenu()} isDarkMode={theme === "dark"} />
+            <Link aria-label="Homepage" to="/">
+              <Logo isDarkMode={theme === "dark"} />
+            </Link>
+          </div>
+          <Switch checked={theme === "dark"} onClick={setTheme} />
+        </Styled.Topbar>
+      </Container>
+      {showMenu && <MenuComponent toggleMenu={toggleMenu()} />}
     </>
   )
 }

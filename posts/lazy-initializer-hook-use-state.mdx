@@ -1,24 +1,20 @@
 ---
 date: 2021-02-01 23:11:00
 title: Usando React.useState com lazy initialization
-description: Você já passou por alguma situação onde precisava inicializar um estado com um cálculo pesado? Vamos entender uma maneira de lidar com isso.
+description: Você já passou por alguma situação na qual precisava inicializar um estado com um cálculo pesado? Vamos entender uma maneira de lidar com isso.
 category: react
 background: "#7d669e"
 color: "#0070a2"
 featuredImage: ./images/use-state-lazy-init.jpg
-sections:
-  [
-    { id: "contexto", title: "Contexto" },
-    { id: "problema", title: "Problema" },
-    { id: "solução", title: "Solução" },
-    { id: "usememo-vs-lazy-initializer", title: "useMemo vs Lazy Initializer" },
-    { id: "ponto-de-atenção", title: "Ponto de atenção" },
-  ]
+featuredImageAuthor: D.S. Chapman
+featuredImageUrl: https://unsplash.com/photos/aIgZHolF4Dg
+author: Fabio Tetsuo
+reviewer: Fernanda Lima dos Santos
 ---
 
-##### Contexto
+## Contexto
 
-Já se deparou alguma vez em que você tinha uma situação como essa?
+Já se deparou alguma vez com uma situação como essa?
 
 ```jsx
 const MyComponent = props => {
@@ -27,7 +23,7 @@ const MyComponent = props => {
 }
 ```
 
-Talvez você precisasse fazer um cálculo, ou talvez ler algo de dentro do local storage (por ser uma operação de I/O, geralmente não é algo tão rápido).
+Talvez você precisasse fazer um cálculo, ou ler algo de dentro do local storage (por ser uma operação de I/O, geralmente não é algo tão rápido).
 
 ```jsx
 const MyComponent = props => {
@@ -36,13 +32,13 @@ const MyComponent = props => {
 }
 ```
 
-##### Problema
+## Problema
 
-Esse tipo de caso não é muito comum mas pode acontecer. Lembrando que queremos setar apenas o estado inicial do componente e nesse tipo de situação, em todo o re-render ele vai tentar ler do local storage, o que poderia causar problemas de performance da aplicação.
+Esse tipo de caso não é muito comum mas pode acontecer. Lembrando que queremos setar apenas o estado inicial do componente, e nesse tipo de situação, em todo o re-render, ele vai tentar ler do local storage, o que poderia causar problemas de performance da aplicação.
 
-##### Solução
+## Solução
 
-Uma coisa bem legal que pode ser feita para contornar esse caso é fazer um lazy initialization com o useState.
+Uma forma de contornar essa situação é fazer uma lazy initialization com o useState.
 
 ```jsx
 const MyComponent = props => {
@@ -53,11 +49,11 @@ const MyComponent = props => {
 
 O useState pode receber o valor inicial ou uma callback que retorna o valor inicial, mas qual a diferença entre ambos?
 
-Basicamente se passarmos uma callback no useState, o hook fará com que essa função seja chamada apenas quando for necessário inicializar o estado inicial e quando o componente re-renderizar ele não vai executar novamente a função evitando assim que a expressão seja executada uma segunda vez.
+Basicamente, se passarmos uma callback no useState, o hook fará com que essa função seja chamada apenas quando for necessário inicializar o estado inicial, e quando houver um re-render do componente, ele não vai executar novamente a função evitando assim que a expressão seja executada uma segunda vez.
 
-Criar uma função é algo rápido e mais barato do que calcular algo caro ou pegar algo do local storage, por isso pode valer a pena.
+Criar uma função é algo rápido e mais barato do que calcular algo caro ou pegar algo do local storage, por isso, pode valer a pena.
 
-##### useMemo vs Lazy Initializer
+## useMemo vs Lazy Initializer
 
 > "Performance optimizations ALWAYS come with a cost but do NOT always come with a benefit."
 >
@@ -67,25 +63,25 @@ Será que não podemos utilizar o useMemo para isso?
 
 A resposta curta é sim, você pode utilizar o useMemo para evitar que a função seja executada várias vezes no initial state, mas será que vale a pena?
 
-Quando utilizamos o useMemo ou o useCallback, queremos fazer uma otimização de performance, porém vale ressaltar que toda otimização tem um custo mas nem sempre possui benefícios.
+Quando utilizamos o useMemo ou o useCallback, queremos fazer uma otimização de performance, porém vale ressaltar que toda otimização tem um custo, mas nem sempre possui benefícios.
 
-Pensando apenas em Javascript vamos analisar o que está acontecendo aqui:
+Pensando apenas em Javascript, vamos analisar o que está acontecendo aqui:
 
-```diff-jsx
--   const initialState = window.localStorage.getItem("hello");
+```jsx
+-  const initialState = window.localStorage.getItem("hello");
 +  const initialState = React.useMemo(
 +    () => window.localStorage.getItem("hello"),
 +    [],
 +  );
 ```
 
-Isso provavelmente evitaria os mesmos problemas mas vamos pensar nos custos disso, aqui não só precisamos definir a nossa função com o valor que precisa ser memoizado, como também precisamos definir o array de dependências e chamar o useMemo que por sua vez vai executar as expressões.
+Isso provavelmente evitaria os mesmos problemas, mas vamos pensar nos custos disso. Aqui, não só precisamos definir a nossa função com o valor que precisa ser memoizado, como também precisamos definir o array de dependências e chamar o useMemo que, por sua vez, vai executar as expressões.
 
 Ou seja, estamos executando um trabalho muito maior, precisamos alocar mais espaço na memória e/ou recursos dependendo do que está sendo memoizado.
 
-Vale ressaltar que durante o re-render o garbage collector conseguiria desalocar a memória anterior antes de alocar um espaço novo na solução do **lazy initialization**, diferentemente da solução do useMemo ou useCallback, onde o garbage collector não desalocaria a memória e um novo espaço ainda precisa ser alocado, ou seja isso é pior no ponto de vista de perfomance em relação a memória.
+Vale ressaltar que durante o re-render, o garbage collector conseguiria desalocar a memória anterior antes de alocar um espaço novo na solução do **lazy initialization**, diferentemente da solução do useMemo ou useCallback, na qual o garbage collector não desalocaria a memória e um novo espaço ainda precisa ser alocado, ou seja, isso é pior no ponto de vista de perfomance em relação à memória.
 
-##### Ponto de atenção
+## Ponto de atenção
 
 Importante ressaltar que não é sempre que precisamos utilizar esse tipo de abordagem, apenas quando precisarmos inicializar o estado com algo de alto custo.
 Se você quer devolver apenas uma string, um número, um objeto ou coisa do tipo dentro do useState, pode não ser uma abordagem tão interessante e talvez você deva avaliar se vale a pena ou não.

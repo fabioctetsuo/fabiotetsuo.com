@@ -1,28 +1,22 @@
 ---
 date: 2020-02-26 22:53:00
 title: Criando um formulário de contato com Gatsby + Netlify
-description: Nesse rápido artigo, vou mostrar como desenvolver um formulário usando Gatsby e recebendo os dados no Netlify
+description: Nesse rápido artigo, vou mostrar como desenvolver um formulário usando Gatsby e recebendo os dados no Netlify.
 category: gatsby
 color: "#673ab7"
-featuredImage: ./images/contact-form-post.png
-sections:
-  [
-    { id: "contexto", title: "Contexto" },
-    { id: "criando-formulário-base", title: "Criando formulário base" },
-    { id: "integrando-com-netlify", title: "Integrando com Netlify" },
-    {
-      id: "adicionando-um-mensagem-customizada",
-      title: "Adicionando um mensagem customizada",
-    },
-  ]
+featuredImage: ./images/forms-netlify-gatsby.jpg
+featuredImageAuthor: Fakurian Design
+featuredImageUrl: https://unsplash.com/photos/iFu2HILEng8
+author: Fabio Tetsuo
+reviewer: Fernanda Lima dos Santos
 ---
 
-##### Contexto
+## Contexto
 
-Recentemente eu fiz a release de um formulário de contato no meu site, que você pode checar acessando [esse link](https://www.fabiotetsuo.com/contact) e agora
-gostaria de contar como eu fiz para desenvolver essa feature, desde a criação do formulário até a integração entre Gatsby e Netlify.
+Recentemente eu fiz a release de um formulário de contato no meu site, que você pode checar acessando [esse link](https://www.fabiotetsuo.com/contact), e agora
+gostaria de contar como fiz para desenvolver essa feature, desde a criação do formulário até a integração entre Gatsby e Netlify.
 
-##### Criando formulário base
+## Criando formulário base
 
 Esse passo é bem simples e rápido, primeiro nós vamos criar um novo formulário de contato, sem inventar muito:
 
@@ -82,10 +76,10 @@ const ContactPage = ({ data }) => {
 export default ContactPage
 ```
 
-##### Integrando com Netlify
+## Integrando com Netlify
 
-Agora precisamos mandar a requisição do lado do client e receber essa informação no Netlify, mas como fazer isso?
-É realmente um processo simples e que ajuda muito pelo fato de ser rápido. Tudo que precisamos fazer é adicionar alguns atributos específicos no formulário:
+Agora, precisamos mandar a requisição do lado do client e receber essa informação no Netlify, mas como fazer isso?
+É realmente um processo simples e que ajuda muito pelo fato de ser rápido. Tudo o que precisamos fazer é adicionar alguns atributos específicos ao formulário:
 
 ```jsx
 <form
@@ -109,15 +103,15 @@ Agora precisamos mandar a requisição do lado do client e receber essa informa�
   /* the rest of the form... */
 ```
 
-Aqui é onde a mágica acontece. Temos dois atributos novos chamados `data-netlify` e `data-netlify-honeypot` no formulário. O primeiro é responsável apenas por permitir que o Netlify comece a receber requisições desse formulário e o último é uma proteção contra spam, basicamente ele insere um campo de texto escondido que apenas bots conseguem preencher e quando esse campo esse campo for preenchido, o netlify irá recusar a requisição.
-Outro ponto é que precisamos adicionar um novo input escondido, chamado `form-name` com o valor do nome do nosso formulário, isso é obrigatório para enviar dados do seu formulário para o netlify.
+Aqui é onde a mágica acontece. Temos dois atributos novos chamados `data-netlify` e `data-netlify-honeypot` no formulário. O primeiro é responsável apenas por permitir que o Netlify comece a receber requisições desse formulário e o último é uma proteção contra spam, basicamente ele insere um campo de texto escondido que apenas bots conseguem preencher e quando esse campo esse campo for preenchido, o Netlify irá recusar a requisição.
+Outro ponto é que precisamos adicionar um novo input escondido, chamado `form-name` com o valor do nome do nosso formulário, isso é obrigatório para enviar dados do seu formulário para o Netlify.
 E por último mas não menos importante, precisamos adicionar o `name` para cada um dos inputs, assim o payload será enviado conforme esses nomes.
 
-Com isso, temos um formulário integrado com o netlify e se enviarmos a requisição, veremos a mensagem padrão do netlify, informando que os dados foram enviados com sucesso.
+Com isso, temos um formulário integrado com o Netlify, e se enviarmos a requisição, veremos a mensagem padrão da plataforma, informando que os dados foram enviados com sucesso.
 
-![Default success message from netlify](./images/netlify-success-message.jpeg)
+![Mensagem padrão de sucesso do Netlify](./images/netlify-success-message.jpeg)
 
-##### Adicionando um mensagem customizada
+## Adicionando um mensagem customizada
 
 Tudo funcionou muito bem, mas e se quiseremos mostrar uma mensagem customizada com a nossa cara?
 Isso também é bem simples, basta adicionarmos um novo atributo ao formulário chamado `action`.
@@ -133,7 +127,7 @@ Isso também é bem simples, basta adicionarmos um novo atributo ao formulário 
 >
 ```
 
-Ele vai nos redirecionar para uma nova página, que criaremos logo em seguida com a nossa mensagem de sucesso:
+Ele vai nos redirecionar para uma nova página que criaremos logo em seguida com a nossa mensagem de sucesso:
 
 ```jsx
 import React from "react"
@@ -212,6 +206,6 @@ export const query = graphql`
 export default SuccessPage
 ```
 
-![Custom success message in our application!](./images/custom-success-message.png)
+![Mensagem customizada de sucesso da nossa aplicação!](./images/custom-success-message.png)
 
 E é isso! Agora, temos um formulário integrado com o Netlify e uma mensagem bonita que fará com que a experência do usuário seja bem melhor!

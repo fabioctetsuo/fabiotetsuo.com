@@ -4,23 +4,17 @@ title: Usando Imagens com Gatsby
 description: Diga adeus as dificuldades para trabalhar com imagens nas suas aplicações web.
 category: gatsby
 color: "#673ab7"
-featuredImage: ./images/gatsby-image.jpeg
-sections:
-  [
-    { id: "introdução", title: "Introdução" },
-    { id: "configurando-gatsby-image", title: "Configurando Gatsby Image" },
-    {
-      id: "consumindo-imagens-com-o-graphql",
-      title: "Consumindo imagens com o GraphQL",
-    },
-    { id: "performance", title: "Performance" },
-  ]
+featuredImage: ./images/gatsby-images.jpg
+featuredImageAuthor: Annie Spratt
+featuredImageUrl: https://unsplash.com/photos/VvE9lcIQ5Xo
+author: Fabio Tetsuo
+reviewer: Fernanda Lima dos Santos
 ---
 
-##### Introdução
+## Introdução
 
 Você já se encontrou em uma situação na qual entrou em algum site, começou a ler o conteúdo e uma imagem apareceu na tela do nada e te fez perder o foco do que estava lendo? Ou já presenciou alguma imagem muito grande e não otimizada que deixou o site inteiro lento?
-Por um longo tempo, isso era um grande problema, porém as coisas mudaram e apareceram soluções cada vez mais modernas que nos ajudam muito, porém com algumas dificuldades.
+Por um longo tempo isso era um grande problema, porém, as coisas mudaram e apareceram soluções cada vez mais modernas que nos ajudam muito, mas com algumas dificuldades.
 
 Exemplo:
 
@@ -29,17 +23,17 @@ Exemplo:
 - Manter a posição da imagem, para que o texto não se mova na tela após a imagem carregar.
 - Criar placeholders ou efeitos de blur durante o carregamento das imagens.
 
-##### Configurando Gatsby Image
+## Configurando Gatsby Image
 
 Então, Gatsby tornou isso mais fácil com o plugin [gatsby-image](https://www.gatsbyjs.com/plugins/gatsby-image/).
 
-Primeiro precisamos instalar algumas dependências:
+Primeiro, precisamos instalar algumas dependências:
 
 ```sh
 yarn add gatsby-image gatsby-transformer-sharp gatsby-plugin-sharp
 ```
 
-Nas configurações, vamos adicionar o plugin, o transformador e dizer para o Gatsby onde as imagens estão armazenadas
+Nas configurações, vamos adicionar o plugin, o transformador e dizer para o Gatsby onde as imagens estão armazenadas.
 
 ```javascript
 module.exports = {
@@ -56,7 +50,7 @@ module.exports = {
 }
 ```
 
-##### Consumindo imagens com o GraphQL
+## Consumindo imagens com o GraphQL
 
 Com as configurações devidamente realizadas, vamos combinar as informações do frontmatter com gatsby-image, retornando o caminho relativo para essa imagen em nosso markdown.
 
@@ -70,7 +64,7 @@ featuredImage: ./images/100daysofgatsby.png
 ---
 ```
 
-Agora que o GraphQL já sabe a existência das imagens, podemos fazer a query do frontmatter para retornar a imagem em nosso componente React e usar o gatsby image para renderizar o conteúdo.
+Agora que o GraphQL já sabe a existência das imagens, podemos fazer a query do frontmatter para retornar a imagem em nosso componente React e usar o Gatsby Image para renderizar o conteúdo.
 
 ```jsx
 import React from "react"
@@ -116,7 +110,7 @@ export const query = graphql`
 export default IndexPage
 ```
 
-##### Performance
+## Performance
 
 Rodando o audit no site em produção, podemos ver a performance da aplicação consumindo as imagens:
 ![Performance do site com 96 de performance de score](./images/audit_performance_fabiotetsuocom.png)

@@ -7,12 +7,19 @@ export const TitleWrapper = styled.div`
 
 export const FeaturedImageWrapper = styled.section`
   margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  a {
+    text-decoration: none;
+    color: ${theme.palette.primary.main};
+  }
 `
 
 export const Anchor = styled.a`
   color: var(--fontColor);
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: 500;
   text-decoration-color: ${theme.palette.primary.main};
-  text-decoration-thickness: 0.3rem;
+  text-decoration-thickness: 0.2rem;
 `

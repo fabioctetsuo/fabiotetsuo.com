@@ -1,3 +1,5 @@
+import { GatsbyImageFixedProps } from "gatsby-image";
+
 type PostProps = {
   node: {
     id: string
@@ -12,7 +14,7 @@ type PostProps = {
       category: string
       color: string
       featuredImage: {
-        childImageSharp: GatsbyImageProps
+        childImageSharp: GatsbyImageFixedProps
       }
     }
   }

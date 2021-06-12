@@ -64,59 +64,51 @@ function SEO({ description, lang = "pt-BR", meta = [], title, image }: Props) {
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
+      htmlAttributes={{ lang }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
+      link={[
         {
-          name: `description`,
-          content: metaDescription,
+          href: "https://fonts.gstatic.com",
+          rel: "preconnect",
+          crossOrigin: "anonymous",
         },
         {
-          property: `og:title`,
-          content: title,
+          rel: "preload",
+          href: "https://fonts.googleapis.com/?display=swap",
         },
         {
-          property: `og:description`,
-          content: metaDescription,
+          rel: "preload",
+          href:
+            "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nothing+You+Could+Do&family=Roboto:wght@300;400;500&display=swap",
+          as: "style",
         },
         {
-          property: `og:type`,
-          content: `website`,
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nothing+You+Could+Do&family=Roboto:wght@300;400;500&display=swap",
+          media: "print",
+          onLoad: "this.media='all'" as any,
         },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-
-        {
-          name: `twitter:image`,
-          content: ogImage,
-        },
-        {
-          name: `twitter:site`,
-          content: `@fabioctetsuo`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: `twitter:image:alt`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+      ]}
+    >
+      <meta name="description" content={metaDescription} />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={metaDescription} />
+      <meta name="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:site" content="@fabioctetsuo" />
+      <meta name="twitter:creator" content={site.siteMetadata.author} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image:alt" content={metaDescription} />
+      <noscript>
+        {`
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nothing+You+Could+Do&family=Roboto:wght@300;400;500&display=swap" />
+        `}
+      </noscript>
+    </Helmet>
   )
 }
 
