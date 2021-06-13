@@ -1,16 +1,21 @@
 import * as React from "react"
 import { navigate } from "gatsby"
 import { Grid, Typography, Hidden } from "@material-ui/core"
+import withWidth, {
+  isWidthDown,
+  WithWidthProps,
+} from "@material-ui/core/withWidth"
 import styled from "styled-components"
 import Container from "./components/Container"
 import Illustration from "./components/Illustration"
 import { PostProps } from "../../types/Post"
 import { ThemeContext } from "../../components/Layout"
 import Card from "../../components/Post/Card"
-import ContactIllustration from "../../images/home-illustration.svg"
+// import ContactIllustration from "../../images/home-illustration.svg"
 import ContactForm from "./components/Contact/Contact"
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
-type HomeProps = {
+interface HomeProps extends Partial<WithWidthProps> {
   posts: PostProps[]
 }
 
@@ -28,14 +33,15 @@ const customStyle = {
   justifyContent: "center",
 } as React.CSSProperties
 
-function Home({ posts }: HomeProps) {
+function Home({ posts, width }: HomeProps) {
   const { isDarkMode } = React.useContext(ThemeContext) || { isDarkMode: false }
+
   return (
     <>
       <Container
         width="md"
         backgroundColor={isDarkMode ? "#161925" : "#637CE1"}
-        backgroundSize="45%"
+        backgroundSize={isWidthDown("xs", width as Breakpoint) ? "0%" : "45%"}
       >
         <Grid container>
           <Grid item xs={12} sm={6} style={customStyle}>
@@ -93,7 +99,13 @@ function Home({ posts }: HomeProps) {
         </Grid>
         <Grid container style={{ marginTop: "1.5rem" }} spacing={1}>
           {posts.map(post => (
-            <Grid item xs={12} md={4} key={post.node.id}>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              key={post.node.id}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <Card post={post} />
             </Grid>
           ))}
@@ -106,4 +118,4 @@ function Home({ posts }: HomeProps) {
   )
 }
 
-export default Home
+export default withWidth()(Home)

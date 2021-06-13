@@ -9,7 +9,7 @@ import GlobalStyles from "../../styles/global"
 import { ContainerProps } from "@material-ui/core"
 
 type LayoutProps = {
-  footerWidth: ContainerProps["maxWidth"]
+  footerWidth?: ContainerProps["maxWidth"]
 }
 
 type ThemeContextProps = {
@@ -26,7 +26,7 @@ declare global {
 
 export const ThemeContext = React.createContext<null | ThemeContextProps>(null)
 
-const Layout: React.FC<LayoutProps> = ({ children, footerWidth }) => {
+const Layout: React.FC<LayoutProps> = ({ children, footerWidth = "md" }) => {
   const [theme, setTheme] = React.useState<"dark" | "light" | null>(null)
   const isDarkMode = theme === "dark"
   const selectedTheme = isDarkMode ? darkTheme : lightTheme

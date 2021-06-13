@@ -26,6 +26,7 @@ function ContactForm() {
             variant="outlined"
             fullWidth
             required
+            // color="secondary"
             style={{ marginTop: "2rem" }}
           />
           <TextField
