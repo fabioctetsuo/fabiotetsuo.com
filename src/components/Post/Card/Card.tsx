@@ -13,6 +13,7 @@ const Article = styled.article`
   flex: 0 1 auto;
   height: 100%;
   transition: box-shadow 0.2s ease-in-out;
+  max-width: 500px;
 
   &:hover {
     background: var(--cardBackground);

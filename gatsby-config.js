@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Fabio Tetsuo`,
@@ -95,13 +99,13 @@ module.exports = {
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-mailchimp",
-    //   options: {
-    //     endpoint: process.env.MAILCHIMP_ENDPOINT,
-    //     timeout: 5000,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+        timeout: 5000,
+      },
+    },
     {
       resolve: `gatsby-plugin-feed-mdx`,
       options: {
